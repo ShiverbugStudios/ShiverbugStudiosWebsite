@@ -585,7 +585,7 @@ foreach ($list in @($team, $talent)) {
       Replace('{{CANONICAL}}', $canonical).
       Replace('{{OGIMAGE}}',   $ogImage).
       Replace('{{OGALT}}',     (HtmlEnc ("Portrait of " + $p.name))).
-      Replace('{{BACKHREF}}',  $(if ($p.status) { './#talent-pool' } else { '../#team' })).
+      Replace('{{BACKHREF}}',  $(if ($p.status) { '../#talent-pool' } else { '../#team' })).
       Replace('{{BACKTEXT}}',  $(if ($p.status) { 'Back to the talent pool' } else { 'Back to the team' })).
       Replace('{{JSONLD}}',    $jsonld).
       Replace('{{PHOTO}}',     $photo).
@@ -743,35 +743,12 @@ $teamBlock += (@($rest | ForEach-Object { MemberTile $_ $false 'main' $false 'h4
 $teamBlock += '        </div>'
 $teamHtml = $teamBlock -join "`n"
 
-# The talent pool used to be a full grid on the home page, the same size as the
-# studio's own. It is guests and former shiverbugs, and the home page is a pitch
-# to a studio deciding whether to hire us - so there it is now one line naming
-# the people a client could actually get, with a way through to the full pool on
-# the team hub. Former shiverbugs are not named here: offering someone's time
-# after they have left is not ours to do.
-$activeTalent = @($talent | Where-Object { $_.status -eq 'active' })
-function SmallestVariant($photo) {
-  foreach ($w in @(160, 240, 320)) {
-    $rel = VariantPath $photo $w
-    if (Test-Path (Join-Path $root ($rel -replace '/', '\'))) { return $rel }
-  }
-  return $photo
-}
-$faces = @($activeTalent | ForEach-Object {
-  '            <li><img src="' + (SmallestVariant $_.photo) + '" alt="" width="44" height="44" loading="lazy"></li>'
-}) -join "`n"
-$names = @($activeTalent | ForEach-Object {
-  '<a href="team/' + $_.slug + '.html">' + (HtmlEnc $_.name) + '</a> (' + (HtmlEnc (RoleDisplay $_)) + ')'
-})
-$nameList = if ($names.Count -le 1) { $names -join '' }
-            else { (($names[0..($names.Count - 2)]) -join ', ') + ' and ' + $names[-1] }
-$verb = if ($names.Count -eq 1) { 'works' } else { 'work' }
+# The talent pool is guest contributors and former shiverbugs, not the studio
+# roster. Same tiles as the team grid, but --pool packs them tighter and smaller
+# so the hierarchy reads at a glance, and each carries its Active/Former chip.
 $talentHtml = @(
-  '        <div class="pool-strip reveal">',
-  '          <ul class="pool-strip__faces" aria-hidden="true">',
-  $faces,
-  '          </ul>',
-  ('          <p>Alongside the studio, ' + $nameList + ' ' + $verb + ' with us from our talent pool of regular collaborators. <a class="pool-strip__more" href="team/#talent-pool">Meet the whole pool</a></p>'),
+  '        <div class="team__grid team__grid--pool">',
+  (@($talent | ForEach-Object { MemberTile $_ $true }) -join "`n"),
   '        </div>'
 ) -join "`n"
 

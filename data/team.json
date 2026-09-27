@@ -16,6 +16,7 @@
     "team/garrett-windus.html": "2026-08-18",
     "team/oliver-neal.html": "2026-08-18",
     "team/sarah-childs.html": "2026-08-18",
+    "team/megan-nicol.html": "2026-09-27",
     "team/connor-milburn.html": "2026-08-18",
     "team/nathan-hopwood.html": "2026-09-27",
     "team/charlie-ashall.html": "2026-08-18",
@@ -122,6 +123,36 @@
         { "label": "Website", "url": "https://gyzra.format.com/" },
         { "label": "Bluesky", "url": "https://bsky.app/profile/gyzra.bsky.social" },
         { "label": "Instagram", "url": "https://www.instagram.com/gyzra/" }
+      ],
+      "thumbClass": null,
+      "thumbStyle": null
+    },
+    {
+      "id": "megan",
+      "slug": "megan-nicol",
+      "name": "Megan Nicol",
+      "role": "Character & Creature Artist",
+      "photo": "assets/img/team-megan.webp",
+      "initials": "MN",
+      "pronouns": null,
+      "tagline": "The art of not being ready and doing it anyway will take you very far",
+      "about": [
+        "I'm a creative 2D artist who specialises in Character and Creature design. I mostly use Photoshop and Procreate when doing initial sketch ideas.",
+        "I am heavily inspired by animals and folklore from different cultures and love to travel to get more inspiration, especially when I can put a fantasy twist into the design thanks to my love of movies, books, and games. Some of my favourites for example are Princess Mononoke, The Chronicles of Narnia, Elden Ring, soulframe and The Shepherd King duology!"
+      ],
+      "favourite": "turtle",
+      "askMeAbout": null,
+      "knowsAbout": [
+        "Video Game Development",
+        "Concept Art",
+        "Character Design",
+        "Creature Design",
+        "2D Art"
+      ],
+      "socials": [
+        { "label": "Portfolio", "url": "https://megannicol.my.canva.site/" },
+        { "label": "Instagram", "url": "https://www.instagram.com/megnaeconcepts" },
+        { "label": "LinkedIn", "url": "https://www.linkedin.com/in/megan-nicol22" }
       ],
       "thumbClass": null,
       "thumbStyle": null

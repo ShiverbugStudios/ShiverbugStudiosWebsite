@@ -17,7 +17,7 @@ script produces:
 | --- | --- |
 | `team/*.html` (one page per person) | `data/team.json` |
 | `team/index.html` (the roster hub) | `data/team.json` |
-| The team grid and the talent-pool line in `index.html`, between the `BUILD:TEAM` / `BUILD:TALENT` markers | `data/team.json` |
+| The team and talent-pool grids in `index.html`, between the `BUILD:TEAM` / `BUILD:TALENT` markers | `data/team.json` |
 | The intake faces in `join.html`, between the `BUILD:JOIN` markers | `data/team.json` |
 | The structured-data block in `index.html`, between the `BUILD:SCHEMA` markers | `data/team.json` |
 | The roster in `team-member.html`, between the `BUILD:REDIRECT-LIST` markers | `data/team.json` |
@@ -138,8 +138,8 @@ allows it, and the privacy policy no longer mentions it.
 
 **Former shiverbugs.** Setting `"status": "former"` on someone in the talent
 pool changes more than their badge: their structured data says `alumniOf`
-rather than `worksFor`, their search snippet says "former", and they drop out of
-the talent-pool line on the home page. Take their work out of the co-dev
+rather than `worksFor`, their search snippet says "former", and their tile
+shows a Former chip. Take their work out of the co-dev
 galleries by hand at the same time - the page promises those are people you can
 hire through us.
 

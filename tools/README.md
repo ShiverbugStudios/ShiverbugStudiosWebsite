@@ -21,7 +21,7 @@ This script reads it and writes:
 | --- | --- |
 | `team/<slug>.html` | One real, crawlable page per person |
 | `team/index.html` | The team hub at `/team/` |
-| `index.html` | The team grid and the talent-pool line, between the `BUILD:TEAM` / `BUILD:TALENT` markers |
+| `index.html` | The team and talent-pool grids, between the `BUILD:TEAM` / `BUILD:TALENT` markers |
 | `index.html` | Structured data graph, between the `BUILD:SCHEMA` markers |
 | `team-member.html` | Legacy `?p=` redirect map and no-JS fallback list |
 | `llms.txt` | Curated plain-text site map for AI agents |

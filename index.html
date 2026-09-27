@@ -27,6 +27,7 @@
   <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.min.css">
+  <link rel="preload" as="image" href="assets/img/logo.svg" fetchpriority="high">
   <script>document.documentElement.classList.add('js')</script>
   <!-- The co-dev Service and FAQ entities, moved here when co-dev.html folded
        into this page. Deliberately OUTSIDE the BUILD:SCHEMA markers below, which
@@ -115,7 +116,7 @@
                        "award":  "Tranzfuser 2025 Public Vote Winner, ProtoPlay 2025",
                        "numberOfEmployees":  {
                                                  "@type":  "QuantitativeValue",
-                                                 "value":  10
+                                                 "value":  11
                                              },
                        "knowsAbout":  [
                                           "Video Game Development",
@@ -166,6 +167,13 @@
                                             "name":  "Sarah Childs",
                                             "jobTitle":  "Character Concept Artist",
                                             "url":  "https://shiverbugstudios.com/team/sarah-childs.html"
+                                        },
+                                        {
+                                            "@type":  "Person",
+                                            "@id":  "https://shiverbugstudios.com/team/megan-nicol.html#person",
+                                            "name":  "Megan Nicol",
+                                            "jobTitle":  "Character \u0026 Creature Artist",
+                                            "url":  "https://shiverbugstudios.com/team/megan-nicol.html"
                                         },
                                         {
                                             "@type":  "Person",
@@ -332,7 +340,7 @@
             We Build Games. <span class="squiggle">Yours&nbsp;and&nbsp;Ours.</span>
           </h1>
           <p class="hero__sub">
-            Shiverbug is ten designers, artists and programmers in North East
+            Shiverbug is eleven designers, artists and programmers in North East
             England. We take on co-development, concept art and 3D art for studios
             who need extra hands, and we're building our own couch co-op game,
             Out of Water.
@@ -346,42 +354,49 @@
           </div>
         </div>
 
-        <!-- The work, not the logo. This column used to hold the moth mark at
-             400px, directly under the same mark in the nav bar, so the first
-             screen a studio saw said who we are twice and what we make not at
-             all. It is now one piece from each of the four services below, each
-             a link down to that service. The alt text is empty on purpose: the
-             link's name is the label, and the same pieces appear further down
-             with full descriptions. -->
+        <!-- The mark, big. It is the studio's face and the first thing the page
+             should say. The transparent primary mark off the 2026 brand pack,
+             as vector, so it is crisp at any size and needs no srcset. -->
         <div class="hero__art">
-          <ul class="reel" aria-label="What we make">
-            <li class="reel__tile">
-              <a href="#concept-art">
-                <img src="assets/img/art/codev-concept-elder-turtle-560.webp" srcset="assets/img/art/codev-concept-elder-turtle-360.webp 360w, assets/img/art/codev-concept-elder-turtle-560.webp 560w, assets/img/art/codev-concept-elder-turtle-760.webp 760w" sizes="(max-width: 980px) 46vw, 24vw" alt="" width="560" height="315" fetchpriority="high" decoding="async">
-                <span class="reel__label">Concept art</span>
-              </a>
-            </li>
-            <li class="reel__tile">
-              <a href="#stylised-3d">
-                <img src="assets/img/art/codev-3d-coral-quarters-560.webp" srcset="assets/img/art/codev-3d-coral-quarters-360.webp 360w, assets/img/art/codev-3d-coral-quarters-560.webp 560w, assets/img/art/codev-3d-coral-quarters-760.webp 760w" sizes="(max-width: 980px) 46vw, 24vw" alt="" width="560" height="270" fetchpriority="high" decoding="async">
-                <span class="reel__label">Stylised 3D</span>
-              </a>
-            </li>
-            <li class="reel__tile">
-              <a href="#hard-surface">
-                <img src="assets/img/art/codev-3d-datsun-240z-560.webp" srcset="assets/img/art/codev-3d-datsun-240z-360.webp 360w, assets/img/art/codev-3d-datsun-240z-560.webp 560w, assets/img/art/codev-3d-datsun-240z-760.webp 760w" sizes="(max-width: 980px) 46vw, 24vw" alt="" width="560" height="315" decoding="async">
-                <span class="reel__label">Hard surface</span>
-              </a>
-            </li>
-            <li class="reel__tile">
-              <a href="#design-development">
-                <img src="assets/img/out-of-water-screenshot-480.webp" srcset="assets/img/out-of-water-screenshot-480.webp 480w, assets/img/out-of-water-screenshot-760.webp 760w" sizes="(max-width: 980px) 46vw, 24vw" alt="" width="480" height="270" decoding="async">
-                <span class="reel__label">Design &amp; dev</span>
-              </a>
-            </li>
-          </ul>
-          <p class="sticker sticker--sand reel__sticker">All made in-house</p>
+          <img class="hero__logo" src="assets/img/logo.svg"
+               width="400" height="400" fetchpriority="high" decoding="async"
+               alt="Shiverbug Studios logo: an ornate moth with a skull motif">
         </div>
+      </div>
+
+      <!-- And the work, straight underneath it: one piece from each of the four
+           services, each a link down to that service. The logo says who we are;
+           this row says what we make, before anyone has scrolled. The alt text
+           is empty on purpose - the link's name is the label, and the same
+           pieces appear further down with full descriptions. -->
+      <div class="hero__reel">
+        <ul class="reel" aria-label="What we make">
+          <li class="reel__tile">
+            <a href="#concept-art">
+              <img src="assets/img/art/codev-concept-elder-turtle-560.webp" srcset="assets/img/art/codev-concept-elder-turtle-360.webp 360w, assets/img/art/codev-concept-elder-turtle-560.webp 560w, assets/img/art/codev-concept-elder-turtle-760.webp 760w" sizes="(max-width: 760px) 46vw, 22vw" alt="" width="560" height="315" decoding="async">
+              <span class="reel__label">Concept art</span>
+            </a>
+          </li>
+          <li class="reel__tile">
+            <a href="#stylised-3d">
+              <img src="assets/img/art/codev-3d-coral-quarters-560.webp" srcset="assets/img/art/codev-3d-coral-quarters-360.webp 360w, assets/img/art/codev-3d-coral-quarters-560.webp 560w, assets/img/art/codev-3d-coral-quarters-760.webp 760w" sizes="(max-width: 760px) 46vw, 22vw" alt="" width="560" height="270" decoding="async">
+              <span class="reel__label">Stylised 3D</span>
+            </a>
+          </li>
+          <li class="reel__tile">
+            <a href="#hard-surface">
+              <img src="assets/img/art/codev-3d-datsun-240z-560.webp" srcset="assets/img/art/codev-3d-datsun-240z-360.webp 360w, assets/img/art/codev-3d-datsun-240z-560.webp 560w, assets/img/art/codev-3d-datsun-240z-760.webp 760w" sizes="(max-width: 760px) 46vw, 22vw" alt="" width="560" height="315" decoding="async">
+              <span class="reel__label">Hard surface</span>
+            </a>
+          </li>
+          <li class="reel__tile">
+            <a href="#design-development">
+              <img src="assets/img/out-of-water-screenshot-480.webp" srcset="assets/img/out-of-water-screenshot-480.webp 480w, assets/img/out-of-water-screenshot-760.webp 760w" sizes="(max-width: 760px) 46vw, 22vw" alt="" width="480" height="270" decoding="async">
+              <span class="reel__label">Design &amp; dev</span>
+            </a>
+          </li>
+        </ul>
+        <p class="sticker sticker--sand reel__sticker">All made in-house</p>
       </div>
 
       <!-- wave divider -->
@@ -517,6 +532,7 @@
             <p class="svc__crew-label">The people behind it</p>
             <div class="svc__crew">
               <a class="person" href="team/sarah-childs.html"><img src="assets/img/team-sarah-160.webp" alt="" width="34" height="34" loading="lazy"><span><strong>Sarah Childs</strong><span>Character Concept Artist</span></span></a>
+              <a class="person" href="team/megan-nicol.html"><img src="assets/img/team-megan-160.webp" alt="" width="34" height="34" loading="lazy"><span><strong>Megan Nicol</strong><span>Character &amp; Creature Artist</span></span></a>
             </div>
           </div>
           <div class="carousel" role="group" aria-label="Concept art gallery">
@@ -647,7 +663,7 @@
 
         <p class="codev__note reveal">
           None of that quite what you need? <a href="#contact" data-cta="Co-development" data-topic="Co-development enquiry">Reach out anyway</a>.
-          Between the core team and our <a href="team/#talent-pool">talent pool</a> of guest contributors,
+          Between the core team and our <a href="#talent-pool">talent pool</a> of guest contributors,
           there's a good chance we know someone who can help.
         </p>
 
@@ -886,7 +902,7 @@
             dev scene gets together. Occasionally we even venture down south.
           </p>
           <ul class="studio__facts">
-            <li><strong>10</strong><span>people &amp; growing</span></li>
+            <li><strong>11</strong><span>people &amp; growing</span></li>
             <li><strong>4</strong><span>disciplines, one team</span></li>
             <li><strong>1</strong><span>debut title in the works</span></li>
           </ul>
@@ -927,6 +943,10 @@
             <div class="member__photo"><img src="assets/img/team-sarah-480.webp" srcset="assets/img/team-sarah-240.webp 240w, assets/img/team-sarah-320.webp 320w, assets/img/team-sarah-480.webp 480w" sizes="(max-width: 760px) 46vw, (max-width: 980px) 30vw, (max-width: 1260px) 22vw, 274px" alt="" loading="lazy"></div>
             <h4>Sarah Childs</h4><p>Character Concept Artist</p>
           </a>
+          <a class="member reveal" href="team/megan-nicol.html">
+            <div class="member__photo"><img src="assets/img/team-megan-480.webp" srcset="assets/img/team-megan-240.webp 240w, assets/img/team-megan-320.webp 320w, assets/img/team-megan-480.webp 480w" sizes="(max-width: 760px) 46vw, (max-width: 980px) 30vw, (max-width: 1260px) 22vw, 274px" alt="" loading="lazy"></div>
+            <h4>Megan Nicol</h4><p>Character &amp; Creature Artist</p>
+          </a>
           <a class="member reveal" href="team/charlie-pelling.html">
             <div class="member__photo"><img src="assets/img/team-charlie-p-480.jpg" srcset="assets/img/team-charlie-p-240.jpg 240w, assets/img/team-charlie-p-320.jpg 320w, assets/img/team-charlie-p-480.jpg 480w" sizes="(max-width: 760px) 46vw, (max-width: 980px) 30vw, (max-width: 1260px) 22vw, 274px" alt="" loading="lazy"></div>
             <h4>Charlie Pelling</h4><p>Narrative Designer</p>
@@ -962,17 +982,45 @@
           <a href="join.html">Here's how that works</a>.
         </p>
 
-        <!-- The talent pool line, generated from data/team.json. The full pool,
-             former shiverbugs included, lives on the team hub at /team/. -->
+        <header class="section__head reveal team__pool-head" id="talent-pool">
+          <p class="kicker kicker--sand">The talent pool</p>
+          <h2>Friends of the <span class="underline-sand">Studio</span></h2>
+          <p class="section__lede">Brilliant people who've helped shape our games, from guest contributors to former shiverbugs.</p>
+        </header>
+
 
         <!-- BUILD:TALENT:START -->
-        <div class="pool-strip reveal">
-          <ul class="pool-strip__faces" aria-hidden="true">
-            <li><img src="assets/img/team-josh-160.webp" alt="" width="44" height="44" loading="lazy"></li>
-            <li><img src="assets/img/team-evan-160.jpg" alt="" width="44" height="44" loading="lazy"></li>
-            <li><img src="assets/img/team-madi-240.webp" alt="" width="44" height="44" loading="lazy"></li>
-          </ul>
-          <p>Alongside the studio, <a href="team/josh-cairns.html">Josh Cairns</a> (3D Artist), <a href="team/evan-atherton-elphick.html">Evan Atherton-Elphick</a> (Character Artist) and <a href="team/madi-freck.html">Madi Freck</a> (Social Media) work with us from our talent pool of regular collaborators. <a class="pool-strip__more" href="team/#talent-pool">Meet the whole pool</a></p>
+        <div class="team__grid team__grid--pool">
+          <a class="member reveal" href="team/josh-cairns.html">
+            <span class="member__status member__status--active">Active</span>
+            <div class="member__photo"><img src="assets/img/team-josh-640.webp" srcset="assets/img/team-josh-240.webp 240w, assets/img/team-josh-320.webp 320w, assets/img/team-josh-480.webp 480w, assets/img/team-josh-640.webp 640w" sizes="(max-width: 760px) 92vw, (max-width: 980px) 60vw, (max-width: 1260px) 44vw, 548px" alt="" loading="lazy" class="is-zoomed" style="--zy:-16%; --zs:2.1"></div>
+            <h3>Josh Cairns</h3><p>3D Artist</p>
+          </a>
+          <a class="member reveal" href="team/evan-atherton-elphick.html">
+            <span class="member__status member__status--active">Active</span>
+            <div class="member__photo"><img src="assets/img/team-evan-480.jpg" srcset="assets/img/team-evan-240.jpg 240w, assets/img/team-evan-320.jpg 320w, assets/img/team-evan-480.jpg 480w" sizes="(max-width: 760px) 46vw, (max-width: 980px) 30vw, (max-width: 1260px) 22vw, 274px" alt="" loading="lazy"></div>
+            <h3>Evan Atherton-Elphick</h3><p>Character Artist</p>
+          </a>
+          <a class="member reveal" href="team/madi-freck.html">
+            <span class="member__status member__status--active">Active</span>
+            <div class="member__photo"><img src="assets/img/team-madi-480.webp" srcset="assets/img/team-madi-240.webp 240w, assets/img/team-madi-320.webp 320w, assets/img/team-madi-480.webp 480w" sizes="(max-width: 760px) 46vw, (max-width: 980px) 30vw, (max-width: 1260px) 22vw, 274px" alt="" loading="lazy"></div>
+            <h3>Madi Freck</h3><p>Social Media</p>
+          </a>
+          <a class="member reveal" href="team/nathan-hopwood.html">
+            <span class="member__status member__status--former">Former</span>
+            <div class="member__photo"><img src="assets/img/team-nathan-480.webp" srcset="assets/img/team-nathan-240.webp 240w, assets/img/team-nathan-320.webp 320w, assets/img/team-nathan-480.webp 480w" sizes="(max-width: 760px) 46vw, (max-width: 980px) 30vw, (max-width: 1260px) 22vw, 274px" alt="" loading="lazy"></div>
+            <h3>Nathan Hopwood</h3><p>3D Artist</p>
+          </a>
+          <a class="member reveal" href="team/max-breeze.html">
+            <span class="member__status member__status--former">Former</span>
+            <div class="member__photo"><img src="assets/img/team-max-480.webp" srcset="assets/img/team-max-240.webp 240w, assets/img/team-max-320.webp 320w, assets/img/team-max-480.webp 480w" sizes="(max-width: 760px) 46vw, (max-width: 980px) 30vw, (max-width: 1260px) 22vw, 274px" alt="" loading="lazy"></div>
+            <h3>Max Breeze</h3><p>Character Artist</p>
+          </a>
+          <a class="member reveal" href="team/aidan-hendry.html">
+            <span class="member__status member__status--former">Former</span>
+            <div class="member__photo"><img src="assets/img/team-aidan-480.webp" srcset="assets/img/team-aidan-240.webp 240w, assets/img/team-aidan-320.webp 320w, assets/img/team-aidan-480.webp 480w" sizes="(max-width: 760px) 46vw, (max-width: 980px) 30vw, (max-width: 1260px) 22vw, 274px" alt="" loading="lazy"></div>
+            <h3>Aidan Hendry</h3><p>Sound Designer</p>
+          </a>
         </div>
         <!-- BUILD:TALENT:END -->
       </div>

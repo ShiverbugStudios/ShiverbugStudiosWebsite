@@ -6,6 +6,7 @@
     'ryan': 'ryan-hughes',
     'garrett': 'garrett-windus',
     'sarah': 'sarah-childs',
+    'megan': 'megan-nicol',
     'charlie-p': 'charlie-pelling',
     'connor': 'connor-milburn',
     'charlie-a': 'charlie-ashall',

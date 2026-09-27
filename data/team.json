@@ -155,7 +155,7 @@
         { "label": "LinkedIn", "url": "https://www.linkedin.com/in/megan-nicol22" }
       ],
       "thumbClass": null,
-      "thumbStyle": null
+      "thumbStyle": "object-position: center 36%"
     },
     {
       "id": "charlie-p",
@@ -322,7 +322,7 @@
         { "label": "ArtStation", "url": "https://www.artstation.com/joshuacairnsenvironmentartist" }
       ],
       "thumbClass": "is-zoomed",
-      "thumbStyle": "--zy:-16%; --zs:2.1"
+      "thumbStyle": "--zy:-22%; --zs:2.1"
     },
     {
       "id": "evan",

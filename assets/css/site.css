@@ -211,6 +211,7 @@ strong, b { font-weight: 650; }
 
 .muted { color: var(--ink-soft); }
 .lede { font-size: var(--step-1); line-height: 1.45; max-width: 36rem; }
+:is(h1, h2) + .lede { margin-top: 24px; }
 .prose { max-width: var(--measure); }
 .prose > * + * { margin-top: 1em; }
 .prose > :first-child { margin-top: 0; }
@@ -508,7 +509,7 @@ figcaption, .caption {
 .hero .actions { margin-top: 32px; }
 .hero__screen { position: relative; margin: 20px 10px 0 0; }
 .hero__screen .frame { aspect-ratio: 16 / 9; box-shadow: 10px 10px 0 var(--ink); }
-.hero__screen figcaption { color: var(--ink); opacity: 0.85; }
+.hero__screen figcaption { margin-top: 22px; color: var(--ink); opacity: 0.85; }
 .hero__screen .sticker--kiko { --w: clamp(84px, 11vw, 150px); --tilt: 7deg; top: -58px; right: -8px; }
 .hero__screen .sticker--koopa { --w: clamp(120px, 15vw, 210px); --tilt: -6deg; bottom: 40px; left: -40px; }
 
@@ -627,7 +628,6 @@ figcaption, .caption {
 }
 .person__line::before { content: "\201C"; }
 .person__line::after { content: "\201D"; }
-.person--former .person__photo img { filter: grayscale(1) contrast(0.95); }
 
 .tag {
   display: inline-flex;
@@ -637,13 +637,32 @@ figcaption, .caption {
   padding: 3px 10px 3px 4px;
   border-radius: var(--r-s);
   background: var(--leaf-pale);
+  min-height: 33px;  /* as tall as the ones with a sticker in */
+  color: var(--ink);
+  vertical-align: middle;
   font-size: 0.8125rem;
   font-weight: 600;
   line-height: 1.6;
 }
 .tag img { width: 24px; height: auto; }
 .tag--seagull { background: var(--sky-pale); }
-.tag--former { padding-left: 10px; background: var(--sand-deep); }
+/* The logo's cyan and Shana the moth: a former shiverbug is still one of ours. */
+.tag--alumni { background: var(--sea); }
+.tag--alumni img { width: 22px; margin-left: 2px; }
+.tag--active { padding-left: 10px; background: var(--sun); }
+.tag--active::before {
+  content: "";
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 3px rgb(7 34 48 / 0.2);
+}
+
+/* The talent pool sits on the deep band, in full colour like everyone else. */
+.talent .person__photo { border-color: var(--cream); background: var(--sea-mid); }
+.talent .person a:hover .person__photo { box-shadow: 0 var(--edge) 0 var(--sun); }
+.talent .person a:hover h3 { text-decoration-color: var(--sun); }
+.talent .person__role { color: var(--sea-dim); }
 .tag + .tag { margin-left: 6px; }
 
 .faces { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
@@ -684,6 +703,9 @@ figcaption, .caption {
   gap: clamp(32px, 5vw, 72px);
   align-items: start;
 }
+/* Relative below the breakpoint, sticky above it: either way the sticker
+   is placed against the photo. */
+.profile__photo { position: relative; }
 @media (min-width: 56em) {
   .profile { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
   .profile__photo { position: sticky; top: 108px; }
@@ -693,7 +715,7 @@ figcaption, .caption {
 .profile h1 { font-size: var(--step-4); margin-top: 8px; }
 .profile__role { font-size: var(--step-1); margin-top: 12px; }
 .profile__role span { color: var(--ink-soft); font-size: var(--step-0); }
-.profile blockquote {
+.said {
   margin-top: clamp(28px, 4vw, 44px);
   padding-left: 20px;
   border-left: 6px solid var(--sun);
@@ -702,9 +724,8 @@ figcaption, .caption {
   font-size: var(--step-2);
   line-height: 1.2;
 }
-.profile blockquote p::before { content: "\201C"; }
-.profile blockquote p::after { content: "\201D"; }
-.profile blockquote footer { margin-top: 8px; font: 400 var(--step--1)/1.4 var(--text); color: var(--ink-soft); }
+.said p::before { content: "\201C"; }
+.said p::after { content: "\201D"; }
 .profile .prose { margin-top: clamp(28px, 4vw, 40px); }
 .profile .tag { margin-top: 28px; }
 .links { list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
@@ -865,7 +886,7 @@ figcaption, .caption {
 .faq details > div { padding: 0 0 24px; max-width: var(--measure); }
 
 .tools { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.tools li { padding: 6px 12px; border-radius: var(--r-s); background: var(--cream); font-weight: 600; font-size: 0.9375rem; }
+.tools li { padding: 6px 12px; border-radius: var(--r-s); background: var(--sand); font-weight: 600; font-size: 0.9375rem; }
 
 /* ---- The game page ------------------------------------------------------- */
 
@@ -942,7 +963,7 @@ figcaption, .caption {
 .together p { margin-top: 8px; font-size: 1rem; }
 
 .keys { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-.keys li { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; border-radius: var(--r-m); background: var(--cream); font-weight: 600; font-size: 0.9375rem; }
+.keys li { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; border-radius: var(--r-m); background: var(--sand); font-weight: 600; font-size: 0.9375rem; }
 .keys i { width: 26px; height: 26px; border-radius: 6px; border: 2px solid var(--ink); box-shadow: 0 3px 0 var(--ink); }
 .key--amber { background: var(--sun); }
 .key--green { background: var(--leaf); }
@@ -971,7 +992,14 @@ figcaption, .caption {
 }
 .facts dt, .facts dd { margin: 0; padding: 12px 0; border-top: 1px solid var(--rule); }
 .facts dt { font-weight: 650; padding-right: 24px; }
-.facts dd { color: var(--ink); }
+.facts dd { color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
+/* On a phone each term sits above its value, so a long value (an email
+   address) never has to squeeze in beside it. */
+@media (max-width: 29.99em) {
+  .facts { grid-template-columns: 1fr; }
+  .facts dt { padding-bottom: 0; }
+  .facts dd { padding-top: 2px; border-top: 0; }
+}
 .band--deep .facts dt, .band--deep .facts dd { border-color: rgb(255 246 227 / 0.16); }
 
 .panel {
@@ -1020,7 +1048,6 @@ figcaption, .caption {
 @media (min-width: 40em) { .form-row { grid-template-columns: 1fr 1fr; } }
 .form-note { font-size: var(--step--1); color: var(--ink-soft); }
 .form-status { font-weight: 600; }
-.form-status:empty { display: none; }
 .form-status.is-error { color: #a42a14; }
 .hp { position: absolute; left: -9999px; }
 
@@ -1035,9 +1062,9 @@ figcaption, .caption {
 
 /* ---- Press --------------------------------------------------------------- */
 
-.press-layout { display: grid; gap: clamp(32px, 5vw, 72px); align-items: start; }
+.press-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
 @media (min-width: 60em) {
-  .press-layout { grid-template-columns: 14rem 1fr; }
+  .press-layout { grid-template-columns: 14rem minmax(0, 1fr); }
   .press-toc { position: sticky; top: 108px; }
 }
 .press-toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }

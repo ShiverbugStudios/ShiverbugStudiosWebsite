@@ -152,6 +152,18 @@ def side_tag(p):
     return f'<span class="{cls}">{img("stickers/" + icon, "", sizes="24px", near=160)}{label}</span>'
 
 
+def alumni_tag(p):
+    """The talent pool's two kinds of people: those contributing now, badged in
+    the game's "you are here" gold, and former shiverbugs, badged with Shana
+    the moth."""
+    if p.get("status") == "active":
+        return '<span class="tag tag--active">Contributing now</span>'
+    if p.get("status") != "former":
+        return ""
+    moth = '<img src="/assets/brand/moth-ink.svg" alt="" width="376" height="365">'
+    return f'<span class="tag tag--alumni">{moth}Shiverbug alumni</span>'
+
+
 def face(p, big=False):
     photo = img(f"team/{p['slug']}", p["name"], sizes="76px" if big else "56px", near=240)
     return f'<a href="{url(p)}">{photo}</a>' if listed(p) else photo
@@ -170,6 +182,8 @@ def group_members(group):
         return [p for p in TEAM["team"] if not p.get("founder")]
     if group == "team":
         return TEAM["team"]
+    if group == "talent":  # people who work with us now, then the alumni
+        return sorted(TEAM["talent"], key=lambda p: p.get("status") == "former")
     if group == "active":
         return [p for p in TEAM["talent"] if p.get("status") == "active"]
     if group == "former":
@@ -186,18 +200,17 @@ def count(group):
 
 
 def person_card(p):
-    former = p.get("status") == "former"
     photo = f'<div class="person__photo">{img("team/" + p["slug"], "", sizes="(min-width: 72em) 16rem, (min-width: 40em) 30vw, 90vw", near=480)}</div>'
     body = (
         f'<h3>{e(p["name"])}</h3>'
         f'<p class="person__role">{e(p["role"])}</p>'
         f'<p class="person__line">{e(p["tagline"])}</p>'
     )
-    tags = side_tag(p) + ('<span class="tag tag--former">Former</span>' if former else "")
+    tags = side_tag(p) + alumni_tag(p)
     inner = photo + body
     if listed(p):
         inner = f'<a href="{url(p)}">{inner}</a>'
-    return f'<li class="person{" person--former" if former else ""}">{inner}{tags}</li>'
+    return f'<li class="person">{inner}{tags}</li>'
 
 
 def people_grid(group):
@@ -397,9 +410,10 @@ def studio_facts():
     ])
 
 
-def socials(cls="links"):
-    items = "".join(f'<li><a href="{e(s["url"])}" rel="me">{e(s["label"])}</a></li>' for s in SITE["socials"])
-    return f'<ul class="{cls}">{items}</ul>'
+def socials():
+    """The footer's Elsewhere list: Discord, then every account in site.json."""
+    links = [("Discord", SITE["discord"])] + [(s["label"], s["url"]) for s in SITE["socials"]]
+    return "".join(f'<li><a href="{e(u)}" rel="me">{e(label)}</a></li>' for label, u in links)
 
 
 def email(text=None):
@@ -560,6 +574,7 @@ def page(meta, body):
         css=versioned("/assets/css/site.min.css"),
         js=versioned("/assets/js/site.js"),
         nav=nav_list(meta.get("nav")),
+        contact_current=' aria-current="page"' if meta.get("nav") == "contact" else "",
         menu=nav_list(meta.get("nav"), with_contact=True),
         schema=json_ld(*graph) if graph else "",
         body=body,
@@ -591,7 +606,7 @@ def profile(p, prev, nxt):
     former = p.get("status") == "former"
     s = side(p)
     stick = sticker(s[0], sizes="130px") if s else ""
-    kind = "Co-founder" if p.get("founder") else ("Former collaborator" if former else ("Collaborator" if p in TEAM["talent"] else "On the team"))
+    kind = "Co-founder" if p.get("founder") else ("Talent pool" if p in TEAM["talent"] else "On the team")
     pron = f" <span>({e(p['pronouns'])})</span>" if p.get("pronouns") else ""
     about = "".join(f"<p>{bio(x)}</p>" for x in p["about"])
     links = ""
@@ -602,7 +617,7 @@ def profile(p, prev, nxt):
     work = ""
     if not former and pieces_for(by=p["slug"]):
         work = f'<section class="mt-l" aria-labelledby="work-title"><h2 id="work-title" class="small-heading">Work by {e(first(p))}</h2><div class="mt-m">{gallery(by=p["slug"])}</div></section>'
-    tags = side_tag(p) + ('<span class="tag tag--former">Former</span>' if former else "")
+    tags = side_tag(p) + alumni_tag(p)
     pager = '<nav class="pager" aria-label="More people">'
     if prev:
         pager += f'<a href="{url(prev)}"><small>Previous</small>{e(prev["name"])}</a>'
@@ -619,7 +634,7 @@ def profile(p, prev, nxt):
 <p class="overline">{kind}</p>
 <h1>{e(p["name"])}</h1>
 <p class="profile__role">{e(p["role"])}{pron}</p>
-<blockquote><p>{e(p["tagline"])}</p><footer>{e(first(p))}, in {"his" if p.get("pronouns") == "he/him" else "her" if p.get("pronouns") == "she/her" else "their"} own words</footer></blockquote>
+<blockquote class="said"><p>{e(p["tagline"])}</p></blockquote>
 <div class="prose">{about}</div>
 {tags}
 {links}
@@ -699,8 +714,8 @@ def minify_css():
     css = re.sub(r"\s*([{};,])\s*", r"\1", css)
     css = re.sub(r":\s+", ":", css)
     css = css.replace(";}", "}").strip()
-    # A descendant pseudo-class needs its space back: ".a :hover" never occurs
-    # in the source, and "and (" in media queries survives the rules above.
+    # None of the rules above touch the space before a colon, so a descendant
+    # pseudo-class like ".band--deep :focus-visible" survives intact.
     write("assets/css/site.min.css", css + "\n")
 
 
@@ -778,7 +793,7 @@ def llms():
     ]
     for p in PEOPLE:
         if listed(p):
-            note = " (former)" if p.get("status") == "former" else (" (collaborator)" if p in TEAM["talent"] else "")
+            note = " (talent pool, Shiverbug alumni)" if p.get("status") == "former" else (" (talent pool)" if p in TEAM["talent"] else "")
             lines.append(f"- [{p['name']}]({BASE}{url(p)}): {p['role']}{note}")
     lines += ["", f"{SITE['legalName']}, company number {SITE['companyNumber']}, registered in {SITE['registeredIn']}."]
     write("llms.txt", "\n".join(lines) + "\n")

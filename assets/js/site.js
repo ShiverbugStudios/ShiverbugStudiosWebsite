@@ -6,6 +6,24 @@
 
   var still = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+  // ---- Menu -----------------------------------------------------------------
+  // The phone menu is a <details>, so it opens and closes without script. This
+  // adds what a menu is expected to do besides: Escape and a tap outside close
+  // it, and focus goes back to the button.
+  var menu = document.querySelector(".menu");
+  if (menu) {
+    var summary = menu.querySelector("summary");
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && menu.open) {
+        menu.open = false;
+        summary.focus();
+      }
+    });
+    document.addEventListener("click", function (e) {
+      if (menu.open && !menu.contains(e.target)) menu.open = false;
+    });
+  }
+
   // ---- Game footage ---------------------------------------------------------
   // Loops play muted, pause while off screen, and never start for someone who
   // has asked for reduced motion. The toggle is the WCAG 2.2.2 pause control.
@@ -119,8 +137,17 @@
     if (about) about.addEventListener("change", showCodev);
     showCodev();
 
+    // "artstation.com/me" is what people type; the inbox wants a link that
+    // opens when clicked.
+    var link = form.querySelector("[name=link]");
+    function tidyLink() {
+      var v = link.value.trim();
+      link.value = v && !/^[a-z][a-z0-9+.-]*:/i.test(v) ? "https://" + v : v;
+    }
+
     var status = form.querySelector(".form-status");
     form.addEventListener("submit", function (e) {
+      if (link) tidyLink();
       if (!window.fetch || !window.FormData) return;
       e.preventDefault();
       var button = form.querySelector("[type=submit]");

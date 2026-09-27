@@ -68,3 +68,12 @@ for name, (outline, fill) in COLOURS.items():
     path = OUT / f"lockup-{name}.svg"
     path.write_text(out, encoding="utf-8", newline="\n")
     print(f"wrote {path.relative_to(ROOT)}: {len(mark)} moth shapes, {len(words)} letter shapes, {len(out) // 1024} KB")
+
+# Shana on her own, for small badges such as the alumni tag on the team page.
+outline, fill = COLOURS["ink"]
+moth = (
+    f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{MARK[0]} {MARK[1]} {MARK[2]} {MARK[3]}" width="{MARK[2]}" height="{MARK[3]}">'
+    f"<style>.o{{fill:{outline}}}.f{{fill:{fill}}}</style>{''.join(mark)}</svg>\n"
+)
+(OUT / "moth-ink.svg").write_text(moth, encoding="utf-8", newline="\n")
+print(f"wrote assets/brand/moth-ink.svg, {len(moth) // 1024} KB")

@@ -10,7 +10,7 @@
 <link rel="canonical" href="https://shiverbugstudios.com/contact">
 <link rel="preload" href="/assets/fonts/fraunces-soft-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.min.css?v=c988002742">
+<link rel="stylesheet" href="/assets/css/site.min.css?v=82e79e13ea">
 <link rel="icon" href="/assets/icons/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <meta name="theme-color" content="#fff6e3">
@@ -24,7 +24,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
-<script src="/assets/js/site.js?v=5bd4026c88" defer></script>
+<script src="/assets/js/site.js?v=c6ac36f4ca" defer></script>
 <script data-goatcounter="https://oliverneal04.goatcounter.com/count" src="https://gc.zgo.at/count.js" async></script>
 
 </head>
@@ -34,7 +34,7 @@
   <div class="wrap site-header__inner">
     <a class="brand" href="/"><img src="/assets/brand/lockup-ink.svg" alt="Shiverbug Studios, home" width="852" height="280"></a>
     <nav class="nav" aria-label="Main"><ul><li><a href="/out-of-water">Out of Water</a></li><li><a href="/co-development">Co-development</a></li><li><a href="/team/">Team</a></li><li><a href="/news">News</a></li><li><a href="/careers">Careers</a></li><li><a href="/press">Press</a></li></ul></nav>
-    <a class="btn btn--small" href="/contact">Contact us</a>
+    <a class="btn btn--small" href="/contact" aria-current="page">Contact us</a>
     <details class="menu">
       <summary>Menu</summary>
       <div class="menu__panel"><nav aria-label="Main"><ul><li><a href="/out-of-water">Out of Water</a></li><li><a href="/co-development">Co-development</a></li><li><a href="/team/">Team</a></li><li><a href="/news">News</a></li><li><a href="/careers">Careers</a></li><li><a href="/press">Press</a></li><li><a href="/contact" aria-current="page">Contact</a></li></ul></nav></div>
@@ -108,15 +108,15 @@
       <div class="field">
         <label for="f-link">A link to your work, reel or project <span class="muted">(optional)</span></label>
         <p class="hint" id="f-link-hint">A link rather than a file: the form can’t take attachments.</p>
-        <input id="f-link" name="link" type="url" inputmode="url" aria-describedby="f-link-hint">
+        <input id="f-link" name="link" type="text" inputmode="url" autocomplete="url" spellcheck="false" aria-describedby="f-link-hint">
       </div>
       <label class="check" data-codev><input type="checkbox" name="nda" value="yes"> I’d like an NDA in place before sharing details</label>
       <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
       <input type="hidden" name="_subject" value="Website enquiry">
       <div class="actions">
         <button class="btn" type="submit">Send message</button>
+        <p class="form-status" role="status" tabindex="-1"></p>
       </div>
-      <p class="form-status" role="status" tabindex="-1"></p>
       <p class="form-note">Messages go through Formspree, and we only use what you send to reply to you. <a href="/privacy">Privacy</a>.</p>
     </form>
   </div>
@@ -154,14 +154,7 @@
         </div>
         <div>
           <h3>Elsewhere</h3>
-          <ul>
-            <li><a href="https://discord.gg/gZDWdZEAxm">Discord</a></li>
-            <li><a href="https://bsky.app/profile/shiverbugstudios.bsky.social">Bluesky</a></li>
-            <li><a href="https://www.instagram.com/shiverbugstudios/">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/@shiverbugstudios">TikTok</a></li>
-            <li><a href="https://www.youtube.com/@ShiverbugStudios">YouTube</a></li>
-            <li><a href="https://www.linkedin.com/company/shiverbug-studios">LinkedIn</a></li>
-          </ul>
+          <ul><li><a href="https://discord.gg/gZDWdZEAxm" rel="me">Discord</a></li><li><a href="https://bsky.app/profile/shiverbugstudios.bsky.social" rel="me">Bluesky</a></li><li><a href="https://www.instagram.com/shiverbugstudios/" rel="me">Instagram</a></li><li><a href="https://www.tiktok.com/@shiverbugstudios" rel="me">TikTok</a></li><li><a href="https://www.youtube.com/@ShiverbugStudios" rel="me">YouTube</a></li><li><a href="https://x.com/ShiverbugStudio" rel="me">X</a></li><li><a href="https://www.linkedin.com/company/shiverbug-studios" rel="me">LinkedIn</a></li><li><a href="https://shiverbug-studios.itch.io/" rel="me">itch.io</a></li></ul>
         </div>
       </div>
     </div>

@@ -56,12 +56,16 @@ fix a typo, without asking them. The build deliberately leaves them untouched
 `data/team.json` (the `_readme` key lists every field), then run
 `python tools/images.py` to cut the portrait and `python tools/build.py`. If
 the framing is off, give them a `crop` of `[left, top, width]` as fractions of
-the photo and run `tools/images.py` again; it notices a changed crop.
+the photo and run `tools/images.py` again; it notices a changed crop. Aim for
+what the others have: the face centred, its middle about 42% of the way down,
+and about a third of the frame wide, or as close as the photo allows.
 
-**Someone leaves.** Move them to `talent` with `"status": "former"`. Their
-portrait goes grey, their structured data says `alumniOf`, and their pieces
-drop out of the co-development galleries on their own, because that page
-promises the work is by people you can hire through us.
+**Someone leaves.** Move them to `talent` with `"status": "former"`. They stay
+in the talent pool on the team page with a Shiverbug alumni badge (Shana the
+moth, `assets/brand/moth-ink.svg`, which `tools/logo.py` writes), their
+structured data says `alumniOf`, and their pieces drop out of the
+co-development galleries on their own, because that page promises the work is
+by people you can hire through us.
 
 **Add a portfolio piece.** Put the image in `source/work/`, add an entry to
 `data/work.json` (credited to one person, filed under one discipline, with alt

@@ -33,11 +33,11 @@ Contact: contact@shiverbugstudios.com
 - [Oliver Neal](https://shiverbugstudios.com/team/oliver-neal): Gameplay Programmer
 - [Martin Wilkinson](https://shiverbugstudios.com/team/martin-wilkinson): 3D Artist
 - [Kyle Kerr](https://shiverbugstudios.com/team/kyle-kerr): Level Designer
-- [Josh Cairns](https://shiverbugstudios.com/team/josh-cairns): 3D Artist (collaborator)
-- [Evan Atherton-Elphick](https://shiverbugstudios.com/team/evan-atherton-elphick): Character Artist (collaborator)
-- [Madi Freck](https://shiverbugstudios.com/team/madi-freck): Social Media (collaborator)
-- [Nathan Hopwood](https://shiverbugstudios.com/team/nathan-hopwood): 3D Artist (former)
-- [Max Breeze](https://shiverbugstudios.com/team/max-breeze): Character Artist (former)
-- [Aidan Hendry](https://shiverbugstudios.com/team/aidan-hendry): Sound Designer (former)
+- [Josh Cairns](https://shiverbugstudios.com/team/josh-cairns): 3D Artist (talent pool)
+- [Evan Atherton-Elphick](https://shiverbugstudios.com/team/evan-atherton-elphick): Character Artist (talent pool, Shiverbug alumni)
+- [Madi Freck](https://shiverbugstudios.com/team/madi-freck): Social Media (talent pool)
+- [Nathan Hopwood](https://shiverbugstudios.com/team/nathan-hopwood): 3D Artist (talent pool, Shiverbug alumni)
+- [Max Breeze](https://shiverbugstudios.com/team/max-breeze): Character Artist (talent pool, Shiverbug alumni)
+- [Aidan Hendry](https://shiverbugstudios.com/team/aidan-hendry): Sound Designer (talent pool, Shiverbug alumni)
 
 Shiverbug Studios Ltd, company number 16485763, registered in England and Wales.

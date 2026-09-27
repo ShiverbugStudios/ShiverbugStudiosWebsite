@@ -217,30 +217,34 @@
   "alpha": true
  },
  "team/aidan-hendry": {
-  "w": 900,
-  "h": 1125,
+  "w": 653,
+  "h": 815,
   "widths": [
    240,
    360,
    480,
    640
   ],
-  "alpha": false
+  "alpha": false,
+  "crop": [
+   0.086,
+   0.039,
+   0.725
+  ]
  },
  "team/charlie-ashall": {
-  "w": 610,
-  "h": 762,
+  "w": 400,
+  "h": 500,
   "widths": [
    240,
    360,
-   480,
-   610
+   400
   ],
   "alpha": false,
   "crop": [
-   0,
-   0.04,
-   1
+   0.254,
+   0.02,
+   0.656
   ]
  },
  "team/charlie-pelling": {
@@ -255,8 +259,24 @@
   "alpha": false
  },
  "team/connor-milburn": {
-  "w": 676,
-  "h": 845,
+  "w": 639,
+  "h": 799,
+  "widths": [
+   240,
+   360,
+   480,
+   639
+  ],
+  "alpha": false,
+  "crop": [
+   0.019,
+   0.095,
+   0.945
+  ]
+ },
+ "team/evan-atherton-elphick": {
+  "w": 930,
+  "h": 1163,
   "widths": [
    240,
    360,
@@ -266,49 +286,38 @@
   "alpha": false,
   "crop": [
    0,
-   0.12,
+   0.026,
    1
   ]
  },
- "team/evan-atherton-elphick": {
-  "w": 930,
-  "h": 1162,
-  "widths": [
-   240,
-   360,
-   480,
-   640
-  ],
-  "alpha": false
- },
  "team/garrett-windus": {
-  "w": 414,
-  "h": 518,
+  "w": 400,
+  "h": 499,
   "widths": [
    240,
    360,
-   414
+   400
   ],
   "alpha": false,
   "crop": [
-   0.25,
-   0.29,
-   0.46
+   0.278,
+   0.289,
+   0.444
   ]
  },
  "team/josh-cairns": {
-  "w": 414,
-  "h": 518,
+  "w": 400,
+  "h": 499,
   "widths": [
    240,
    360,
-   414
+   400
   ],
   "alpha": false,
   "crop": [
-   0.28,
-   0.27,
-   0.46
+   0.298,
+   0.198,
+   0.444
   ]
  },
  "team/kyle-kerr": {
@@ -323,30 +332,35 @@
   "alpha": false
  },
  "team/lewis-mennim": {
-  "w": 414,
-  "h": 518,
+  "w": 400,
+  "h": 499,
   "widths": [
    240,
    360,
-   414
+   400
   ],
   "alpha": false,
   "crop": [
-   0.27,
-   0.27,
-   0.46
+   0.268,
+   0.223,
+   0.444
   ]
  },
  "team/madi-freck": {
-  "w": 917,
-  "h": 1146,
+  "w": 667,
+  "h": 833,
   "widths": [
    240,
    360,
    480,
    640
   ],
-  "alpha": false
+  "alpha": false,
+  "crop": [
+   0.247,
+   0.058,
+   0.727
+  ]
  },
  "team/martin-wilkinson": {
   "w": 900,
@@ -357,18 +371,27 @@
    480,
    640
   ],
-  "alpha": false
+  "alpha": false,
+  "crop": [
+   0,
+   0.032,
+   1
+  ]
  },
  "team/max-breeze": {
-  "w": 900,
-  "h": 1125,
+  "w": 430,
+  "h": 538,
   "widths": [
    240,
    360,
-   480,
-   640
+   430
   ],
-  "alpha": false
+  "alpha": false,
+  "crop": [
+   0.054,
+   0.121,
+   0.478
+  ]
  },
  "team/megan-nicol": {
   "w": 900,
@@ -382,49 +405,54 @@
   "alpha": false,
   "crop": [
    0,
-   0.04,
+   0.062,
    1
   ]
  },
  "team/nathan-hopwood": {
-  "w": 900,
-  "h": 1125,
+  "w": 664,
+  "h": 831,
   "widths": [
    240,
    360,
    480,
    640
   ],
-  "alpha": false
+  "alpha": false,
+  "crop": [
+   0.067,
+   0.132,
+   0.738
+  ]
  },
  "team/oliver-neal": {
-  "w": 414,
-  "h": 518,
+  "w": 400,
+  "h": 500,
   "widths": [
    240,
    360,
-   414
+   400
   ],
   "alpha": false,
   "crop": [
-   0.27,
-   0.29,
-   0.46
+   0.228,
+   0.271,
+   0.444
   ]
  },
  "team/ryan-hughes": {
-  "w": 414,
-  "h": 518,
+  "w": 400,
+  "h": 500,
   "widths": [
    240,
    360,
-   414
+   400
   ],
   "alpha": false,
   "crop": [
-   0.29,
-   0.27,
-   0.46
+   0.308,
+   0.172,
+   0.444
   ]
  },
  "team/sarah-childs": {
@@ -436,7 +464,12 @@
    480,
    640
   ],
-  "alpha": false
+  "alpha": false,
+  "crop": [
+   0,
+   0.004,
+   1
+  ]
  },
  "work/3d-coral-props": {
   "w": 1600,

@@ -1,0 +1,89 @@
+---
+title: Contact
+description: Get in touch with Shiverbug Studios about co-development, Out of Water, press or joining the team.
+path: /contact
+file: contact.html
+nav: contact
+---
+<main id="main">
+
+<section class="page-hero page-hero--sea" aria-labelledby="contact-title">
+  <div class="wrap">
+    <h1 id="contact-title">Get in touch</h1>
+    <p class="lede">The form below and {{ email() }} both land in the same inbox, and a person reads everything that arrives there.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap contact-grid">
+    <div>
+      <h2 class="small-heading">Which way to go</h2>
+      <ul class="routes">
+        <li><b>Work for your studio</b><p>Use the form and pick co-development. Say what you need and roughly when; a paragraph is plenty.</p></li>
+        <li><b>Press</b><p>Email is quickest. The fact sheet, screenshots and logos are already in the <a href="/press">press kit</a>.</p></li>
+        <li><b>Jobs and internships</b><p>Teesside students apply through <a href="{{ SITE['studentFutures'] }}">Student Futures</a>. Everyone else, <a href="/careers">read this first</a>, then send a link to your work.</p></li>
+        <li><b>Playing the game</b><p>Questions about Out of Water are best asked on <a href="{{ SITE['discord'] }}">our Discord</a>, where the rest of the team can answer too.</p></li>
+      </ul>
+    </div>
+
+    <form class="form panel" action="{{ SITE['forms']['contact'] }}" method="post" data-contact>
+      <div class="field">
+        <label for="f-about">What's this about?</label>
+        <select id="f-about" name="about" required>
+          <option value="codev">Co-development</option>
+          <option value="game">Out of Water</option>
+          <option value="press">Press</option>
+          <option value="join">Jobs and internships</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Your email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="field"><label for="f-company">Studio or company <span class="muted">(optional)</span></label><input id="f-company" name="company" autocomplete="organization"></div>
+      <div class="form-row" data-codev>
+        <div class="field">
+          <label for="f-need">What do you need?</label>
+          <select id="f-need" name="need">
+            <option value="">Not sure yet</option>
+            <option>Concept art</option>
+            <option>Stylised 3D</option>
+            <option>Hard surface</option>
+            <option>Level design</option>
+            <option>Gameplay programming</option>
+            <option>A mix</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-engine">Engine</label>
+          <select id="f-engine" name="engine">
+            <option value="">Not relevant</option>
+            <option>Unity</option>
+            <option>Unreal Engine 5</option>
+            <option>Something else</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-message">Your message</label>
+        <textarea id="f-message" name="message" required></textarea>
+      </div>
+      <div class="field">
+        <label for="f-link">A link to your work, reel or project <span class="muted">(optional)</span></label>
+        <p class="hint" id="f-link-hint">A link rather than a file: the form can't take attachments.</p>
+        <input id="f-link" name="link" type="url" inputmode="url" aria-describedby="f-link-hint">
+      </div>
+      <label class="check" data-codev><input type="checkbox" name="nda" value="yes"> I'd like an NDA in place before sharing details</label>
+      <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="_subject" value="Website enquiry">
+      <div class="actions">
+        <button class="btn" type="submit">Send message</button>
+      </div>
+      <p class="form-status" role="status" tabindex="-1"></p>
+      <p class="form-note">Messages go through Formspree, and we only use what you send to reply to you. <a href="/privacy">Privacy</a>.</p>
+    </form>
+  </div>
+</section>
+
+</main>

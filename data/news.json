@@ -1,0 +1,85 @@
+{
+  "_readme": "The News page: the studio's LinkedIn posts, newest first on the page (order here does not matter). Each post links back to LinkedIn, where the whole post and its comments live. id is the number in the post's address, linkedin.com/feed/update/urn:li:activity:<id>, and the date comes from it too, so there is no date to type. title is our headline for the post. excerpt is one or two short passages copied from the post exactly as posted (the site shows an extract, never a rewrite). details is optional: short facts for an event. people are slugs from team.json for anyone tagged who is on the site. For a picture, either set image to a name in data/images.json, or save the post's own image as source/news/<id>.jpg (or .png) and run tools/images.py: it is picked up by the id.",
+
+  "profile": "https://www.linkedin.com/company/shiverbug-studios",
+
+  "posts": [
+    {
+      "id": "7500939437250461697",
+      "title": "Heading to the North East Game Dev Meetup",
+      "excerpt": [
+        "Shiverbug Studios is heading to the North East Game Dev Meetup!",
+        "Meet the team, ask about co-dev services and most importantly talk about games."
+      ],
+      "details": ["Friday 4th September", "Bealim House, Newcastle", "6pm-11pm"],
+      "people": ["lewis-mennim", "ryan-hughes", "oliver-neal", "connor-milburn", "madi-freck", "martin-wilkinson"]
+    },
+    {
+      "id": "7495796815179743232",
+      "title": "The first version of this website went live",
+      "excerpt": [
+        "Shiverbug Studios has a new home on the web",
+        "Twelve designers, artists and programmers in North East England, still on a mission to bring family gaming night back to the sofa."
+      ],
+      "alt": "The home page of the first Shiverbug Studios website: a dark page with the headline We Build Games, Yours and Ours, beside the white moth logo.",
+      "people": []
+    },
+    {
+      "id": "7493692368643186688",
+      "title": "Backing the Boro",
+      "excerpt": ["Shiverbug studios is backing the Boro and proud to call Middlesbrough our home!"],
+      "people": []
+    },
+    {
+      "id": "7484887334866505728",
+      "title": "Develop:Brighton, done",
+      "excerpt": [
+        "We came home buzzing with ideas (and a few sunburns). It was a genuine pleasure meeting so many developers, publishers and platform holders who love games as much as we do."
+      ],
+      "image": "photos/brighton-team-2026",
+      "alt": "Seven of the team on Brighton seafront in the sun, wearing Develop:Brighton lanyards.",
+      "people": ["lewis-mennim", "ryan-hughes", "garrett-windus", "connor-milburn", "nathan-hopwood", "josh-cairns", "sarah-childs", "oliver-neal"]
+    },
+    {
+      "id": "7478734431206330369",
+      "title": "Off to Develop:Brighton",
+      "excerpt": [
+        "We are incredibly excited to pack our gear and head way down south from Monday 13th - Thursday 16th for a week full of networking..."
+      ],
+      "people": ["lewis-mennim", "ryan-hughes", "garrett-windus", "connor-milburn", "nathan-hopwood", "josh-cairns", "sarah-childs"]
+    },
+    {
+      "id": "7472966297325244417",
+      "title": "GameNext, at The Glasshouse in Gateshead",
+      "excerpt": [
+        "The North East game dev scene is something special, and with events like these starting to pop up more often it couldn't be a better time to be a game dev - no more having to travel down south for events!"
+      ],
+      "people": ["lewis-mennim"]
+    },
+    {
+      "id": "7470384438753857536",
+      "title": "Three new starters, and sponsoring Gamebridge",
+      "excerpt": [
+        "First up, a massive welcome to three incredibly talented Teesside University alumni: Sarah Childs, Connor Milburn, and Charlie Ashall!",
+        "We also had the amazing opportunity to sponsor Gamebridge this year!"
+      ],
+      "people": ["sarah-childs", "connor-milburn", "charlie-ashall", "lewis-mennim"]
+    },
+    {
+      "id": "7460981632922062848",
+      "title": "What we saw at ExpoTees",
+      "excerpt": [
+        "The level of talent coming out of both the second and final-year students at Teesside University is absolutely wild."
+      ],
+      "people": []
+    },
+    {
+      "id": "7459175530525990913",
+      "title": "Heading to ExpoTees",
+      "excerpt": [
+        "We aren't just looking for students who finished their assignments; we want to chat to those with a real passion behind what they have created!"
+      ],
+      "people": ["lewis-mennim", "garrett-windus", "ryan-hughes"]
+    }
+  ]
+}

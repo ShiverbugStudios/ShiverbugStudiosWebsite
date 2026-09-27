@@ -1,0 +1,11 @@
+# GitHub Pages runs Jekyll over this repository before serving it. None of the
+# pages use Jekyll (they are finished HTML, built by tools/build.py), so this
+# file exists only to keep the working folders off the public site. Anything
+# committed outside this list is published.
+exclude:
+  - source
+  - src
+  - data
+  - tools
+  - README.md
+  - CLAUDE.md

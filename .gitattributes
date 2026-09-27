@@ -1,2 +1,12 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# LF everywhere, including Windows working copies. The build hashes files for
+# cache-busting and packs text files into the press archives, so a checkout
+# with CRLF endings would build different bytes from CI's and fail the drift
+# check for no real reason.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.webp binary
+*.mp4 binary
+*.woff2 binary
+*.zip binary

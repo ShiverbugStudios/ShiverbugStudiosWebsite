@@ -1,0 +1,155 @@
+---
+title: Press kit
+description: Fact sheet, descriptions, screenshots, photos and logos for Shiverbug Studios and Out of Water, free to use in coverage.
+path: /press
+file: press.html
+nav: press
+schema: game
+---
+<main id="main">
+
+<section class="page-hero page-hero--sand" aria-labelledby="press-title">
+  <div class="wrap split split--wide-left">
+    <div>
+      <h1 id="press-title">Press kit</h1>
+      <p class="lede">Everything you need to write about Shiverbug Studios and Out of Water. It's all free to use in coverage. If something's missing, ask {{ email() }} and we'll get it to you.</p>
+    </div>
+    <div class="panel">
+      <h2 class="small-heading">Download everything</h2>
+      <p>Logos, screenshots, photos, character art and the prototype trailer, at full size.</p>
+      <div class="actions mt-m"><a class="btn" href="/assets/press/shiverbug-press-kit.zip" download>Press kit, {{ size("/assets/press/shiverbug-press-kit.zip") }}</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap press-layout">
+    <nav class="press-toc" aria-label="Press kit sections">
+      <ol>
+        <li><a href="#facts">Fact sheet</a></li>
+        <li><a href="#about">Descriptions</a></li>
+        <li><a href="#history">History</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#images">Images</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#logos">Logos</a></li>
+        <li><a href="#recognition">Recognition</a></li>
+        <li><a href="#people">People</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </nav>
+
+    <div>
+      <section class="press-section" id="facts" aria-labelledby="facts-title">
+        <h2 id="facts-title">Fact sheet</h2>
+        <div class="split split--top">
+          <div><h3 class="small-heading">The studio</h3><div class="mt-m">{{ studio_facts() }}</div></div>
+          <div><h3 class="small-heading">The game</h3><div class="mt-m">{{ game_facts() }}</div></div>
+        </div>
+      </section>
+
+      <section class="press-section prose" id="about" aria-labelledby="about-title">
+        <h2 id="about-title">Descriptions</h2>
+        <h3>Shiverbug Studios</h3>
+        <p>Shiverbug Studios is an independent games studio in Middlesbrough, in the North East of England. It was founded in May 2025 by three Teesside University graduates, Lewis Mennim, Ryan Hughes and Garrett Windus, and makes games for people to play together on one screen. Alongside its own games, the studio takes on co-development work in concept art, 3D art, level design and gameplay programming.</p>
+        <h3>Out of Water</h3>
+        <p>Out of Water is a two-player split-screen 3D platformer collectathon. One player is Koopa, a turtle; the other is Kiko, a seagull. Koopa is heavy, steady and the only one who can dive. Kiko is quick, cheeky and at home in the air. Neither can finish the journey alone.</p>
+        <p>On the island of Chelonia, a Japanese spider crab has stolen the five gemstones from the Elder Turtle's statue, and the island has started to shake. Koopa and Kiko set out to win them back from the crab's army of would-be pirates, rescuing kidnapped baby turtles and buying far too many hats along the way.</p>
+        <h3>In one line</h3>
+        <p>A split-screen platformer for two, about a turtle, a seagull and five stolen gems.</p>
+      </section>
+
+      <section class="press-section prose" id="history" aria-labelledby="history-title">
+        <h2 id="history-title">History</h2>
+        <p>Shiverbug Studios Ltd was incorporated in Middlesbrough on 30 May 2025. That summer it was one of 21 teams selected for Tranzfuser 2025, the government-funded programme for new graduate studios run by UK Games Talent and Finance, with Teesside Launchpad as its local hub.</p>
+        <p>The team took its first prototype, then called Koopa and Kiko, to ProtoPlay in Dundee in September 2025 and won the Tranzfuser 2025 public vote. In January 2026 the team started again in a new Unity 6 project, the one that grew into Out of Water, a game for two players on one screen. It was shown to players at the Odyssey festival in Harrogate in April 2026.</p>
+        <p>Since May 2026 the studio has grown through Teesside University's internship scheme, and it now works as a team of {{ len(group_members("team")) }} with a pool of regular collaborators.</p>
+      </section>
+
+      <section class="press-section" id="features" aria-labelledby="features-title">
+        <h2 id="features-title">Features</h2>
+        <ul class="ticks">
+          <li>Local split-screen co-op for two, with the screen joining up when the story brings you together.</li>
+          <li>Also playable alone: swap between Koopa and Kiko at any time.</li>
+          <li>Two completely different movesets: Koopa rolls, slams and torpedoes through deep water; Kiko dashes, glides and whips up tornadoes.</li>
+          <li>Moves that need both players, like the duo glide, the spin launch and the duo slam.</li>
+          <li>Colour-coded puzzles for Koopa, for Kiko, or for either of you.</li>
+          <li>An army of pirate crabs, some of them with cannons.</li>
+          <li>Elder Trials with gold, silver and bronze times, and hats from Hootsworth the owl.</li>
+        </ul>
+      </section>
+
+      <section class="press-section" id="images" aria-labelledby="images-title">
+        <h2 id="images-title">Images</h2>
+        <p class="muted">Screenshots are from the game in development. Click through for the largest size on the site; the originals are in the <a href="/assets/press/shiverbug-screenshots.zip" download>screenshots archive</a> ({{ size("/assets/press/shiverbug-screenshots.zip") }}).</p>
+        <h3 class="small-heading mt-l">Screenshots</h3>
+        <ul class="shots mt-m">
+          <li><a href="{{ full('game/cove') }}">{{ img("game/cove", "Kiko perched on Koopa's shell beside a stack of crates in a sandy cove.", sizes="(min-width: 60em) 20rem, 92vw", near=640) }}<span>The cove</span></a></li>
+          <li><a href="{{ full('game/hats') }}">{{ img("game/hats", "Koopa in a sombrero and Kiko in a top hat.", sizes="(min-width: 60em) 20rem, 92vw", near=640) }}<span>Hats</span></a></li>
+          <li><a href="{{ full('game/title-scene') }}">{{ img("game/title-scene", "The title scene: Koopa and Kiko on a beach, a pirate ship in the bay.", sizes="(min-width: 60em) 20rem, 92vw", near=640) }}<span>The title scene</span></a></li>
+          <li><a href="{{ full('game/hub-lagoon') }}">{{ img("game/hub-lagoon", "The hub lagoon under three waterfalls.", sizes="(min-width: 60em) 20rem, 92vw", near=640) }}<span>The hub lagoon</span></a></li>
+        </ul>
+        <h3 class="small-heading mt-l">The studio</h3>
+        <ul class="shots mt-m">
+          <li><a href="{{ full('photos/protoplay-public-vote-2025') }}">{{ img("photos/protoplay-public-vote-2025", "The three founders on stage at ProtoPlay 2025 with the Tranzfuser public vote certificate.", sizes="(min-width: 60em) 20rem, 92vw", near=640) }}<span>ProtoPlay 2025, Dundee</span></a></li>
+          <li><a href="{{ full('photos/tranzfuser-founders-2025') }}">{{ img("photos/tranzfuser-founders-2025", "Garrett, Lewis and Ryan in Tranzfuser t-shirts under a neon Tranzfuser sign, Ryan holding a knitted turtle.", sizes="(min-width: 60em) 20rem, 92vw", near=640) }}<span>The founders at Tranzfuser, 2025</span></a></li>
+          <li><a href="{{ full('photos/brighton-team-2026') }}">{{ img("photos/brighton-team-2026", "Seven of the team on Brighton seafront.", sizes="(min-width: 60em) 20rem, 92vw", near=640) }}<span>Develop:Brighton, 2026</span></a></li>
+          <li><a href="{{ full('photos/brighton-founders-2026') }}">{{ img("photos/brighton-founders-2026", "Ryan, Lewis and Garrett in Shiverbug t-shirts on Brighton seafront.", sizes="(min-width: 60em) 20rem, 92vw", near=640) }}<span>The founders in Brighton, 2026</span></a></li>
+        </ul>
+      </section>
+
+      <section class="press-section" id="video" aria-labelledby="video-title">
+        <h2 id="video-title">Video</h2>
+        <div class="split split--top">
+          <figure>
+            <div class="frame"><video controls preload="none" playsinline poster="{{ src('game/prototype-trailer', 640) }}"><source src="/assets/video/out-of-water-trailer.mp4" type="video/mp4"></video></div>
+            <figcaption>The prototype trailer from 2025, when the game was called Koopa and Kiko and before it went split screen. A new trailer is in the works.</figcaption>
+          </figure>
+          <div class="prose">
+            <p>The title scene loop at the top of the <a href="/out-of-water">game page</a> is also free to use: <a href="/assets/video/title-loop.mp4" download>download the MP4</a> ({{ size("/assets/video/title-loop.mp4") }}, no sound).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="press-section" id="logos" aria-labelledby="logos-title">
+        <h2 id="logos-title">Logos</h2>
+        <p class="muted">Every version as PNG, and as SVG in RGB and CMYK. Please don't recolour or redraw it. <a href="/assets/press/shiverbug-logos.zip" download>All logos</a> ({{ size("/assets/press/shiverbug-logos.zip") }}).</p>
+        <ul class="logo-tiles mt-m">
+          <li><a href="/assets/brand/shiverbug-logo-on-blue.png"><img src="/assets/brand/shiverbug-logo-on-blue-rgb.svg" alt="The Shiverbug Studios logo on cyan" width="160" height="160" loading="lazy">On cyan</a></li>
+          <li><a href="/assets/brand/shiverbug-logo-on-white.png"><img src="/assets/brand/shiverbug-logo-on-white-rgb.svg" alt="The logo on white" width="160" height="160" loading="lazy">On white</a></li>
+          <li class="on-dark"><a href="/assets/brand/shiverbug-logo-on-black.png"><img src="/assets/brand/shiverbug-logo-on-black-rgb.svg" alt="The logo on black" width="160" height="160" loading="lazy">On black</a></li>
+          <li><a href="/assets/brand/shiverbug-logo-black.png"><img src="/assets/brand/shiverbug-logo-black-rgb.svg" alt="The logo in black, transparent background" width="160" height="160" loading="lazy">Black, transparent</a></li>
+          <li class="on-dark"><a href="/assets/brand/shiverbug-logo-white.png"><img src="/assets/brand/shiverbug-logo-white-rgb.svg" alt="The logo in white, transparent background" width="160" height="160" loading="lazy">White, transparent</a></li>
+        </ul>
+        <p class="mt-m muted">The moth is Shana the Shiverbug, our mascot.</p>
+      </section>
+
+      <section class="press-section" id="recognition" aria-labelledby="recognition-title">
+        <h2 id="recognition-title">Recognition</h2>
+        <ul class="ticks">
+          <li><b>Tranzfuser 2025 Public Vote Winner</b>, ProtoPlay, Dundee, September 2025. Awarded to the Tranzfuser team with the most public votes.</li>
+          <li><b>Tranzfuser 2025</b>, one of <a href="{{ SITE['tranzfuser'] }}">21 teams selected</a> for the UK Games Talent and Finance programme for graduate studios.</li>
+          <li><b>Game Republic</b>, <a href="{{ SITE['gameRepublic'] }}">member</a> of the games industry network for the North of England.</li>
+        </ul>
+      </section>
+
+      <section class="press-section" id="people" aria-labelledby="people-title">
+        <h2 id="people-title">People</h2>
+        <div class="split split--top">
+          <div class="prose">
+            <p>The studio was founded by <a href="/team/lewis-mennim">Lewis Mennim</a> (CEO), <a href="/team/ryan-hughes">Ryan Hughes</a> (CFO) and <a href="/team/garrett-windus">Garrett Windus</a> (3D artist). Everyone else on the team, with their roles and in their own words, is on the <a href="/team/">team page</a>.</p>
+          </div>
+          {{ faces(group="founders", big=True) }}
+        </div>
+      </section>
+
+      <section class="press-section" id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p class="lede">{{ email() }}</p>
+        <p class="mt-m">For review access, interviews, the pitch deck or anything not on this page. Social links are in the footer.</p>
+      </section>
+    </div>
+  </div>
+</div>
+
+</main>

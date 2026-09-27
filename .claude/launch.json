@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "site",
-      "runtimeExecutable": "powershell",
-      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ".claude/serve.ps1"],
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["tools/serve.py"],
       "port": 5173,
       "autoPort": true
     }

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="{{ csp }}">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+{{ robots }}
+<link rel="canonical" href="{{ canonical }}">
+<link rel="preload" href="/assets/fonts/fraunces-soft-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ css }}">
+<link rel="icon" href="/assets/icons/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#fff6e3">
+<meta property="og:site_name" content="Shiverbug Studios">
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<script src="{{ js }}" defer></script>
+<script data-goatcounter="{{ analytics }}" src="https://gc.zgo.at/count.js" async></script>
+{{ schema }}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/"><img src="/assets/brand/lockup-ink.svg" alt="Shiverbug Studios, home" width="852" height="280"></a>
+    <nav class="nav" aria-label="Main">{{ nav }}</nav>
+    <a class="btn btn--small" href="/contact">Contact us</a>
+    <details class="menu">
+      <summary>Menu</summary>
+      <div class="menu__panel"><nav aria-label="Main">{{ menu }}</nav></div>
+    </details>
+  </div>
+</header>
+{{ body }}
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-hello">
+        <h2>Say hello</h2>
+        <a class="footer-email" href="mailto:{{ SITE['email'] }}">contact@<wbr>shiverbugstudios.com</a>
+        <p>Work you need a hand with, a question about the game, a portfolio you want us to see. A person reads every one.</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h3>Studio</h3>
+          <ul>
+            <li><a href="/out-of-water">Out of Water</a></li>
+            <li><a href="/co-development">Co-development</a></li>
+            <li><a href="/team/">Team</a></li>
+            <li><a href="/news">News</a></li>
+            <li><a href="/careers">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Useful</h3>
+          <ul>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/press">Press kit</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/accessibility">Accessibility</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Elsewhere</h3>
+          <ul>
+            <li><a href="{{ SITE['discord'] }}">Discord</a></li>
+            <li><a href="https://bsky.app/profile/shiverbugstudios.bsky.social">Bluesky</a></li>
+            <li><a href="https://www.instagram.com/shiverbugstudios/">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@shiverbugstudios">TikTok</a></li>
+            <li><a href="https://www.youtube.com/@ShiverbugStudios">YouTube</a></li>
+            <li><a href="https://www.linkedin.com/company/shiverbug-studios">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <img src="/assets/brand/lockup-cream.svg" alt="" width="852" height="280" loading="lazy">
+      <div>
+        <p>&copy; Shiverbug Studios Ltd. Made in {{ SITE['town'] }}.</p>
+        <p>Shiverbug Studios Ltd is registered in {{ SITE['registeredIn'] }}, company number {{ SITE['companyNumber'] }}. Registered office: {{ SITE['registeredOffice'] }}.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

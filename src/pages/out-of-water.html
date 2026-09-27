@@ -1,0 +1,166 @@
+---
+title: Out of Water
+description: A two-player split-screen 3D platformer collectathon about a turtle and a seagull, in development at Shiverbug Studios for PC.
+path: /out-of-water
+file: out-of-water.html
+nav: game
+schema: game
+og: /assets/img/og/out-of-water.jpg
+---
+<main id="main">
+
+<section class="title-hero" aria-labelledby="title">
+  <div class="title-hero__media">{{ video("title-loop", "game/title-scene", "Out of Water's title scene: Koopa and Kiko on a sunny beach while a pirate ship sails across the bay") }}</div>
+  <div class="wrap title-hero__inner">
+    <h1 id="title" class="game-title"><span>Out of</span> <span>Water</span></h1>
+    <p class="lede">A split-screen platformer for two. A turtle, a seagull, and five stolen gems. In development for PC.</p>
+    <div class="actions">
+      <a class="btn" href="#follow">Follow development</a>
+      <a class="btn btn--cream" href="{{ SITE['discord'] }}">Join the Discord</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="pitch-title">
+  <div class="wrap split split--top">
+    <div>
+      <h2 id="pitch-title" class="visually-hidden">What it is</h2>
+      <p class="pitch">A <span class="nowrap">two-player</span> <span class="nowrap">split-screen</span> platformer collectathon. One player is Koopa, a turtle. The other is Kiko, a seagull. Neither can finish the journey alone.</p>
+    </div>
+    <div class="prose">
+      <p>On the island of Chelonia, a Japanese spider crab has stolen the five gemstones from the Elder Turtle's statue, and the ground has started to shake. Koopa and Kiko set off to get them back, rescuing kidnapped baby turtles as they go and spending far too many sand dollars on hats.</p>
+      <p>Play it with someone on the sofa, a controller each and half the screen each. When the story needs you both in the same place, the two halves join back up.</p>
+      <p>Playing alone works too. The animal you're not using waits where you left it, and you can swap between them whenever you like.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band band--sand" aria-labelledby="duo-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="duo-title">Two very different animals</h2>
+      <p>Koopa and Kiko don't share a single move. Each of them can reach places the other can't, and the island is built around that.</p>
+    </div>
+    <div class="duo">
+      <div class="duo__half duo__half--koopa">
+        {{ sticker("koopa-3d", sizes="260px") }}
+        <h3>Koopa</h3>
+        <p class="duo__who">The turtle. Brave, loyal, cautious and thoughtful: the level-headed one.</p>
+        <p class="duo__verb">Everything he does is about weight.</p>
+        <ul class="moves">
+          <li><b>Roll</b> picks up speed downhill, ploughs through crabs and skips across the water.</li>
+          <li><b>Slam</b> brings him down hard, and bounces him high off a bounce pad.</li>
+          <li><b>Bubble</b> traps an enemy, and <b>Spin</b> homes in on the bubble to pop it.</li>
+          <li><b>Torpedo</b> sends him fast through deep water, where Kiko can't follow.</li>
+          <li><b>Carry and throw</b> for anything too heavy for a seagull.</li>
+        </ul>
+      </div>
+      <div class="duo__half duo__half--kiko">
+        {{ sticker("kiko-3d", sizes="150px") }}
+        <h3>Kiko</h3>
+        <p class="duo__who">The seagull. Playful, cheeky, curious to a fault, and never done teasing Koopa.</p>
+        <p class="duo__verb">Everything he does is about speed and height.</p>
+        <ul class="moves">
+          <li><b>Air dash</b>, chained together, drives straight through enemies.</li>
+          <li><b>Glide</b> carries him a long way, until his wings tire.</li>
+          <li><b>Dive</b> drops him out of the sky and into a roll.</li>
+          <li><b>Backflip</b> is his double jump.</li>
+          <li><b>Tornado</b> sweeps crabs off their feet and spins up windmills.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="together-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="together-title">Better together</h2>
+      <p>Some moves take both of you.</p>
+    </div>
+    <ul class="together">
+      <li><h3>Hitch a ride</h3><p>Kiko lands on Koopa's shell and rides along.</p></li>
+      <li><h3>Duo glide</h3><p>Kiko carries Koopa through the air, and Kiko steers.</p></li>
+      <li><h3>Spin launch</h3><p>Koopa spins and flings Kiko up into the sky.</p></li>
+      <li><h3>Duo slam</h3><p>Both of you, coming down on the same spot at once.</p></li>
+    </ul>
+    <div class="split mt-l">
+      <div class="prose">
+        <h3>Colour coded</h3>
+        <p>Switches, doors and puzzles tell you who they're for, so the difference between the two of them is built into the levels themselves.</p>
+        <ul class="keys">
+          <li><i class="key--green"></i>Koopa only</li>
+          <li><i class="key--blue"></i>Kiko only</li>
+          <li><i class="key--amber"></i>Either of you</li>
+        </ul>
+        <p>And yes, Koopa's bubble and Kiko's tornado both work on each other.</p>
+      </div>
+      <figure>
+        <div class="frame">{{ img("game/hub-lagoon", "A lagoon at the foot of three waterfalls, with rafts, a wooden pier and a ring of sand dollars floating on the water, ringed by sand and cliffs.", sizes="(min-width: 56em) 46vw, 92vw", near=1200) }}</div>
+        <figcaption>The hub lagoon, where you try out every move before setting off. In engine, and still being built.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band band--sea" aria-labelledby="crabs-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="crabs-title">An army of crabs</h2>
+      <p>The spider crab didn't take those gems on its own. Its army dresses up as pirates in whatever it can scavenge, and some of it has cannons.</p>
+    </div>
+    <ul class="crabs">
+      <li>{{ img("stickers/crab-grunt", "The grunt crab: red, round and wide-eyed.", sizes="240px", near=480) }}<p><b>Grunt</b>The bulk of the army.</p></li>
+      <li>{{ img("stickers/crab-shield", "The shield crab, crouched behind wooden planks painted with an angry face.", sizes="240px", near=480) }}<p><b>Shield crab</b>Hides behind a face it painted itself.</p></li>
+      <li>{{ img("stickers/crab-cannon", "The cannon crab, with a cannon strapped to its back and a coconut for a cannonball.", sizes="240px", near=480) }}<p><b>Cannon crab</b>Fires coconuts.</p></li>
+      <li>{{ img("stickers/crab-ghost", "The ghost crab, red with a teal bandana.", sizes="240px", near=480) }}<p><b>Ghost crab</b>Bandana on, ready for trouble.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="more-title">
+  <div class="wrap">
+    <h2 id="more-title" class="visually-hidden">More to do</h2>
+    <div class="split split--top">
+      <div class="stack-m">
+        <div class="frame">{{ img("game/hats", "Koopa wearing a sombrero and Kiko wearing a black top hat, standing in the grass by some crates.", sizes="(min-width: 56em) 46vw, 92vw", near=960) }}</div>
+        <h3>Hats</h3>
+        <p>Hootsworth the owl runs the hat stall and takes payment in sand dollars. Some hats only fit a turtle. He will tell you that a hat does not merely sit upon the head. It completes the soul.</p>
+      </div>
+      <div class="stack-m">
+        <h3>Elder Trials</h3>
+        <p>Short challenge courses with gold, silver and bronze times to beat. Four are built so far, and some are made for one animal: in the Tornado Trial you both play Kiko and scatter twelve crabs, and in the Torpedo Trial you both play Koopa and smash through the boards underwater.</p>
+        <h3>Things to collect</h3>
+        <p>Sand dollars to spend, pearls to find, and old artefacts for the completionists.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--sand" id="follow" aria-labelledby="follow-title">
+  <div class="wrap split split--top">
+    <div>
+      <h2 id="follow-title">Where it's at</h2>
+      <p class="lede mt-m">Out of Water is in development. There's no release date yet, and the Steam page is on its way.</p>
+      <div class="mt-l">{{ game_facts() }}</div>
+    </div>
+    <div>
+      <div class="panel">
+        <h3>Hear it first</h3>
+        <p>One email when there's real news: the Steam page, a demo, a date. Nothing weekly.</p>
+        {{ newsletter() }}
+      </div>
+      <div class="panel">
+        <h3>Watch it being made</h3>
+        <p>Work in progress and first looks go up on our Discord before anywhere else. Lurking is fine.</p>
+        <div class="actions mt-m"><a class="btn btn--cream" href="{{ SITE['discord'] }}">Join the Discord</a></div>
+      </div>
+      <div class="panel">
+        <h3>Publishers and press</h3>
+        <p>We have a pitch deck for Out of Water and we're happy to send it. Write to {{ email() }} with a line about who you are. Screenshots, logos and the fact sheet are in the <a href="/press">press kit</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>

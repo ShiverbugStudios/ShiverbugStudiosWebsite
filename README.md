@@ -1,194 +1,127 @@
-﻿# Shiverbug Studios website
+# Shiverbug Studios website
 
-The studio site for [Shiverbug Studios](https://shiverbugstudios.com/):
-our debut game *Out of Water*, the team, and our co-development services.
+The site at [shiverbugstudios.com](https://shiverbugstudios.com): the studio,
+*Out of Water*, co-development, the team, careers and the press kit.
 
-Static HTML, CSS and vanilla JavaScript. No framework, no bundler, no
-`node_modules`. It is served straight off GitHub Pages, and the tooling is
-PowerShell that already ships with Windows.
-
-## Read this before you change anything
-
-**Do not hand-edit the generated files.** These are written by
-`tools/build-team.ps1`, and CI fails if what you commit does not match what the
-script produces:
-
-| Generated | From |
-| --- | --- |
-| `team/*.html` (one page per person) | `data/team.json` |
-| `team/index.html` (the roster hub) | `data/team.json` |
-| The team and talent-pool grids in `index.html`, between the `BUILD:TEAM` / `BUILD:TALENT` markers | `data/team.json` |
-| The intake faces in `join.html`, between the `BUILD:JOIN` markers | `data/team.json` |
-| The structured-data block in `index.html`, between the `BUILD:SCHEMA` markers | `data/team.json` |
-| The roster in `team-member.html`, between the `BUILD:REDIRECT-LIST` markers | `data/team.json` |
-| `js/legacy-redirect.js` | `data/team.json` |
-| `llms.txt` | `data/team.json` |
-| `sitemap.xml` | the page list in the script, plus `dateModified` in `data/team.json` |
-| `css/style.min.css` | `css/style.css`, by `tools/build-css.ps1` |
-
-The three press archives in `assets/press/` are generated too, by
-`tools/build-press-kit.ps1`, from files already in the repo:
-
-| Generated | Contains |
-| --- | --- |
-| `shiverbug-press-kit.zip` | brand, screenshots, studio photography, trailer |
-| `shiverbug-screenshots.zip` | screenshots and studio photography |
-| `shiverbug-logos.zip` | brand only |
-
-Each one's `README.txt` is written by that script, so the press contact and the
-site address are stated in exactly one place. Rebuilding without changing an
-input produces a byte-identical zip, so `git status` stays quiet.
-
-`data/team.json` is the single source of truth for everyone on the site. Its
-`_readme` key documents every field.
-
-Everything else (`index.html` outside the markers, `co-dev.html`, `press.html`,
-`privacy.html`, `accessibility.html`, `404.html`, `css/style.css` and the JS) is
-written by hand.
-
-**Edit `css/style.css`, never `css/style.min.css`.** Every page links the
-minified file, so after touching the stylesheet run:
-
-```bash
-powershell -ExecutionPolicy Bypass -File tools/build-css.ps1
-```
-
-It only strips comments and blank space, so the two files always describe the
-same rules. The source is heavily commented on purpose - those comments are why
-the site looks the way it does - and shipping them used to cost every first
-visit ~23 KB of render-blocking prose.
+Static HTML built by a Python script, a hand-written stylesheet and one small
+script. No framework and no `node_modules`. GitHub Pages serves this
+repository as it is, so the built pages are committed.
 
 ## Working on it
 
-Run the build after touching `data/team.json`:
-
 ```bash
-powershell -ExecutionPolicy Bypass -File tools/build-team.ps1
+python tools/build.py      # build every page from src/ and data/
+python tools/check.py      # links, headings, alt text, CSP rules, structured data
+python tools/serve.py      # preview at http://localhost:5173, served the way Pages serves it
 ```
 
-Then the validator, then commit the result:
+The build and the checker need nothing but Python 3.10 or later. CI runs both
+on every push and pull request, and fails if the committed pages differ from
+what the build produces, so always commit the build output with the change
+that caused it.
 
-```bash
-powershell -ExecutionPolicy Bypass -File tools/validate-site.ps1
-```
+## Where things live
 
-The validator checks every page for a single `<h1>`, a title, a description, a
-canonical, a CSP tag, the Companies Act footer disclosure, valid JSON-LD, and
-that every internal link and every `srcset` candidate resolves to a real file.
-It also opens the three press archives and checks that no entry uses a backslash
-separator and that each `README.txt` carries the current site address and the
-press contact. It exits non-zero, so CI gates on it.
+| Path | What it is | Published? |
+| --- | --- | --- |
+| `src/layout.html` | The page shell: head, header, footer | No |
+| `src/pages/*.html` | One file per page: front matter, then the page | No |
+| `data/team.json` | Everyone on the site, and their words | No |
+| `data/work.json` | Disciplines and portfolio pieces for co-development | No |
+| `data/site.json` | Studio facts, socials, form endpoints, the dated log on the home page | No |
+| `data/news.json` | The News page: the studio's LinkedIn posts, linked back to LinkedIn | No |
+| `data/images.json` | Written by `tools/images.py`: every image and its sizes | No |
+| `source/` | Master images the site's WebP files are made from | No |
+| `assets/css/site.css` | The stylesheet. Edit this one; the build writes `site.min.css` | Yes |
+| `assets/js/site.js` | Video pause controls, the work viewer, the contact form | Yes |
+| `assets/img/` | Generated WebP images. Never edit by hand | Yes |
+| `assets/brand/` | The logo in every colourway, plus the header lockups | Yes |
+| `assets/press/*.zip` | Press archives, written by the build | Yes |
+| `*.html`, `team/*.html`, `sitemap.xml`, `llms.txt`, `robots.txt` | Written by the build | Yes |
 
-If you touched a logo, a screenshot or the blurb in the press archives, rebuild
-them first:
+`_config.yml` is what keeps `source/`, `src/`, `data/` and `tools/` off the
+public site. GitHub Pages runs Jekyll over the repository, and that file's
+`exclude` list is the only thing between those folders and a public URL.
+Anything else you commit is published, so notes about the site do not live in
+this repository.
 
-```bash
-powershell -ExecutionPolicy Bypass -File tools/build-press-kit.ps1
-```
+## Common jobs
 
-If you added images, run the resizer first:
+**Change someone's details.** Edit `data/team.json` and rebuild. The `tagline`
+and `about` fields are the person's own words: never rewrite them, not even to
+fix a typo, without asking them. The build deliberately leaves them untouched
+(the curly-apostrophe pass that tidies the studio's own copy skips them).
 
-```bash
-powershell -ExecutionPolicy Bypass -File tools/make-variants.ps1
-```
+**Add a person.** Put their photo in `source/team/`, add them to
+`data/team.json` (the `_readme` key lists every field), then run
+`python tools/images.py` to cut the portrait and `python tools/build.py`. If
+the framing is off, give them a `crop` of `[left, top, width]` as fractions of
+the photo and run `tools/images.py` again; it notices a changed crop.
 
-That one is the exception to "no dependencies": it needs the .NET SDK, which it
-uses to pull ImageSharp into a scratch project. It is a one-off asset step and
-CI never runs it. Full order after adding art: **make-variants → build-team →
-validate-site**. See `tools/README.md` for the detail.
+**Someone leaves.** Move them to `talent` with `"status": "former"`. Their
+portrait goes grey, their structured data says `alumniOf`, and their pieces
+drop out of the co-development galleries on their own, because that page
+promises the work is by people you can hire through us.
 
-To preview locally, use the dev server config in `.claude/launch.json`, or serve
-the folder with anything that hands out static files.
+**Add a portfolio piece.** Put the image in `source/work/`, add an entry to
+`data/work.json` (credited to one person, filed under one discipline, with alt
+text), run `python tools/images.py`, then build. Client work never goes on the
+site.
 
-## Things that will bite you
+**Add an entry to the log on the home page.** Add it to `log` in
+`data/site.json`. A photo is optional and needs an image in `data/images.json`.
 
-**Do not add a `.nojekyll` file without thinking.** GitHub Pages runs Jekyll on
-this repo, and Jekyll skips any directory whose name starts with `_`. That is
-load-bearing: it is what kept `_originals/` (full-resolution team photos and
-art, around 145 MB) off the public site while it was still committed. It is
-untracked now, so this is no longer a live hazard, but the same trap applies to
-anything else parked under an underscore.
+**Add a LinkedIn post to News.** Add it to `data/news.json`: the number from
+the post's `feed/update/urn:li:activity:<id>` address, our headline, and a
+short extract copied exactly from the post. The date is worked out from the
+id. To show the post's picture, save it as `source/news/<id>.jpg` and run
+`python tools/images.py`. The newest three also appear on the home page.
 
-**Everything committed here is published.** Pages serves the whole repo at a
-guessable URL, so a file dropped in "just to look at" goes public the moment it
-is pushed. `.gitignore` blocks the usual suspects; the habit matters more.
+**Change a page.** Edit its file in `src/pages/`. Inside a page, `{{ ... }}` is
+a call to one of the helpers at the bottom of `tools/build.py`, for example
+`{{ img("game/cove", "alt text", sizes="50vw") }}`, `{{ people_grid("founders") }}`
+or `{{ email() }}`.
 
-This has already happened once. A `docs/` folder of transcribed feedback was
-committed and served at `/docs/`, naming individual people and what was wrong
-with their photos and their work, with nothing in `robots.txt` to stop a crawler
-reading it, and that file explicitly invites every AI and search crawler in.
-`docs/` is ignored now. Notes about the site do not live on the site.
+## Images
 
-**The site address lives in two places.** `$baseUrl` in
-`tools/build-team.ps1`, and every absolute reference in `404.html` (which Pages
-serves for a missing path at *any* depth, so relative URLs there would resolve
-against the wrong directory). The site is on the custom domain's root now, so
-those are plain `/...` paths; moving under a sub-path again means updating both.
+`tools/images.py` makes every image the site serves from the masters in
+`source/`, at several widths, as WebP, and records them in `data/images.json`.
+It needs Pillow and fontTools (`pip install pillow fonttools brotli`). It only
+redoes what changed; `--force` redoes everything, including the social cards
+in `assets/img/og/` and the icons in `assets/icons/`.
 
-**One inline script, allowed by hash.** Every page's `<head>` runs
-`document.documentElement.classList.add('js')`, which is what lets the
-stylesheet hide scroll-reveal content only when script is running. The CSP
-allows that exact script by its SHA-256 and nothing else inline. Change a byte of
-it and the hash in `$csp` (and the hand-written pages) must change too;
-`tools/validate-site.ps1` recomputes it and fails if they disagree.
+The stickers (Koopa, Kiko and the crabs with a white die-cut border) are made
+from the game's own UI icons and from renders of the prefabs in the Unity
+project, taken from the Out of Water wiki. `tools/images.py` adds the border.
 
-**Fonts are self-hosted** in `assets/fonts` (both SIL Open Font License), so no
-page contacts Google. Don't add a Google Fonts link back: the CSP no longer
-allows it, and the privacy policy no longer mentions it.
+## Design notes
 
-**Former shiverbugs.** Setting `"status": "former"` on someone in the talent
-pool changes more than their badge: their structured data says `alumniOf`
-rather than `worksFor`, their search snippet says "former", and their tile
-shows a Former chip. Take their work out of the co-dev
-galleries by hand at the same time - the page promises those are people you can
-hire through us.
+The reasoning is at the top of `assets/css/site.css`, and it is worth reading
+before changing the look. In short:
 
-**`js/main.js` is one script scope.** It is a classic script, not a module, so a
-top-level `const` collides with any other top-level `const` of the same name and
-takes the whole file down with a `SyntaxError`. Check the name is free first.
+- **The colours are the game's.** Ink is the outline colour Out of Water draws
+  round its title and UI text, cream is its UI text colour, gold is its "you
+  are here" colour, and the deep sea tones are its menu surfaces. Cyan is the
+  logo's.
+- **Buttons are the game's menu tiles**, a flat fill with a darker bottom edge
+  that disappears when pressed. Nothing else gets that edge.
+- **Headings are Fraunces, fully soft; text is Instrument Sans.** Both are
+  self-hosted, so no page contacts Google.
+- **Nothing moves on its own** apart from the game footage, which has a pause
+  button and does not play for anyone who has asked for reduced motion.
+- **Copy has no em dashes**, the same house rule as the wiki. `tools/check.py`
+  enforces it in `src/` and in `data/site.json` and `data/work.json`.
 
-**The site is dark, and there is no light variant.** The stylesheet has one
-palette, in a bare `:root` with no `[data-theme]` switch and no JavaScript
-behind it. There used to be a toggle; it was removed because a site that is
-dark as a *choice* and a site that is dark as a *mode* want different colours,
-and trying to be both produced the worst of each. If a light variant ever comes
-back, it is a redesign, not a second set of values.
+## Hosting
 
-Three things about that palette are easy to undo by accident:
-
-*The surfaces are deep blue, not grey.* Darkening a light palette lands on grey,
-and grey reads as a light design with the lights off. Every surface carries the
-same cold cast the game does.
-
-*The bands are not separated from the page by lightness.* Four near-blacks
-cannot do what cream-against-near-black did, so the hero, proof and footer are
-told apart by the teal and sand light bleeding in from their corners, and by the
-wave dividers. If those glows get dialled back "because they're strong", the
-page flattens into one slab.
-
-*Depth is elevation, not outline.* On paper every card was a white plate behind a
-2px near-black rule with the same rule offset below it. Inverted, that is a pale
-grey box around everything, which is the single most inverted-looking thing a
-dark page can do. Cards are a lighter fill, a one-pixel rim and a soft shadow.
-`.sticker` is the one survivor of the old idiom, because it is sand on a
-photograph rather than a surface on a surface.
-
-`--ink`, `--line` and `--heading` were one token once. They went three separate
-ways when the site went dark. Don't collapse them.
-
-**A profile with no `about` text is treated as unfinished.** Its tile stops being
-a link, the page gets a `noindex`, it drops out of `sitemap.xml`, and the
-prev/next chain steps over it. Fill in `about` in `data/team.json` and all of
-that reverses itself on the next build.
-
-## Accessibility
-
-The site targets WCAG 2.2 Level AA and holds itself to the AAA 44×44 target size
-throughout. `accessibility.html` is the public statement, including what is not
-right yet. Keep it honest when you change behaviour.
+GitHub Pages, from the root of `main`, on the custom domain in `CNAME`. Pages
+serves `out-of-water.html` at `/out-of-water`, which is the address every
+link uses. The old addresses (`games.html`, `co-dev.html`, `join.html`,
+`team-member.html?p=...`) are small redirect pages written by the build so
+old links keep working.
 
 ## Licence
 
-Code is free to learn from. The Shiverbug Studios name, logo, artwork,
-screenshots and team photographs are not: they are © Shiverbug Studios Ltd and
-are not licensed for reuse.
+The code is free to learn from. The Shiverbug Studios name, logo, the Out of
+Water characters, artwork, screenshots and team photographs are © Shiverbug
+Studios Ltd or the people who made them, and are not licensed for reuse.

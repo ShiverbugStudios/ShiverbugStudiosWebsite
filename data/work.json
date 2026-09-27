@@ -1,0 +1,197 @@
+{
+  "_readme": "The work shown on the co-development page and on each person's profile. Every piece is credited to one person (by, their slug in team.json) and filed under one discipline. image is a file in source/work without its extension; video is an optional clip in assets/video that plays in its place when opened. Client work never goes here: only Out of Water and the team's own portfolio pieces. When someone moves to former in team.json, take their pieces out, because this page says these are people you can hire through us.",
+
+  "disciplines": [
+    {
+      "id": "concept",
+      "name": "Concept art",
+      "summary": "Characters, creatures, props and places, drawn to explain how something plays as well as how it looks.",
+      "body": "We design for the team that has to build it. A board shows the pose, the states it moves through in game and the pieces a 3D artist needs, so the model can be started from the sheet rather than from a conversation.",
+      "includes": [
+        "Exploration, thumbnails and fast iteration",
+        "Character, creature, costume and prop design",
+        "Turnarounds and construction sheets ready to model from",
+        "Motion tests for anything that moves or opens"
+      ],
+      "people": ["sarah-childs", "megan-nicol"]
+    },
+    {
+      "id": "stylised",
+      "name": "Stylised 3D",
+      "summary": "Environments, props and characters with clear shapes and a lot of personality.",
+      "body": "Chunky silhouettes, hand-painted materials and budgets that survive a real frame rate. We build modular kits so a level can be dressed from a palette, and hero pieces for the places a player stops and looks.",
+      "includes": [
+        "Blockout and greybox dressing through to final art",
+        "Modular environment kits and hero props",
+        "Stylised characters and creatures",
+        "Game-ready assets for Unity or Unreal"
+      ],
+      "people": ["garrett-windus", "martin-wilkinson", "connor-milburn", "josh-cairns", "evan-atherton-elphick"]
+    },
+    {
+      "id": "hardsurface",
+      "name": "Hard surface",
+      "summary": "Vehicles, weapons and mechanical props, modelled accurately from reference.",
+      "body": "Clean topology, careful panel work and materials that hold up when the camera gets close. Garrett came to games from realistic vehicle art, so cars in particular are home ground.",
+      "includes": [
+        "Vehicles from blockout to showroom render",
+        "Weapons, helmets and mechanical hero props",
+        "High to low bakes with predictable topology",
+        "PBR materials authored in the Substance tools"
+      ],
+      "people": ["connor-milburn", "garrett-windus", "martin-wilkinson"]
+    },
+    {
+      "id": "design",
+      "name": "Design and code",
+      "summary": "Level design, game and narrative design, and gameplay programming.",
+      "body": "We build levels from blockout to scripted polish in Unity and Unreal, write gameplay code in C#, and write the words characters say. A lot of what we know about feel comes from tuning two very different animals to share one screen.",
+      "includes": [
+        "Level design in Unity and Unreal",
+        "Gameplay programming in Unity (C#), including enemy AI and player systems",
+        "Local multiplayer and split screen",
+        "Narrative design, dialogue and barks",
+        "Profiling and performance passes"
+      ],
+      "people": ["oliver-neal", "charlie-ashall", "kyle-kerr", "charlie-pelling", "lewis-mennim", "ryan-hughes"]
+    }
+  ],
+
+  "pieces": [
+    {
+      "image": "concept-elder-turtle",
+      "discipline": "concept",
+      "by": "sarah-childs",
+      "title": "The Elder Turtle",
+      "project": "Out of Water",
+      "alt": "Concept board for the Elder Turtle: a translucent blue spirit turtle holding a glowing trident, beside two views of the stone statue it becomes, with design notes and an invented script.",
+      "note": "The guide the players meet on Chelonia, as a spirit and as the statue it lives in, with the ancient script used on its shrines."
+    },
+    {
+      "image": "concept-statue-process",
+      "discipline": "concept",
+      "by": "sarah-childs",
+      "title": "Statue design process",
+      "project": "Out of Water",
+      "alt": "A board of pose thumbnails for the Elder Turtle statue, narrowing through iterations to a final design shown mossy, cracked and restored.",
+      "note": "From rough pose thumbnails to the final statue, drawn in the three states the game moves it through."
+    },
+    {
+      "image": "concept-statue-sheet",
+      "discipline": "concept",
+      "by": "sarah-childs",
+      "title": "Statue construction sheet",
+      "project": "Out of Water",
+      "video": "codev-statue-key.mp4",
+      "alt": "A construction sheet for the statue plinth: turnaround, base and archway patterns, the spinning keyhole mechanism, and the plinth as ruined, cleaned and restored stone.",
+      "note": "Everything the 3D team needed to build the plinth, including the keyhole mechanism, with a short animated test of the crystal key turning."
+    },
+    {
+      "image": "concept-accessories",
+      "discipline": "concept",
+      "by": "sarah-childs",
+      "title": "Accessories and collectables",
+      "project": "Out of Water",
+      "alt": "A design sheet of a glowing sargassum wreath, a crown-shaped head pattern, fluorescent shell markings and barnacle and pearl collectables, each beside its sea turtle photo reference.",
+      "note": "Each piece is drawn beside the real sea turtle reference it came from."
+    },
+    {
+      "image": "concept-iconography",
+      "discipline": "concept",
+      "by": "sarah-childs",
+      "title": "Shell iconography and boss crystals",
+      "project": "Out of Water",
+      "alt": "The Elder Turtle's shell pattern numbered one to five, five gold crystals for the beach, forest, poison, lava and cave levels, a painted opal texture and line drawings of the shell.",
+      "note": "One crystal per area, each tied to a segment of the Elder Turtle's shell."
+    },
+    {
+      "image": "3d-coral-quarters",
+      "discipline": "stylised",
+      "by": "josh-cairns",
+      "title": "Coral Quarters",
+      "alt": "A stylised wooden beach shack on stilts with a purple shingle roof and a painted dolphin sign, with palm trees and rocks behind it.",
+      "note": "A beach shack built as a hero location, with hand-painted timber and shingles."
+    },
+    {
+      "image": "3d-coral-props",
+      "discipline": "stylised",
+      "by": "josh-cairns",
+      "title": "Coral Quarters props",
+      "alt": "The Coral Quarters prop set laid out on sand: a wooden frame, solar panel, life ring, rope, noticeboards, crates, a kayak and paddles and the dolphin sign.",
+      "note": "The modular set that dresses the shack, every piece reusable across the scene."
+    },
+    {
+      "image": "3d-night-house",
+      "discipline": "stylised",
+      "by": "martin-wilkinson",
+      "title": "Witch's hut",
+      "alt": "A witch's hut shaped like a cauldron under a slumping hat roof, wrapped in pale roots, on a lantern-lit jetty in blue forest mist.",
+      "note": "A team environment made to a strict budget: 35,000 triangles, 2K and 1K textures, modular throughout. Martin built everything but the lighting."
+    },
+    {
+      "image": "3d-robot",
+      "discipline": "stylised",
+      "by": "martin-wilkinson",
+      "title": "Relic",
+      "alt": "A friendly orange robot shown from three angles, with a cartoon face on a boxy screen head and thin jointed legs.",
+      "note": "A personal character piece: worn materials, a deliberately lopsided build and a face that does most of the work."
+    },
+    {
+      "image": "3d-hunter",
+      "discipline": "stylised",
+      "by": "evan-atherton-elphick",
+      "title": "Wasteland hunter",
+      "alt": "Front and back views of a stylised hunter in a dark waistcoat and leather straps, holding a bone claw, with a horned basilisk skull on her shoulder.",
+      "note": "Concept by Yvonne Veka. Sculpted in ZBrush, hard surface in Maya, textured in Substance Painter."
+    },
+    {
+      "image": "3d-grimgrin",
+      "discipline": "stylised",
+      "by": "evan-atherton-elphick",
+      "title": "Grimgrin the Ha-Bringer",
+      "alt": "A grinning cel-shaded jester automaton in a blue and gold hat, lit by a crystal ball inside a fortune teller's booth at night.",
+      "note": "A fortune teller in an inked, cel-shaded style. Modelled in Maya, textured in Substance Painter, rendered in Unreal Engine 5."
+    },
+    {
+      "image": "3d-cyber-helmet",
+      "discipline": "hardsurface",
+      "by": "connor-milburn",
+      "title": "Tactical helmet",
+      "alt": "Six views of a dark sci-fi helmet on a mannequin bust, with a tinted visor under angular plates, a ribbed respirator and a headlamp at the temple.",
+      "note": "After the Cyberpunk 2077: Trauma Team comics. A turnaround, so the plating reads from every side."
+    },
+    {
+      "image": "3d-datsun-240z",
+      "discipline": "hardsurface",
+      "by": "garrett-windus",
+      "title": "1973 Datsun 240Z",
+      "alt": "A metallic blue 1973 Datsun 240Z parked across double yellow lines on a wooded road.",
+      "note": "A final-year vehicle project, modelled from reference from blockout to render."
+    },
+    {
+      "image": "3d-delorean",
+      "discipline": "hardsurface",
+      "by": "garrett-windus",
+      "title": "DeLorean DMC-12",
+      "alt": "A brushed steel DeLorean DMC-12 on a sunlit woodland road with wildflowers in front of it.",
+      "note": "Retextured from scratch, with base materials authored in Substance Designer."
+    },
+    {
+      "image": "dev-cyberstation",
+      "discipline": "design",
+      "by": "oliver-neal",
+      "title": "CyberStation",
+      "video": "codev-cyberstation.mp4",
+      "alt": "An isometric neon space station with trains of glowing carriages and a management interface along the top.",
+      "note": "A station management game, with its simulation running end to end."
+    },
+    {
+      "image": "dev-gridlock",
+      "discipline": "design",
+      "by": "oliver-neal",
+      "title": "Gridlock",
+      "alt": "A minimal strategy game on a dark grid where coloured houses send lines of units at each other.",
+      "note": "A minimalist real-time strategy game: unit flow, pathfinding and an opposing AI."
+    }
+  ]
+}

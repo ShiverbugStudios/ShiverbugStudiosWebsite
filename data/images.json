@@ -1,0 +1,601 @@
+{
+ "game/cove": {
+  "w": 1916,
+  "h": 1080,
+  "widths": [
+   480,
+   800,
+   1200,
+   1600,
+   1916
+  ],
+  "alpha": false
+ },
+ "game/hats": {
+  "w": 877,
+  "h": 526,
+  "widths": [
+   480,
+   800,
+   877
+  ],
+  "alpha": false
+ },
+ "game/hub-lagoon": {
+  "w": 1540,
+  "h": 570,
+  "widths": [
+   480,
+   800,
+   1200,
+   1540
+  ],
+  "alpha": false
+ },
+ "game/prototype-trailer": {
+  "w": 640,
+  "h": 360,
+  "widths": [
+   480,
+   640
+  ],
+  "alpha": false
+ },
+ "game/title-scene": {
+  "w": 1520,
+  "h": 855,
+  "widths": [
+   480,
+   800,
+   1200,
+   1520
+  ],
+  "alpha": false
+ },
+ "news/7495796815179743232": {
+  "w": 1400,
+  "h": 788,
+  "widths": [
+   480,
+   800,
+   1200
+  ],
+  "alpha": false
+ },
+ "photos/brighton-founders-2026": {
+  "w": 1440,
+  "h": 1080,
+  "widths": [
+   480,
+   800,
+   1200,
+   1440
+  ],
+  "alpha": false
+ },
+ "photos/brighton-team-2026": {
+  "w": 1920,
+  "h": 1440,
+  "widths": [
+   480,
+   800,
+   1200,
+   1600,
+   1920
+  ],
+  "alpha": false
+ },
+ "photos/protoplay-public-vote-2025": {
+  "w": 1120,
+  "h": 840,
+  "widths": [
+   480,
+   800,
+   1120
+  ],
+  "alpha": false
+ },
+ "photos/tranzfuser-founders-2025": {
+  "w": 1380,
+  "h": 920,
+  "widths": [
+   480,
+   800,
+   1200,
+   1380
+  ],
+  "alpha": false
+ },
+ "stickers/baby-turtle": {
+  "w": 765,
+  "h": 463,
+  "widths": [
+   160,
+   320,
+   480,
+   720
+  ],
+  "alpha": true
+ },
+ "stickers/crab-cannon": {
+  "w": 652,
+  "h": 615,
+  "widths": [
+   160,
+   320,
+   480,
+   652
+  ],
+  "alpha": true
+ },
+ "stickers/crab-ghost": {
+  "w": 761,
+  "h": 507,
+  "widths": [
+   160,
+   320,
+   480,
+   720
+  ],
+  "alpha": true
+ },
+ "stickers/crab-grunt": {
+  "w": 820,
+  "h": 636,
+  "widths": [
+   160,
+   320,
+   480,
+   720
+  ],
+  "alpha": true
+ },
+ "stickers/crab-shield": {
+  "w": 699,
+  "h": 797,
+  "widths": [
+   160,
+   320,
+   480,
+   699
+  ],
+  "alpha": true
+ },
+ "stickers/kiko": {
+  "w": 2000,
+  "h": 2210,
+  "widths": [
+   160,
+   320,
+   480,
+   720
+  ],
+  "alpha": true
+ },
+ "stickers/kiko-3d": {
+  "w": 488,
+  "h": 710,
+  "widths": [
+   160,
+   320,
+   480,
+   488
+  ],
+  "alpha": true
+ },
+ "stickers/koopa": {
+  "w": 2194,
+  "h": 1754,
+  "widths": [
+   160,
+   320,
+   480,
+   720
+  ],
+  "alpha": true
+ },
+ "stickers/koopa-3d": {
+  "w": 622,
+  "h": 348,
+  "widths": [
+   160,
+   320,
+   480,
+   622
+  ],
+  "alpha": true
+ },
+ "stickers/parrot-pirate": {
+  "w": 724,
+  "h": 724,
+  "widths": [
+   160,
+   320,
+   480,
+   720
+  ],
+  "alpha": true
+ },
+ "team/aidan-hendry": {
+  "w": 900,
+  "h": 1125,
+  "widths": [
+   240,
+   360,
+   480,
+   640
+  ],
+  "alpha": false
+ },
+ "team/charlie-ashall": {
+  "w": 610,
+  "h": 762,
+  "widths": [
+   240,
+   360,
+   480,
+   610
+  ],
+  "alpha": false,
+  "crop": [
+   0,
+   0.04,
+   1
+  ]
+ },
+ "team/charlie-pelling": {
+  "w": 900,
+  "h": 1125,
+  "widths": [
+   240,
+   360,
+   480,
+   640
+  ],
+  "alpha": false
+ },
+ "team/connor-milburn": {
+  "w": 676,
+  "h": 845,
+  "widths": [
+   240,
+   360,
+   480,
+   640
+  ],
+  "alpha": false,
+  "crop": [
+   0,
+   0.12,
+   1
+  ]
+ },
+ "team/evan-atherton-elphick": {
+  "w": 930,
+  "h": 1162,
+  "widths": [
+   240,
+   360,
+   480,
+   640
+  ],
+  "alpha": false
+ },
+ "team/garrett-windus": {
+  "w": 414,
+  "h": 518,
+  "widths": [
+   240,
+   360,
+   414
+  ],
+  "alpha": false,
+  "crop": [
+   0.25,
+   0.29,
+   0.46
+  ]
+ },
+ "team/josh-cairns": {
+  "w": 414,
+  "h": 518,
+  "widths": [
+   240,
+   360,
+   414
+  ],
+  "alpha": false,
+  "crop": [
+   0.28,
+   0.27,
+   0.46
+  ]
+ },
+ "team/kyle-kerr": {
+  "w": 844,
+  "h": 1055,
+  "widths": [
+   240,
+   360,
+   480,
+   640
+  ],
+  "alpha": false
+ },
+ "team/lewis-mennim": {
+  "w": 414,
+  "h": 518,
+  "widths": [
+   240,
+   360,
+   414
+  ],
+  "alpha": false,
+  "crop": [
+   0.27,
+   0.27,
+   0.46
+  ]
+ },
+ "team/madi-freck": {
+  "w": 917,
+  "h": 1146,
+  "widths": [
+   240,
+   360,
+   480,
+   640
+  ],
+  "alpha": false
+ },
+ "team/martin-wilkinson": {
+  "w": 900,
+  "h": 1125,
+  "widths": [
+   240,
+   360,
+   480,
+   640
+  ],
+  "alpha": false
+ },
+ "team/max-breeze": {
+  "w": 900,
+  "h": 1125,
+  "widths": [
+   240,
+   360,
+   480,
+   640
+  ],
+  "alpha": false
+ },
+ "team/megan-nicol": {
+  "w": 900,
+  "h": 1125,
+  "widths": [
+   240,
+   360,
+   480,
+   640
+  ],
+  "alpha": false,
+  "crop": [
+   0,
+   0.04,
+   1
+  ]
+ },
+ "team/nathan-hopwood": {
+  "w": 900,
+  "h": 1125,
+  "widths": [
+   240,
+   360,
+   480,
+   640
+  ],
+  "alpha": false
+ },
+ "team/oliver-neal": {
+  "w": 414,
+  "h": 518,
+  "widths": [
+   240,
+   360,
+   414
+  ],
+  "alpha": false,
+  "crop": [
+   0.27,
+   0.29,
+   0.46
+  ]
+ },
+ "team/ryan-hughes": {
+  "w": 414,
+  "h": 518,
+  "widths": [
+   240,
+   360,
+   414
+  ],
+  "alpha": false,
+  "crop": [
+   0.29,
+   0.27,
+   0.46
+  ]
+ },
+ "team/sarah-childs": {
+  "w": 920,
+  "h": 1150,
+  "widths": [
+   240,
+   360,
+   480,
+   640
+  ],
+  "alpha": false
+ },
+ "work/3d-coral-props": {
+  "w": 1600,
+  "h": 772,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-coral-quarters": {
+  "w": 1600,
+  "h": 772,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-cyber-helmet": {
+  "w": 1600,
+  "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-datsun-240z": {
+  "w": 1600,
+  "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-delorean": {
+  "w": 1600,
+  "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-grimgrin": {
+  "w": 1600,
+  "h": 870,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-hunter": {
+  "w": 1600,
+  "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-night-house": {
+  "w": 1600,
+  "h": 828,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-robot": {
+  "w": 1600,
+  "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/concept-accessories": {
+  "w": 1600,
+  "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/concept-elder-turtle": {
+  "w": 1600,
+  "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/concept-iconography": {
+  "w": 1600,
+  "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/concept-statue-process": {
+  "w": 1600,
+  "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/concept-statue-sheet": {
+  "w": 1600,
+  "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/dev-cyberstation": {
+  "w": 1569,
+  "h": 878,
+  "widths": [
+   640,
+   960,
+   1569
+  ],
+  "alpha": false
+ },
+ "work/dev-gridlock": {
+  "w": 1600,
+  "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ }
+}

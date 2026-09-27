@@ -1,0 +1,29 @@
+---
+title: News
+description: What Shiverbug Studios has been up to: events, new starters and studio news, as posted on LinkedIn, with a link to each post.
+path: /news
+file: news.html
+nav: news
+---
+<main id="main">
+
+<section class="page-hero page-hero--sand" aria-labelledby="news-title">
+  <div class="wrap split split--wide-left">
+    <div>
+      <h1 id="news-title">News</h1>
+      <p class="lede">What we've been up to, as we posted it on LinkedIn. Each one is a short extract in the post's own words; the whole post, the photos and the comments are on LinkedIn.</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn--cream" href="{{ NEWS['profile'] }}">Follow us on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<section class="band band--tight" aria-label="Posts">
+  <div class="wrap">
+    {{ news() }}
+    <p class="muted mt-l">Want the game news without the rest? <a href="/out-of-water#follow">The Out of Water newsletter</a> only goes out when there's something to say.</p>
+  </div>
+</section>
+
+</main>

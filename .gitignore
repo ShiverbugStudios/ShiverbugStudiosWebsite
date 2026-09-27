@@ -1,27 +1,11 @@
-# Everything committed here is published: GitHub Pages serves the whole repo at
-# a guessable URL, so a file dropped in "just to look at" goes public the moment
-# it is pushed. Working documents stay out of the repo entirely.
-#
-# The co-dev gallery images are exported copies in assets/img/art/ and are
-# committed on purpose. It is the source documents that must not be.
+# Everything committed outside the folders _config.yml excludes is published
+# by GitHub Pages at a guessable address. Working documents never go in.
 
-# Full-resolution sources: team photos and art before they were resized into
-# assets/. Around 145 MB, and every byte of it used to be committed. It was kept
-# off the public site only by an accident of naming: with no .nojekyll file,
-# GitHub Pages runs Jekyll, and Jekyll drops any directory starting with "_".
-# Adding .nojekyll - a normal thing to do to speed up a static site - would have
-# published the lot. Untracked now, so neither the site nor a clone carries it.
-# Keep the originals somewhere backed up; they are not in this repo any more.
-_originals/
-
-# Internal working notes: feedback rounds, review transcripts, planning. These
-# were tracked once, which put them on the live site at a guessable path with
-# nothing in robots.txt to stop a crawler reading them. They named individual
-# people and what was wrong with their photos and their work. Notes about the
-# site do not live on the site.
+# Notes, feedback and planning about the site
 docs/
+notes/
 
-# Decks, contracts, exports, anything sent over for reference
+# Decks, contracts and exports sent over for reference
 *.pdf
 *.pptx
 *.ppt
@@ -29,13 +13,20 @@ docs/
 *.doc
 *.xlsx
 
-# Project files that sometimes get dragged in alongside art exports
+# Art project files that get dragged in alongside exports
 *.blend
 *.blend1
 *.psd
 *.ztl
+*.tif
+*.tiff
 
-# OS clutter
+# Full-resolution originals: source/ holds web-sized masters only
+_originals/
+
+# Python and OS clutter
+__pycache__/
+*.pyc
 Thumbs.db
 desktop.ini
 .DS_Store

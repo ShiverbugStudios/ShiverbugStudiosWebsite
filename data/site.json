@@ -1,0 +1,100 @@
+{
+  "_readme": "Studio facts used across the site: the footer, the press fact sheet, structured data and llms.txt. Change a fact here and every page that states it follows on the next build. log is the dated history on the home page, newest last; photo is a name from data/images.json.",
+
+  "name": "Shiverbug Studios",
+  "legalName": "Shiverbug Studios Ltd",
+  "url": "https://shiverbugstudios.com",
+  "email": "contact@shiverbugstudios.com",
+  "companyNumber": "16485763",
+  "registeredIn": "England and Wales",
+  "registeredOffice": "Victoria Building, Victoria Road, Middlesbrough, TS1 3AP, United Kingdom",
+  "founded": "2025-05-30",
+  "foundedText": "May 2025",
+  "town": "Middlesbrough",
+  "region": "North East England",
+
+  "forms": {
+    "contact": "https://formspree.io/f/xgogzlpv",
+    "newsletter": "https://buttondown.com/api/emails/embed-subscribe/oliverjn04"
+  },
+  "analytics": "https://oliverneal04.goatcounter.com/count",
+
+  "socials": [
+    { "label": "Bluesky", "url": "https://bsky.app/profile/shiverbugstudios.bsky.social" },
+    { "label": "Instagram", "url": "https://www.instagram.com/shiverbugstudios/" },
+    { "label": "TikTok", "url": "https://www.tiktok.com/@shiverbugstudios" },
+    { "label": "YouTube", "url": "https://www.youtube.com/@ShiverbugStudios" },
+    { "label": "X", "url": "https://x.com/ShiverbugStudio" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/company/shiverbug-studios" },
+    { "label": "itch.io", "url": "https://shiverbug-studios.itch.io/" }
+  ],
+  "discord": "https://discord.gg/gZDWdZEAxm",
+  "studentFutures": "https://www.tees.ac.uk/depts/studentfutures/opportunities.cfm",
+  "gameRepublic": "https://gamerepublic.net/member/shiverbug-studios/",
+  "tranzfuser": "https://tranzfuser.com/2025/06/tranzfuser-2025-teams-announced/",
+
+  "game": {
+    "name": "Out of Water",
+    "genre": "3D platformer collectathon",
+    "players": "1 or 2, local split screen",
+    "engine": "Unity 6",
+    "platforms": "PC (Steam)",
+    "status": "In development",
+    "release": "Not announced",
+    "price": "Not announced"
+  },
+
+  "log": [
+    {
+      "when": "2025-05",
+      "label": "May 2025",
+      "text": "Three Teesside University graduates, Lewis Mennim, Ryan Hughes and Garrett Windus, set up Shiverbug Studios Ltd in Middlesbrough."
+    },
+    {
+      "when": "2025-06",
+      "label": "June 2025",
+      "text": "Picked as one of 21 teams for Tranzfuser 2025, the government-funded programme for new graduate studios, with Teesside Launchpad as our local hub."
+    },
+    {
+      "when": "2025-09",
+      "label": "September 2025",
+      "text": "Took our prototype, then called Koopa and Kiko, to ProtoPlay in Dundee, and came home as the Tranzfuser 2025 Public Vote Winner.",
+      "photo": "photos/protoplay-public-vote-2025",
+      "alt": "Lewis, Ryan and Garrett on stage at ProtoPlay 2025 holding the Tranzfuser Public Vote Winner certificate, beside a ProtoPlay organiser.",
+      "caption": "ProtoPlay, Dundee. The certificate says the most votes of any Tranzfuser team."
+    },
+    {
+      "when": "2025-11",
+      "label": "November 2025",
+      "text": "Joined Game Republic, the games industry network for the North of England."
+    },
+    {
+      "when": "2026-01",
+      "label": "January 2026",
+      "text": "Started the game again in a fresh Unity 6 project, the one that became Out of Water, and gave the studio a new logo and a mascot: Shana the Shiverbug, the moth on every page of this site."
+    },
+    {
+      "when": "2026-02",
+      "label": "February 2026",
+      "text": "Told the world what the game is about. A turtle, a seagull and five stolen gems."
+    },
+    {
+      "when": "2026-04",
+      "label": "April 2026",
+      "text": "Put Out of Water in front of players at the Odyssey video games and toy festival in Harrogate."
+    },
+    {
+      "when": "2026-05",
+      "label": "May 2026",
+      "text": "The first of our Teesside interns joined the team."
+    },
+    {
+      "when": "2026-07",
+      "label": "July 2026",
+      "text": "Seven of us went down to Develop:Brighton.",
+      "photo": "photos/brighton-team-2026",
+      "alt": "Seven of the Shiverbug team on Brighton seafront in the sun, wearing Develop:Brighton lanyards, some in studio t-shirts.",
+      "caption": "Brighton seafront, between talks."
+    }
+  ]
+}

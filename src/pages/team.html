@@ -1,0 +1,50 @@
+---
+title: Team
+description: Everyone at Shiverbug Studios, the games studio in Middlesbrough making Out of Water, with a line from each of them in their own words.
+path: /team/
+file: team/index.html
+nav: team
+schema: studio
+---
+<main id="main">
+
+<section class="page-hero page-hero--sea" aria-labelledby="team-title">
+  <div class="wrap">
+    <h1 id="team-title">The shiverbugs</h1>
+    <p class="lede">Everyone who makes Shiverbug. The line under each name, and every profile behind it, was written by the person it's about. They've all picked a side, too: Team Turtle or Team Seagull.</p>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="founders-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="founders-title">Founders</h2>
+      <p>Lewis, Ryan and Garrett set the studio up in 2025, after Teesside University.</p>
+    </div>
+    {{ people_grid("founders") }}
+  </div>
+</section>
+
+<section class="band band--sand" aria-labelledby="studio-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="studio-title">The studio</h2>
+      <p>Everyone here apart from the founders joined us as an intern. <a href="/careers">Here's how that works.</a></p>
+    </div>
+    {{ people_grid("studio") }}
+  </div>
+</section>
+
+<section class="band" aria-labelledby="pool-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="pool-title">Collaborators</h2>
+      <p>People who work with us regularly without being on the team, and people who used to be. We'd happily work with any of them again.</p>
+    </div>
+    {{ people_grid("active") }}
+    <h3 class="mt-l">Former shiverbugs</h3>
+    <div class="mt-m">{{ people_grid("former") }}</div>
+  </div>
+</section>
+
+</main>

@@ -1,0 +1,102 @@
+---
+title: Shiverbug Studios | Games you play side by side
+bare_title: true
+description: An independent games studio in Middlesbrough. We're making Out of Water, a split-screen platformer for two, and we lend our artists, designers and programmers to other studios.
+path: /
+file: index.html
+nav: home
+schema: studio
+---
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero__grid">
+    <div>
+      <h1 id="hero-title">We make games you play side by side.</h1>
+      <p class="lede">Shiverbug is an independent studio in Middlesbrough. We're making Out of Water, a split-screen platformer for two: one turtle, one seagull, one sofa. We also lend our artists, designers and programmers to other studios.</p>
+      <div class="actions">
+        <a class="btn" href="/out-of-water">Meet Out of Water</a>
+        <a class="btn btn--cream" href="/co-development">Work with us</a>
+      </div>
+    </div>
+    <figure class="hero__screen">
+      <div class="frame">{{ video("title-loop", "game/title-scene", "Out of Water's title scene: Koopa and Kiko on a sunny beach while a pirate ship sails across the bay") }}</div>
+      {{ sticker("kiko", "sticker--kiko", sizes="150px", eager=True) }}
+      {{ sticker("koopa", "sticker--koopa", sizes="210px", eager=True) }}
+      <figcaption>The title scene of Out of Water, running in Unity. Very much a work in progress.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="game-title">
+  <div class="wrap split split--wide-left">
+    <div class="game-teaser__art">
+      <div class="frame">{{ img("game/cove", "Kiko the seagull perched on Koopa the turtle's shell beside a stack of wooden crates, in a sandy cove between tall cliffs and palm trees.", sizes="(min-width: 56em) 54vw, 92vw", near=1200) }}</div>
+      {{ sticker("crab-grunt", sizes="180px") }}
+    </div>
+    <div class="game-teaser">
+      <p class="overline">Our first game</p>
+      <h2 id="game-title">Out of Water</h2>
+      <p class="lede">A 3D platformer collectathon for two players on one screen. One of you is Koopa, a turtle. The other is Kiko, a seagull. Neither can finish the journey alone.</p>
+      <div class="pair">
+        <div class="pair__one">{{ img("stickers/koopa", "", sizes="64px", near=160) }}<p><b>Koopa</b>The heavy one. Rolls, slams, and is the only one who can dive.</p></div>
+        <div class="pair__one pair__one--kiko">{{ img("stickers/kiko", "", sizes="64px", near=160) }}<p><b>Kiko</b>The quick one. Dashes, glides, and gets up where Koopa can't.</p></div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="/out-of-water">See the game</a>
+        <a class="arrow-link" href="/out-of-water#follow">Get the newsletter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--deep" aria-labelledby="codev-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="overline">Co-development</p>
+      <h2 id="codev-title">Short on hands? Borrow ours.</h2>
+      <p>The people making Out of Water also make art and code for other studios: concept art, stylised and hard-surface 3D, level design and gameplay programming, in Unity or Unreal and in your pipeline.</p>
+    </div>
+    {{ discipline_cards() }}
+    <div class="actions mt-l">
+      <a class="btn" href="/co-development">See the work</a>
+      <a class="arrow-link" href="/contact?about=codev">Tell us about your project</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="latest-title">
+  <div class="wrap">
+    <div class="section-head section-head--row">
+      <h2 id="latest-title">Lately</h2>
+      <a class="arrow-link" href="/news">All the news</a>
+    </div>
+    {{ latest_posts(3) }}
+  </div>
+</section>
+
+<section class="band band--sand" aria-labelledby="log-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="log-title">So far</h2>
+      <p>We started in 2025. This is what has happened since, oldest first.</p>
+    </div>
+    {{ log() }}
+  </div>
+</section>
+
+<section class="band" aria-labelledby="team-title">
+  <div class="wrap split">
+    <div>
+      <h2 id="team-title">The shiverbugs</h2>
+      <p class="lede">Artists, designers, programmers and a narrative designer, most of us from Teesside University. Every profile on this site is written by the person it's about.</p>
+      <div class="actions mt-m">
+        <a class="btn" href="/team/">Meet the team</a>
+        <a class="arrow-link" href="/careers">How people join</a>
+      </div>
+    </div>
+    <div>{{ faces(group="team", big=True) }}</div>
+  </div>
+</section>
+
+</main>

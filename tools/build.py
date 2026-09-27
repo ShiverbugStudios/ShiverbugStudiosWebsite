@@ -188,8 +188,8 @@ def group_members(group):
         return [p for p in TEAM["talent"] if p.get("status") == "active"]
     if group == "former":
         return [p for p in TEAM["talent"] if p.get("status") == "former"]
-    if group == "interns":
-        return [p for p in TEAM["team"] if not p.get("founder")]
+    if group == "interns":  # came in through Teesside University's scheme
+        return [p for p in TEAM["team"] if not p.get("founder") and not p.get("joinedVia")]
     raise KeyError(group)
 
 

@@ -1,5 +1,5 @@
 {
-  "_readme": "Everyone on the site. Edit this, then run python tools/build.py. Fields: id (the old ?p= slug, kept so team-member.html?p=... links still land), slug (the page address, team/<slug>), name, role, pronouns (optional), tagline and about (the person's own words: never rewrite them; about is a list of paragraphs and may hold links, written as the other person's slug e.g. 'lewis-mennim.html', which the build turns into /team/lewis-mennim), favourite ('turtle' or 'seagull': which of the two heroes they back, shown as Team Turtle or Team Seagull), socials (list of {label, url}), status (talent pool only: 'active' or 'former'), founder (true for the three founders), photo (a file in source/team), crop (optional [left, top, width] as fractions of the photo, for the 4:5 portrait tools/images.py cuts; leave it out to take the full width from the top), knowsAbout (optional, for search engines), metaDescription (optional search snippet, when the first sentence of about will not do). A person with no about text is treated as unfinished: no profile link, no page.",
+  "_readme": "Everyone on the site. Edit this, then run python tools/build.py. Fields: id (the old ?p= slug, kept so team-member.html?p=... links still land), slug (the page address, team/<slug>), name, role, pronouns (optional), tagline and about (the person's own words: never rewrite them; about is a list of paragraphs and may hold links, written as the other person's slug e.g. 'lewis-mennim.html', which the build turns into /team/lewis-mennim), favourite ('turtle' or 'seagull': which of the two heroes they back, shown as Team Turtle or Team Seagull), socials (list of {label, url}), status (talent pool only: 'active' or 'former'), founder (true for the three founders), photo (a file in source/team), crop (optional [left, top, width] as fractions of the photo, for the 4:5 portrait tools/images.py cuts; leave it out to take the full width from the top), joinedVia (optional: how someone on the team joined, when it was not Teesside University's internship scheme, e.g. 'Trailblazer'; everyone else on the team apart from the founders is listed as a Teesside intern on the careers page), knowsAbout (optional, for search engines), metaDescription (optional search snippet, when the first sentence of about will not do). A person with no about text is treated as unfinished: no profile link, no page.",
   "team": [
     {
       "id": "lewis",
@@ -174,7 +174,8 @@
       ],
       "favourite": "turtle",
       "metaDescription": "Charlie Pelling - Narrative Designer at Shiverbug Studios. Narrative designer focused on immersive storytelling and characters players remember.",
-      "photo": "charlie-pelling.jpg"
+      "photo": "charlie-pelling.jpg",
+      "joinedVia": "Trailblazer"
     },
     {
       "id": "connor",

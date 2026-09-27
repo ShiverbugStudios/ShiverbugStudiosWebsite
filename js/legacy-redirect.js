@@ -11,14 +11,16 @@
     'charlie-a': 'charlie-ashall',
     'oliver': 'oliver-neal',
     'martin': 'martin-wilkinson',
-    'evan': 'evan-atherton-elphick',
     'kyle': 'kyle-kerr',
-    'nathan': 'nathan-hopwood',
     'josh': 'josh-cairns',
-    'max': 'max-breeze',
+    'evan': 'evan-atherton-elphick',
     'madi': 'madi-freck',
+    'nathan': 'nathan-hopwood',
+    'max': 'max-breeze',
     'aidan': 'aidan-hendry'
   };
-  var slug = MAP[new URLSearchParams(location.search).get('p')];
+  var p = new URLSearchParams(location.search).get('p');
+  // own keys only: ?p=constructor would otherwise find Object.prototype's
+  var slug = p && Object.prototype.hasOwnProperty.call(MAP, p) ? MAP[p] : null;
   if (slug) location.replace('team/' + slug + '.html' + location.hash);
 })();

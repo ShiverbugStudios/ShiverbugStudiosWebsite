@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://oliverneal04.goatcounter.com; media-src 'self'; connect-src 'self' https://formspree.io https://buttondown.com https://oliverneal04.goatcounter.com; form-action https://formspree.io https://buttondown.com; base-uri 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://oliverneal04.goatcounter.com; media-src 'self'; connect-src 'self' https://formspree.io https://buttondown.com https://oliverneal04.goatcounter.com; form-action https://formspree.io https://buttondown.com; base-uri 'none'; object-src 'none'">
   <title>Privacy | Shiverbug Studios</title>
   <meta name="description" content="How Shiverbug Studios handles your data. Short version: we collect almost nothing, and we never sell it.">
   <link rel="canonical" href="https://shiverbugstudios.com/privacy.html">
@@ -21,11 +21,10 @@
   <meta name="theme-color" content="#050b13">
   <link rel="apple-touch-icon" href="assets/img/favicon.png">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.min.css">
+  <script>document.documentElement.classList.add('js')</script>
   <!-- BUILD:PAGE:START -->
   <script type="application/ld+json">
 {
@@ -43,7 +42,7 @@
                        "about":  {
                                      "@id":  "https://shiverbugstudios.com/#studio"
                                  },
-                       "dateModified":  "2026-08-19",
+                       "dateModified":  "2026-09-27",
                        "inLanguage":  "en-GB"
                    },
                    {
@@ -74,15 +73,15 @@
   <!-- ======= NAV ======= -->
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <a class="nav__brand" href="index.html" aria-label="Shiverbug Studios, home"><img src="assets/img/nav-wordmark.webp" alt="" class="nav__wordmark" width="316" height="138"></a>
+      <a class="nav__brand" href="./" aria-label="Shiverbug Studios, home"><img src="assets/img/nav-wordmark.webp" alt="" class="nav__wordmark" width="316" height="138"></a>
       <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="index.html#services">Co-Dev</a>
+        <a href="./#services">Co-Dev</a>
         <a href="games.html">Our Games</a>
-        <a href="index.html#studio">Studio</a>
-        <a href="index.html#team">Team</a>
+        <a href="./#studio">Studio</a>
+        <a href="./#team">Team</a>
         <a href="join.html">Join Us</a>
         <a href="press.html">Press</a>
-        <a class="nav__cta" href="index.html#contact">Get in touch</a>
+        <a class="nav__cta" href="./#contact">Get in touch</a>
       </nav>
       <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span>
@@ -93,7 +92,7 @@
   <main id="top" class="profile legal">
     <div class="container">
 
-      <a class="backlink" href="index.html">
+      <a class="backlink" href="./">
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Back to home
       </a>
@@ -103,7 +102,7 @@
         <h1>Privacy <span class="underline-sea">Policy</span></h1>
         <p class="section__lede">
           Short version: we collect almost nothing, we never sell anything,
-          and there are no cookies. Here's the detail. Last updated 19 August 2026.
+          and there are no cookies. Here's the detail. Last updated 27 September 2026.
         </p>
       </header>
 
@@ -155,12 +154,9 @@
           for security. We don't see or use those.
         </p>
         <p>
-          <strong>Fonts.</strong> Our typefaces are served by Google Fonts. Loading
-          them means your browser requests files from Google's servers, so Google
-          receives your IP address and basic request information as part of that.
-          Google states that Google Fonts sets no cookies and doesn't use these
-          requests to build advertising profiles. We use them under legitimate
-          interests, for a site that looks the way it should.
+          <strong>Fonts.</strong> Our typefaces are served from this site, alongside
+          everything else on it. Loading a page doesn't send a request to Google or
+          any other font service.
         </p>
         <p>
           <strong>Visitor counts.</strong> We use
@@ -180,7 +176,7 @@
 
         <h2 class="press__h">Where Your Data Goes</h2>
         <p>
-          Formspree, Buttondown, GitHub and Google are based in the United States, and
+          Formspree, Buttondown and GitHub are based in the United States, and
           GoatCounter is in the Netherlands, so a contact message or newsletter signup
           is processed outside the UK. Where that happens, the transfer is covered by
           the UK's International Data Transfer Addendum, the UK Extension to the EU-US
@@ -223,10 +219,11 @@
 
         <h2 class="press__h">Changes</h2>
         <p>
-          If this policy changes, the new version appears here. Last updated: 19 August 2026
-          (described the contact form as it now stands, added how we handle messages
-          about freelance work and joining the studio, and gave those a retention
-          period). Before that, 26 July 2026 (added company details, lawful bases,
+          If this policy changes, the new version appears here. Last updated: 27 September 2026
+          (our fonts are now served from this site, so Google no longer receives
+          anything when you visit). Before that, 19 August 2026 (described the contact
+          form as it now stands, added how we handle messages about freelance work and
+          joining the studio, and gave those a retention period), and 26 July 2026 (added company details, lawful bases,
           international transfers, the full list of your rights, and a note about
           Google Fonts).
         </p>

@@ -21,7 +21,7 @@ This script reads it and writes:
 | --- | --- |
 | `team/<slug>.html` | One real, crawlable page per person |
 | `team/index.html` | The team hub at `/team/` |
-| `index.html` | Team grids, between the `BUILD:TEAM` / `BUILD:TALENT` markers |
+| `index.html` | The team grid and the talent-pool line, between the `BUILD:TEAM` / `BUILD:TALENT` markers |
 | `index.html` | Structured data graph, between the `BUILD:SCHEMA` markers |
 | `team-member.html` | Legacy `?p=` redirect map and no-JS fallback list |
 | `llms.txt` | Curated plain-text site map for AI agents |
@@ -92,7 +92,17 @@ on it:
 powershell -ExecutionPolicy Bypass -File tools/validate-site.ps1
 ```
 
-Both run automatically on push and PR via
+## build-css.ps1
+
+Writes `css/style.min.css` from `css/style.css` by stripping comments and blank
+space, and nothing else. Every page links the minified file, so run it after any
+stylesheet change:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/build-css.ps1
+```
+
+All three run automatically on push and PR via
 `.github/workflows/build-and-validate.yml`, which also fails if the committed
 output doesn't match a fresh build.
 

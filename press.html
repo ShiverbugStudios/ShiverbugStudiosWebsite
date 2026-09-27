@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://oliverneal04.goatcounter.com; media-src 'self'; connect-src 'self' https://formspree.io https://buttondown.com https://oliverneal04.goatcounter.com; form-action https://formspree.io https://buttondown.com; base-uri 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://oliverneal04.goatcounter.com; media-src 'self'; connect-src 'self' https://formspree.io https://buttondown.com https://oliverneal04.goatcounter.com; form-action https://formspree.io https://buttondown.com; base-uri 'none'; object-src 'none'">
   <title>Press Kit | Shiverbug Studios</title>
   <meta name="description" content="Press kit for Shiverbug Studios and Out of Water: fact sheets, boilerplate copy, logos, screenshots, trailer and press contact details.">
   <meta property="og:title" content="Press Kit | Shiverbug Studios">
@@ -21,11 +21,10 @@
   <meta name="theme-color" content="#050b13">
   <link rel="apple-touch-icon" href="assets/img/favicon.png">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.min.css">
+  <script>document.documentElement.classList.add('js')</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,6 +62,10 @@
                        "url":  "https://shiverbugstudios.com/games.html",
                        "description":  "A 2-player split-screen collectathon platformer. One player is a turtle, the other a seagull, exploring a colourful world full of charm, clever challenges and an army of crabs.",
                        "image":  "https://shiverbugstudios.com/assets/img/out-of-water-screenshot.jpg",
+                       "screenshot":  [
+                                          "https://shiverbugstudios.com/assets/press/oow-screenshot-cove.jpg",
+                                          "https://shiverbugstudios.com/assets/press/oow-screenshot-characters.jpg"
+                                      ],
                        "genre":  [
                                      "Platform game",
                                      "Collectathon",
@@ -70,14 +73,13 @@
                                  ],
                        "gamePlatform":  [
                                             "PC",
-                                            "Steam",
                                             "Steam Deck",
                                             "Xbox",
                                             "PlayStation",
                                             "Nintendo Switch"
                                         ],
                        "gameEngine":  "Unity",
-                       "playMode":  "CoOp",
+                       "playMode":  "https://schema.org/CoOp",
                        "numberOfPlayers":  {
                                                "@type":  "QuantitativeValue",
                                                "minValue":  2,
@@ -93,7 +95,7 @@
                    },
                    {
                        "@id":  "https://shiverbugstudios.com/press.html",
-                       "dateModified":  "2026-08-22"
+                       "dateModified":  "2026-09-27"
                    }
                ]
 }
@@ -107,15 +109,15 @@
   <!-- ======= NAV ======= -->
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <a class="nav__brand" href="index.html" aria-label="Shiverbug Studios, home"><img src="assets/img/nav-wordmark.webp" alt="" class="nav__wordmark" width="316" height="138"></a>
+      <a class="nav__brand" href="./" aria-label="Shiverbug Studios, home"><img src="assets/img/nav-wordmark.webp" alt="" class="nav__wordmark" width="316" height="138"></a>
       <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="index.html#services">Co-Dev</a>
+        <a href="./#services">Co-Dev</a>
         <a href="games.html">Our Games</a>
-        <a href="index.html#studio">Studio</a>
-        <a href="index.html#team">Team</a>
+        <a href="./#studio">Studio</a>
+        <a href="./#team">Team</a>
         <a href="join.html">Join Us</a>
         <a href="press.html" aria-current="page">Press</a>
-        <a class="nav__cta" href="index.html#contact">Get in touch</a>
+        <a class="nav__cta" href="./#contact">Get in touch</a>
       </nav>
       <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span>
@@ -126,7 +128,7 @@
   <main id="top" class="profile press">
     <div class="container">
 
-      <a class="backlink" href="index.html">
+      <a class="backlink" href="./">
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Back to home
       </a>
@@ -140,7 +142,7 @@
           If you need something that isn't here,
           <a href="#press-contact">just ask</a>.
         </p>
-        <p class="press__updated">Last updated August 2026</p>
+        <p class="press__updated">Last updated September 2026</p>
       </header>
 
       <!-- Three bundles rather than one. Most of the full kit's weight is the
@@ -150,17 +152,17 @@
       <section class="press__downloads reveal" aria-label="Downloads">
         <a class="press__dl press__dl--lead" href="assets/press/shiverbug-press-kit.zip" download>
           <span class="press__dl-name">Full press kit</span>
-          <span class="press__dl-meta">.zip &middot; 5&nbsp;MB</span>
+          <span class="press__dl-meta">.zip &middot; 5.8&nbsp;MB</span>
           <span class="press__dl-note">Logos, screenshots, team photos and the trailer.</span>
         </a>
         <a class="press__dl" href="assets/press/shiverbug-logos.zip" download>
           <span class="press__dl-name">Logos</span>
-          <span class="press__dl-meta">.zip &middot; 1&nbsp;MB</span>
+          <span class="press__dl-meta">.zip &middot; 1.0&nbsp;MB</span>
           <span class="press__dl-note">Vector and raster lockups, RGB and CMYK, plus the icon and wordmark.</span>
         </a>
         <a class="press__dl" href="assets/press/shiverbug-screenshots.zip" download>
           <span class="press__dl-name">Screenshots</span>
-          <span class="press__dl-meta">.zip &middot; 0.9&nbsp;MB</span>
+          <span class="press__dl-meta">.zip &middot; 1.5&nbsp;MB</span>
           <span class="press__dl-note">Out of Water at full resolution, plus studio photography.</span>
         </a>
       </section>
@@ -193,13 +195,13 @@
             <dt>Based in</dt><dd>North East England, United Kingdom</dd>
             <dt>Registered office</dt><dd>Victoria Building, Victoria Road, Middlesbrough, TS1 3AP</dd>
             <dt>Company no.</dt><dd>16485763 (England &amp; Wales)</dd>
-            <dt>Team</dt><dd>11 people, plus a talent pool of 5 regular collaborators</dd>
+            <dt>Team</dt><dd>10 people, plus a talent pool of regular collaborators</dd>
             <dt>Current project</dt><dd>Out of Water, in development</dd>
             <dt>Services</dt><dd>Co-development and work-for-hire: concept art, stylised 3D art, hard surface art, design &amp; development</dd>
             <!-- The studio works in both; Out of Water is Unity. That split lives
                  in the game fact sheet below rather than being flattened here. -->
             <dt>Engines</dt><dd>Unity, Unreal Engine 5</dd>
-            <dt>Website</dt><dd><a href="index.html">shiverbugstudios.com</a></dd>
+            <dt>Website</dt><dd><a href="./">shiverbugstudios.com</a></dd>
             <dt>Press contact</dt><dd><a href="mailto:contact@shiverbugstudios.com?subject=Press">contact@shiverbugstudios.com</a></dd>
             <dt>Socials</dt><dd><a href="https://linktr.ee/shiverbugstudios" target="_blank" rel="noopener">linktr.ee/shiverbugstudios</a></dd>
           </dl>
@@ -229,7 +231,7 @@
             <h3>Short <span>(58 words)</span></h3>
             <button class="press__copy" type="button" data-copy="#bp-medium">Copy</button>
           </div>
-          <p id="bp-medium">Founded in 2025, Shiverbug Studios is an eleven-strong team of designers, artists and programmers based in North East England. The studio is building its debut title, Out of Water, a two-player split-screen collectathon platformer, and takes on co-development and work-for-hire for other studios alongside it: concept art, stylised and hard surface 3D art, level design and gameplay programming.</p>
+          <p id="bp-medium">Founded in 2025, Shiverbug Studios is a ten-strong team of designers, artists and programmers based in North East England. The studio is building its debut title, Out of Water, a two-player split-screen collectathon platformer, and takes on co-development and work-for-hire for other studios alongside it: concept art, stylised and hard surface 3D art, level design and gameplay programming.</p>
         </div>
 
         <div class="press__copyblock">
@@ -237,7 +239,7 @@
             <h3>Full <span>(107 words)</span></h3>
             <button class="press__copy" type="button" data-copy="#bp-long">Copy</button>
           </div>
-          <p id="bp-long">Shiverbug Studios is an indie game development studio based in North East England, founded in 2025 on a simple idea: games should be joyful, shared, and welcoming for players of all ages. The kind of thing a whole household can pile onto the sofa for. The team of eleven designers, artists and programmers is currently building its debut title, Out of Water, a two-player split-screen collectathon platformer in which a turtle and a seagull explore a colourful world together. Alongside it the studio co-develops for other teams, covering concept art, stylised and hard surface 3D art, level design and gameplay programming in Unity and Unreal Engine 5.</p>
+          <p id="bp-long">Shiverbug Studios is an indie game development studio based in North East England, founded in 2025 on a simple idea: games should be joyful, shared, and welcoming for players of all ages. The kind of thing a whole household can pile onto the sofa for. The team of ten designers, artists and programmers is currently building its debut title, Out of Water, a two-player split-screen collectathon platformer in which a turtle and a seagull explore a colourful world together. Alongside it the studio co-develops for other teams, covering concept art, stylised and hard surface 3D art, level design and gameplay programming in Unity and Unreal Engine 5.</p>
         </div>
       </section>
 
@@ -251,7 +253,7 @@
           household can pile onto the sofa for.
         </p>
         <p>
-          The team of eleven designers, artists and programmers is currently building
+          The team of ten designers, artists and programmers is currently building
           its debut title, Out of Water, and takes on co-development and
           work-for-hire alongside it, working in Unity and Unreal Engine 5 and
           fitting into whatever pipeline a partner already runs. You'll find the
@@ -266,8 +268,8 @@
         <ul class="press__creds">
           <li><strong>Tranzfuser</strong><span>Public Vote Winner</span></li>
           <li><strong>UK Games Fund</strong><span>Supported studio</span></li>
-          <li><strong>Games Republic</strong><span>Member</span></li>
-          <li><strong>Entrepreneurs Forum</strong><span>Member</span></li>
+          <li><strong>Game Republic</strong><span>Member</span></li>
+          <li><strong>Entrepreneurs&rsquo; Forum</strong><span>Member</span></li>
         </ul>
       </section>
 
@@ -526,10 +528,10 @@
           <li><a href="team/garrett-windus.html">Garrett Windus</a><span>3D Artist &middot; Co-Founder</span></li>
         </ul>
         <p>
-          Behind them, eleven people in total across concept art, character and
+          Behind them, ten people in total across concept art, character and
           environment art, level and narrative design, and gameplay programming,
-          plus a talent pool of five regular collaborators covering 3D and
-          character art, sound and social. Full profiles, portfolios and credits are
+          plus a talent pool of regular collaborators covering 3D and character
+          art and social media. Full profiles, portfolios and credits are
           on the <a href="team/">team page</a>.
         </p>
         <p class="press__note">Interview requests go to <a href="mailto:contact@shiverbugstudios.com?subject=Interview%20request">contact@shiverbugstudios.com</a> and we'll put you in front of whoever's best placed to answer.</p>
@@ -562,7 +564,7 @@
       <section class="press__section reveal press__cta" id="press-contact">
         <h2 class="press__h">Press Contact</h2>
         <p>Writing something, chasing an asset, or after an interview with the team?</p>
-        <a class="btn btn--sand" href="index.html#contact">Use the contact form</a>
+        <a class="btn btn--sand" href="./#contact">Use the contact form</a>
         <p class="press__note">
           Or email us directly at
           <a href="mailto:contact@shiverbugstudios.com?subject=Press">contact@shiverbugstudios.com</a>.

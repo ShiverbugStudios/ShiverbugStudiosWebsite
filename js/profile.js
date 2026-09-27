@@ -17,10 +17,16 @@
     btn.setAttribute('aria-controls', 'aboutText');
     about.insertAdjacentElement('afterend', btn);
 
-    btn.addEventListener('click', () => {
-      const open = !about.classList.toggle('is-clamped');
+    const setOpen = (open) => {
+      about.classList.toggle('is-clamped', !open);
       btn.textContent = open ? 'Show less' : 'Read more';
       btn.setAttribute('aria-expanded', String(open));
+    };
+    btn.addEventListener('click', () => setOpen(about.classList.contains('is-clamped')));
+    // A link inside the folded part is still in the tab order. Tabbing onto it
+    // opens the bio, rather than parking focus on something clipped out of view.
+    about.addEventListener('focusin', () => {
+      if (about.classList.contains('is-clamped')) setOpen(true);
     });
   }
 

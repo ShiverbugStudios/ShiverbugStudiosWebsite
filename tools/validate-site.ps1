@@ -97,12 +97,22 @@ foreach ($f in $htmlFiles) {
   if ($html -notmatch 'company no\. 16485763') {
     Fail "$rel : missing the Companies Act trading disclosure in the footer"
   }
-  # An inline <script> would be blocked by our own CSP. JSON-LD is data, not script,
-  # and is left alone.
+  # An inline <script> is blocked by our own CSP unless the policy names its exact
+  # hash. JSON-LD is data, not script, and is left alone. Everything else must be
+  # hashed in this page's own CSP, which catches both a new inline script nobody
+  # allowed and an edit to the allowed one that forgot to move the hash.
+  $cspMatch = [regex]::Match($html, 'http-equiv="Content-Security-Policy"\s+content="([^"]*)"')
+  $cspText = if ($cspMatch.Success) { $cspMatch.Groups[1].Value } else { '' }
   foreach ($m in [regex]::Matches($html, '(?s)<script(?![^>]*\ssrc=)([^>]*)>(.*?)</script>')) {
-    if ($m.Groups[1].Value -notmatch 'application/ld\+json') {
-      Fail "$rel : inline <script> will be blocked by the page's own CSP - move it to a .js file"
+    if ($m.Groups[1].Value -match 'application/ld\+json') { continue }
+    $sha = [Security.Cryptography.SHA256]::Create()
+    $digest = [Convert]::ToBase64String($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($m.Groups[2].Value)))
+    if (-not $cspText.Contains("'sha256-$digest'")) {
+      Fail "$rel : inline <script> is not allowed by the page's own CSP (its hash is sha256-$digest) - move it to a .js file or add the hash"
     }
+  }
+  if ($cspText -match 'fonts\.(googleapis|gstatic)\.com') {
+    Fail "$rel : CSP still allows Google Fonts - the fonts are self-hosted in assets/fonts"
   }
 
   # ---- JSON-LD blocks parse ----

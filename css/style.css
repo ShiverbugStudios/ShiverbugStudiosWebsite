@@ -56,6 +56,48 @@
    pages rather than being re-picked each time.
    ============================================================ */
 
+/* ---------- type, self-hosted ----------
+   Both families are variable fonts under the SIL Open Font License, served
+   from assets/fonts rather than from Google. That drops a render-blocking
+   stylesheet on a third-party origin plus two extra connections from every
+   first visit, and it means no visitor's IP address goes to Google just to
+   draw a heading - which the privacy policy used to have to own up to.
+
+   Latin and latin-ext only. The unicode-range on each face means a browser
+   only fetches latin-ext if a page actually uses a character from it, and the
+   two latin files are preloaded from every page's head. The weight ranges are
+   the axes in the files, so 400 through 800 all come from one download. */
+@font-face {
+  font-family: "Bricolage Grotesque"; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url("../assets/fonts/bricolage-grotesque-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Bricolage Grotesque"; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url("../assets/fonts/bricolage-grotesque-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Instrument Sans"; font-style: normal; font-weight: 400 600; font-display: swap;
+  src: url("../assets/fonts/instrument-sans-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Instrument Sans"; font-style: normal; font-weight: 400 600; font-display: swap;
+  src: url("../assets/fonts/instrument-sans-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Instrument Sans"; font-style: italic; font-weight: 400; font-display: swap;
+  src: url("../assets/fonts/instrument-sans-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Instrument Sans"; font-style: italic; font-weight: 400; font-display: swap;
+  src: url("../assets/fonts/instrument-sans-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 /* ============================================================
    DEEP WATER
    One theme, and it is dark. There is no light variant and no
@@ -109,7 +151,7 @@
   --crab-deep: #c14033;
   --sea-chip: #0c828d;
   --leaf-chip: #3c854a;
-  --crab-chip: #db3b2b;
+  --crab-chip: #cf3526;   /* #fff on this is 5.0:1; the old #db3b2b was 4.49 */
 
   /* ---- surfaces, deepest first ----
      --ink is the band, --paper-2 the alternate section, --paper the page
@@ -314,7 +356,7 @@ img, video, svg { display: block; max-width: 100%; }
 img { height: auto; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 800;
   line-height: 1.05;
@@ -349,7 +391,7 @@ h1, h2, h3 {
   outline-offset: 2px;
   border-radius: 2px;
 }
-.nav :focus-visible, .hero :focus-visible, .services :focus-visible,
+.nav :focus-visible, .hero :focus-visible,
 .proof :focus-visible, .footer :focus-visible, .lightbox :focus-visible,
 .community :focus-visible {
   outline-color: var(--sand);
@@ -374,10 +416,6 @@ h1, h2, h3 {
 .btn--sand:hover { background: var(--sand-deep); }
 .btn--ink { background: var(--invert-bg); color: var(--invert-fg); }
 .btn--ink:hover { background: var(--invert-bg-hover); }
-/* A light button, for use on a dark band - so it is pinned to the brand
-   constants rather than the theme. On dark, --paper IS the band. */
-.btn--paper { background: var(--brand-paper); color: var(--brand-ink); }
-.btn--paper:hover { background: #fff; }
 .btn--ghost { border-color: rgba(255,255,255,.35); color: #fff; }
 .btn--ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); }
 .btn--ghost-ink { border-color: rgba(255, 255, 255, .3); color: var(--heading); }
@@ -393,14 +431,10 @@ h1, h2, h3 {
 .kicker::before { content: ""; width: 26px; height: 3px; border-radius: 2px; background: currentColor; }
 .kicker--sea { color: var(--sea-ink); }
 .kicker--leaf { color: var(--leaf-ink); }
-/* Sand is the one accent that changes value with its backdrop, so it is the one
-   that has to be told where it is. The safe tier is the default: --sand-deep is
-   2.60:1 on --paper, and this used to be set to it unconditionally on the claim
-   that every kicker--sand sat on ink. The publishers pitch on games.html does
-   not - it is a paper-to-white gradient - so that kicker was failing 1.4.3 in
-   the field. Defaulting to --sand-ink and brightening only inside the ink bands
-   means the mistake cannot recur: a sand kicker dropped on a light section now
-   lands on the passing colour by itself. */
+/* Sand still takes a tier by where it sits, a habit from the light palette
+   that is worth keeping. --sand-ink is the default and clears 4.5 on every
+   surface the site has; the ink bands get the brand --sand itself, which is
+   the colour the rest of their furniture (stickers, buttons) already wears. */
 .kicker--sand { color: var(--sand-ink); }
 .hero .kicker--sand,
 .proof .kicker--sand,
@@ -434,7 +468,12 @@ h1, h2, h3 {
   display: inline-block; width: 9px; height: 9px; border-radius: 50%;
   background: var(--leaf); margin-right: .15rem;
 }
-.dot--pulse { animation: pulse 2s infinite; }
+/* An infinite loop, so it is gated rather than left to the reduced-motion
+   blanket at the foot of the file: that clamps durations to .01ms, which turns a
+   2s pulse into a flicker every frame for exactly the people who asked for less. */
+@media (prefers-reduced-motion: no-preference) {
+  .dot--pulse { animation: pulse 2s infinite; }
+}
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(85, 179, 104, .5); }
   50% { box-shadow: 0 0 0 7px rgba(85, 179, 104, 0); }
@@ -578,8 +617,9 @@ h1, h2, h3 {
      their own; the ink just has to stay out of their way. */
   background: var(--ink);
   color: #fff;
-  /* a touch more ink above and below the introduction - the logo needs room to
-     breathe now it is the first thing on the page rather than a nav trinket */
+  /* a touch more ink above and below the introduction, so the reel of work
+     beside it has room for its tilt and its dropped column without crowding
+     the nav or the wave */
   padding: clamp(9rem, 17vh, 12rem) 0 clamp(7rem, 14vh, 9.5rem);
   overflow: hidden;
 }
@@ -598,28 +638,58 @@ h1, h2, h3 {
 }
 .hero__actions { display: flex; flex-wrap: wrap; gap: .9rem; }
 
-.hero__frame {
-  position: relative;
-  border-radius: var(--radius-lg);
-  transform: rotate(2deg);
-  transition: transform .4s var(--ease-out);
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,.55);
-}
-.hero__frame:hover { transform: rotate(.5deg) translateY(-6px); }
-.hero__frame img {
-  border-radius: var(--radius-lg);
-  border: 3px solid rgba(255,255,255,.14);
-  aspect-ratio: 16/10; object-fit: cover; width: 100%;
-}
-.hero__frame .sticker--sand { top: -14px; left: -10px; }
+/* ---- the reel ----
+   One piece from each service, as four framed prints pinned loosely to the
+   ink. It replaced the moth mark, which sat here at 400px directly under the
+   same mark in the nav: the hero said who we are twice and never showed what
+   we make, on a site whose whole pitch is the work.
 
-/* The logo, at a size where the linework reads. It's transparent white vector
-   on the dark hero, so it needs no plate behind it, and 400px is a layout
-   choice rather than a sharpness ceiling now that the source is an SVG. */
-.hero__logo {
-  width: min(400px, 100%); height: auto;
-  margin-inline: auto;
-  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, .45));
+   The right-hand column drops half a tile so the four read as a scatter rather
+   than a spreadsheet, and each print has its own small tilt, the same framed-
+   photo language the proof, studio and recognition bands already speak. The
+   tilt is `rotate` and the hover lift is `transform` on the link inside, so
+   the two compose instead of one replacing the other.
+
+   Each tile is a link down to its service. The label is the link's name - the
+   images carry empty alt text because the same pieces appear again below with
+   full descriptions, and reading them twice in a row helps nobody. */
+.hero__art { position: relative; }
+.reel {
+  list-style: none;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(.8rem, 1.6vw, 1.25rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.reel__tile:nth-child(1) { rotate: -2.5deg; }
+.reel__tile:nth-child(2) { rotate: 2deg;   translate: 0 clamp(1.5rem, 3vw, 2.5rem); }
+.reel__tile:nth-child(3) { rotate: 1.5deg; }
+.reel__tile:nth-child(4) { rotate: -1.5deg; translate: 0 clamp(1.5rem, 3vw, 2.5rem); }
+.reel__tile a {
+  position: relative; display: block;
+  border-radius: var(--radius-lg); overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, .14);
+  background: var(--ink-2);
+  box-shadow: 0 26px 50px -22px rgba(0, 0, 0, .9);
+  transition: transform .35s var(--ease-out), border-color .25s;
+}
+.reel__tile img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.reel__tile a:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, .45); }
+/* Same pill as the artist credits on the galleries below, so a label on a
+   picture means one thing everywhere on the page. */
+.reel__label {
+  position: absolute; left: .55rem; bottom: .55rem;
+  padding: .3rem .75rem; border-radius: 999px;
+  background: rgba(4, 8, 12, .88); border: 1px solid rgba(255, 255, 255, .3);
+  font-family: var(--font-display); font-weight: 700; font-size: .78rem; color: #fff;
+  white-space: nowrap;
+}
+.reel__tile a:hover .reel__label { border-color: var(--sand); }
+.reel__tile a:focus-visible { outline-offset: 4px; }
+/* The sticker the other framed photos carry, stuck across the scatter's top
+   corner rather than on any one print, because it is true of all four. */
+.reel__sticker { top: -14px; left: -8px; z-index: 1; margin: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .reel__tile a:hover { transform: none; }
 }
 
 .wave { position: absolute; inset-inline: 0; bottom: -1px; line-height: 0; }
@@ -813,26 +883,28 @@ h1, h2, h3 {
 main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 .section__head { max-width: 62ch; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
 .section__head h2 { font-size: clamp(2.1rem, 4.2vw, 3.3rem); margin-bottom: 1.1rem; }
+/* A page that opens on a section rather than a hero has its h1 here, and with
+   no size of its own it fell back to the browser's 2em - smaller than the h2s
+   further down the same page, which is the heading order inverted on screen. */
+.section__head h1 { font-size: clamp(2.6rem, 5.4vw, 4.2rem); margin-bottom: 1.1rem; }
 .section__lede { font-size: 1.13rem; color: var(--text-soft); }
 /* smaller print under a lede: provenance, caveats, the honest asterisk.
    No opacity dimming here - it drops --text-soft under the 4.5:1 AA threshold. */
 .section__note { font-size: .95rem; color: var(--text-soft); margin-top: .8rem; }
-.section__head--light h2 { color: #fff; }
-.section__head--light .section__lede { color: var(--text-paper-soft); }
-.section__head--light .section__note { color: var(--text-paper-soft); }
 
 /* ---------- game ---------- */
 .game { background: var(--paper); padding-top: 3.5rem; }
 
-/* Deliberately narrower than the shots below it. Full width, this clip reads as
-   the trailer it isn't - it's two characters standing still while the camera
-   drifts, and at hero size the lack of anything happening is the loudest thing
-   on the page. Small enough to be an aside, it plays as one. */
+/* Narrower than the shots below it, still. Full width, this clip reads as the
+   trailer it isn't - it's two characters standing still while the camera
+   drifts. But at 680px it was a postage stamp under a page heading, with the
+   shots below out-sizing the thing meant to lead; 860 lets it lead without
+   pretending to be a trailer. */
 .game__player {
   position: relative; border-radius: var(--radius-lg); overflow: hidden;
   background: var(--ink);
   box-shadow: var(--shadow-pop);
-  max-width: 680px; margin-inline: auto;
+  max-width: 860px; margin-inline: auto;
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 /* The img rule stays for whatever ends up in here next - a still, the trailer,
@@ -842,7 +914,7 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 .game__trailer-note {
   font-size: .93rem; font-style: italic;
   color: var(--text-soft);
-  margin: 1rem auto 2.5rem; max-width: 60ch;
+  margin: -1rem auto 2.5rem; max-width: 60ch; text-align: center;
 }
 
 /* features: plain editorial list, no boxes */
@@ -976,12 +1048,14 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: 1.2rem 2rem;
 }
-.newsletter__copy h3 { font-size: 1.2rem; margin-bottom: .3rem; }
+.newsletter__copy h2 { font-size: 1.2rem; margin-bottom: .3rem; }
 .newsletter__copy p { color: var(--text-soft); font-size: .95rem; max-width: 44ch; }
 .newsletter__form { display: flex; flex-wrap: wrap; gap: .7rem; }
 .newsletter__form input[type="email"] {
   font: inherit; padding: .8rem 1rem; min-width: 240px;
-  border: 2px solid rgba(255, 255, 255, .25); border-radius: var(--radius);
+  /* .45 white on --plate is 4.1:1. The .25 this used to be was 2.4, under the
+     3:1 1.4.11 asks of the only thing marking where a text field is. */
+  border: 2px solid rgba(255, 255, 255, .45); border-radius: var(--radius);
   background: var(--plate); color: var(--text-ink);
 }
 .newsletter__form input[type="email"]:focus-visible {
@@ -990,7 +1064,13 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
   outline: 3px solid var(--focus); outline-offset: 2px;
 }
 
-.newsletter .form-note { flex-basis: 100%; margin-bottom: 0; }
+.newsletter .form-note { margin-bottom: 0; }
+/* js/main.js puts an empty status region and an empty alert region in front of
+   each form, so a result can be announced by filling them. Here they are flex
+   items, so they take a full row - and while empty they must not take the
+   row's gap as well, or the strip grows a hole above the form. */
+.newsletter > [role="status"], .newsletter > [role="alert"] { flex-basis: 100%; }
+.newsletter > [role="status"]:empty, .newsletter > [role="alert"]:empty { margin-top: -1.2rem; }
 .form-note {
   font-family: var(--font-display); font-weight: 700; font-size: .98rem;
   border-radius: var(--radius);
@@ -1027,7 +1107,8 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 }
 .footer__form input, .footer__form textarea {
   font: inherit; padding: .85rem 1rem;
-  border: 2px solid rgba(255,255,255,.18); border-radius: var(--radius);
+  /* .4 white on ink is 3.75:1; at .18 the edge of every field was 1.6. */
+  border: 2px solid rgba(255,255,255,.4); border-radius: var(--radius);
   background: rgba(255,255,255,.06); color: var(--text-paper);
   resize: vertical;
 }
@@ -1067,7 +1148,7 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 .codev-form .label-optional { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .8; }
 .codev-form input, .codev-form select, .codev-form textarea {
   font: inherit; padding: .8rem 1rem; width: 100%;
-  border: 2px solid rgba(255,255,255,.18); border-radius: var(--radius);
+  border: 2px solid rgba(255,255,255,.4); border-radius: var(--radius);
   background: rgba(255,255,255,.06); color: var(--text-paper);
   resize: vertical;
 }
@@ -1139,39 +1220,6 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 }
 .footer__form .form-privacy a:hover { color: #fff; }
 
-/* ---------- services (dark band) ---------- */
-.services {
-  background:
-    radial-gradient(760px 500px at 0% 100%, rgba(36, 205, 242, .26), transparent 64%),
-    var(--ink);
-  color: var(--text-paper);
-}
-.services__grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 3rem;
-  border-top: 1px solid rgba(255,255,255,.15);
-}
-.card {
-  padding: 1.9rem 1.7rem 1.9rem 0;
-  border-right: 1px solid rgba(255,255,255,.15);
-  transition: transform .25s var(--ease-out);
-}
-.card:last-child { border-right: 0; }
-.card:nth-child(2) { padding-left: 1.7rem; }
-.card:nth-child(3) { padding-left: 1.7rem; padding-right: 0; }
-.card:hover { transform: translateY(-4px); }
-.card__num {
-  font-family: var(--font-display); font-weight: 800; font-size: .9rem;
-  color: var(--sand); letter-spacing: .1em; margin-bottom: 1.1rem;
-}
-.card h3 { color: #fff; font-size: 1.35rem; margin-bottom: .7rem; }
-.card p { color: var(--text-paper-soft); font-size: .98rem; }
-
-.services__cta {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem;
-}
-.services__cta p { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: #fff; }
-
 /* ---------- studio ---------- */
 .studio { background: var(--paper); }
 .studio__inner {
@@ -1208,6 +1256,28 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 }
 .team__join a { font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .team__pool-head { margin-top: clamp(6rem, 11vw, 9rem); }
+/* The home page's one line about the talent pool: the active regulars' faces
+   and names, and the way through to the full pool on the team hub. It used to
+   be a whole second grid of tiles here, former shiverbugs and all, on a page
+   whose job is to show a client who they can hire. */
+.pool-strip {
+  display: flex; align-items: center; gap: 1.1rem 1.4rem; flex-wrap: wrap;
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto 0; max-width: 780px;
+  padding: 1.1rem 1.4rem;
+  background: var(--plate); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  box-shadow: var(--rim), var(--lift);
+}
+.pool-strip__faces { display: flex; flex: none; }
+.pool-strip__faces li + li { margin-left: -10px; }
+.pool-strip__faces img {
+  width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: center 20%;
+  border: 2px solid var(--plate);
+}
+.pool-strip p { flex: 1 1 22rem; color: var(--text-soft); font-size: .95rem; }
+.pool-strip p a { color: var(--sea-ink); font-weight: 600; }
+.pool-strip p a:hover { text-decoration: underline; }
+.pool-strip .pool-strip__more { white-space: nowrap; }
+.pool-strip .pool-strip__more::after { content: " \2192"; }
 .team__grid {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.3rem;
 }
@@ -1284,7 +1354,7 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
   font-family: var(--font-display); font-weight: 800; font-size: 2.4rem;
   color: rgba(255, 255, 255, .55);
 }
-.member h3 { font-size: 1.1rem; margin-bottom: .15rem; }
+.member :is(h3, h4) { font-size: 1.1rem; margin-bottom: .15rem; }
 .member p { font-size: .88rem; color: var(--text-soft); }
 /* "Profile coming soon" - a tile with no page behind it yet. It was in the link
    colour, which promised a destination it does not have. */
@@ -1352,10 +1422,6 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 .person--unfinished { cursor: default; }
 .person--unfinished:hover { transform: none; box-shadow: var(--rim), var(--lift); }
 .person--unfinished[role="button"] { cursor: pointer; }
-/* The artwork credit is attribution, not a way in, so it stays a plain label.
-   Click-through keeps the whole tile opening the viewer instead of leaving a
-   dead patch where the chip sits. */
-.carousel__credit--unfinished { pointer-events: none; }
 .svc__crew-note { max-width: 42ch; margin-top: .8rem; }
 
 /* ---------- footer ---------- */
@@ -1503,9 +1569,10 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 .profile__name { font-size: clamp(2.4rem, 5vw, 3.6rem); margin-bottom: .4rem; }
 .profile__tagline {
   font-size: 1.25rem; font-style: italic; color: var(--text-soft);
-  /* Sand, matching the rest of the team area, at the -ink tier: --sand is 1.90
-     on paper and --sand-deep 2.67, both under 3:1, and this rule is 3px of
-     colour with nothing else marking the quote. --sand-ink clears it at 4.94. */
+  /* Sand, matching the rest of the team area, at the -ink tier. This rule is
+     3px of colour with nothing else marking the quote, so it is the tier that
+     is guaranteed to clear 3:1 on any surface rather than the one that looks
+     nicest on this one. */
   border-left: 3px solid var(--sand-ink); padding-left: 1rem;
   margin-bottom: 1.8rem; max-width: 48ch;
 }
@@ -1533,6 +1600,8 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 .profile__about.is-clamped::after {
   content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 5rem;
   background: linear-gradient(to bottom, transparent, var(--paper));
+  /* decoration only: a link half under the fade should still take the click */
+  pointer-events: none;
 }
 .profile__more {
   background: none; border: none; padding: 0; cursor: pointer;
@@ -1592,6 +1661,24 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 .profile__missing { text-align: center; padding: 4rem 0; }
 .profile__missing h1 { margin-bottom: 1rem; }
 .profile__missing p { color: var(--text-soft); margin-bottom: 2rem; }
+/* 404 */
+.missing__art {
+  width: min(420px, 100%); margin: 0 auto 2rem;
+  border-radius: var(--radius-lg); border: 1px solid var(--line);
+  box-shadow: var(--shadow-pop); rotate: -2deg;
+}
+.missing__links {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem;
+  margin: -1rem 0 2rem;
+}
+.missing__links a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: .4rem 1.1rem; border-radius: 999px;
+  background: var(--plate); border: 1px solid var(--line); box-shadow: var(--rim), var(--lift);
+  font-family: var(--font-display); font-weight: 700; font-size: .95rem; color: var(--heading);
+  transition: transform .2s var(--ease-out), border-color .2s;
+}
+.missing__links a:hover { transform: translateY(-2px); border-color: var(--line-hover); }
 
 /* ---------- co-dev packages ---------- */
 .packages { background: var(--paper-2); }
@@ -1640,9 +1727,9 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 }
 .pkg__list li { display: flex; gap: .6rem; color: var(--text-soft); line-height: 1.5; }
 /* Sand, because packages is a sand section - these were the last teal thing in
-   a card whose size label, top rule and tag are all sand. Deep tier, matching
-   the .svc ticks. Both sit around 2.7:1 on paper, which is fine for a 7px dot:
-   the text beside it carries the meaning, so 1.4.11 does not apply. */
+   a card whose size label, top rule and tag are all sand. --tick-sand, the same
+   token as the .svc ticks, so a bullet in a card and a tick in a list agree. The
+   text beside it carries the meaning, so 1.4.11 does not apply to the dot. */
 .pkg__list li::before {
   content: ""; flex: none; width: 7px; height: 7px; margin-top: .5rem;
   border-radius: 50%; background: var(--tick-sand);
@@ -1977,19 +2064,42 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 .footer--mini .footer__meta { border-top: 0; padding-top: 0; }
 
 /* ---------- reveal on scroll ---------- */
-.reveal {
-  opacity: 0; transform: translateY(22px);
-  transition: opacity .7s var(--ease-out), transform .7s var(--ease-out);
+/* Hidden only under html.js, which an inline script in each page's head sets
+   before first paint. Without script nothing is ever hidden, so there is no
+   <noscript> patch to keep in step any more.
+
+   The failsafe animation is for the case html.js cannot see coming: script ran
+   in the head, then js/main.js was blocked, 404'd or died on a SyntaxError.
+   Three seconds in, everything fades up on its own. main.js sets .reveal-ready
+   the moment it takes over, which cancels the failsafe so scrolled-to content
+   still waits for its own reveal.
+
+   `translate`, not `transform`. The two are separate properties that compose, so
+   a tile can reveal upwards and still lift on hover. On `transform` the reveal's
+   resting value of none outranked .member:hover at equal specificity, and the
+   team tiles' hover lift had been dead since the day it was written. */
+.js .reveal {
+  opacity: 0; translate: 0 22px;
+  transition: opacity .7s var(--ease-out), translate .7s var(--ease-out);
+  animation: reveal-failsafe .6s var(--ease-out) 3s forwards;
 }
-.reveal.is-visible { opacity: 1; transform: none; }
+.reveal-ready .reveal { animation: none; }
+.js .reveal.is-visible { opacity: 1; translate: none; }
+@keyframes reveal-failsafe { to { opacity: 1; translate: none; } }
+/* The reveal's transition list replaces an element's own, so the two that also
+   move on hover get theirs back here. */
+.js .member.reveal { transition: opacity .7s var(--ease-out), translate .7s var(--ease-out), transform .25s var(--ease-out); }
+.js .pkg.reveal { transition: opacity .7s var(--ease-out), translate .7s var(--ease-out), transform .4s var(--ease-out), box-shadow .25s var(--ease-out); }
+/* Paper has no scroll position to wait for. */
+@media print {
+  .js .reveal { opacity: 1 !important; translate: none !important; animation: none !important; }
+}
 
 /* ---------- responsive ---------- */
 @media (max-width: 980px) {
   .hero__inner { grid-template-columns: 1fr; }
   .hero__art { max-width: 560px; }
   .game__features { grid-template-columns: repeat(2, 1fr); }
-  .services__grid { grid-template-columns: 1fr; border-top: 0; }
-  .card { border-right: 0; border-top: 1px solid rgba(255,255,255,.15); padding-left: 0 !important; padding-right: 0; }
   .studio__inner { grid-template-columns: 1fr; }
   .studio__photo { max-width: 480px; }
   .creds__inner { grid-template-columns: 1fr; }
@@ -1999,7 +2109,6 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
   /* stays one column ahead of the studio grid, or the pool stops reading as the
      smaller thing the moment the breakpoint lands */
   .team__grid--pool { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .news__grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; margin-bottom: 2.8rem; }
   .profile__inner { grid-template-columns: 1fr; }
   .profile__photo { position: static; max-width: 380px; }
 }
@@ -2035,10 +2144,7 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
   .footer__meta { justify-content: center; text-align: center; }
 }
 
-/* ---------- co-dev page ---------- */
-.hero--codev .hero__inner { display: block; max-width: 820px; }
-.hero--codev .hero__sub { max-width: 58ch; }
-
+/* ---------- co-dev services ---------- */
 .codev { background: var(--paper); }
 .svc {
   display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
@@ -2068,8 +2174,9 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 /* Each tick matches the rule above its own service. The first was on the bright
    --sea while the other two were on the deep tier, and the fourth service - the
    one that appeared when 3D art split in two - had no rule at all, so it wore a
-   crab stripe over four teal ticks. Deep tier throughout: these are 0.8em marks
-   and the bright tier is a shade too thin at that size. */
+   crab stripe over four teal ticks. All four read from the --tick-* tokens,
+   which point at the on-dark -ink tier, so a tick and the link beside it are
+   the same colour. */
 .svc:nth-of-type(2) .svc__list li::before { background: var(--tick-sand); }
 .svc:nth-of-type(3) .svc__list li::before { background: var(--tick-leaf); }
 .svc:nth-of-type(4) .svc__list li::before { background: var(--tick-crab); }
@@ -2295,8 +2402,11 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
   position: fixed; inset: 0; z-index: 300;
   display: flex; align-items: center; justify-content: center; gap: 1.1rem;
   padding: 2rem;
-  background: rgba(10, 12, 15, .82);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  /* Opaque enough to stand on its own. There was a 10px backdrop blur under an
+     .82 fill here, which is barely visible and was being recomputed every frame
+     over the carousel clips still playing behind it - the same trade the nav and
+     the "No profile yet" band already turned down. */
+  background: rgba(4, 8, 12, .92);
   opacity: 0; visibility: hidden;
   transition: opacity .25s, visibility .25s;
 }
@@ -2352,7 +2462,29 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 
 /* faq */
 .faq { background: var(--paper); }
+.faq__layout {
+  display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4.5rem); align-items: start;
+}
 .faq__list { max-width: 780px; }
+/* The question the list can't answer. Sticky, so it stays beside whichever
+   answer is open instead of scrolling away above it. */
+.faq__aside {
+  position: sticky; top: 110px;
+  background: var(--plate); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  box-shadow: var(--rim), var(--lift);
+  padding: clamp(1.4rem, 3vw, 2rem);
+}
+.faq__aside h3 { font-size: 1.4rem; margin-bottom: .6rem; }
+.faq__aside p { color: var(--text-soft); margin-bottom: 1.3rem; }
+.faq__aside .btn { margin-bottom: 1.1rem; }
+.faq__aside .faq__aside-note { font-size: .88rem; margin-bottom: 0; }
+.faq__aside-note a { color: var(--sea-ink); font-weight: 600; overflow-wrap: anywhere; }
+.faq__aside-note a:hover { text-decoration: underline; }
+@media (max-width: 860px) {
+  .faq__layout { grid-template-columns: 1fr; }
+  .faq__aside { position: static; max-width: 520px; }
+}
 .faq__list details { border-bottom: 1px solid rgba(255, 255, 255, .15); }
 .faq__list summary {
   font-family: var(--font-display); font-weight: 700; font-size: 1.12rem;
@@ -2541,6 +2673,6 @@ main > .section:first-child { padding-top: clamp(7.5rem, 12vh, 9.5rem); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .js .reveal { opacity: 1; translate: none; transition: none; animation: none; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }

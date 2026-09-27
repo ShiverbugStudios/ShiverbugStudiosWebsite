@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://oliverneal04.goatcounter.com; media-src 'self'; connect-src 'self' https://formspree.io https://buttondown.com https://oliverneal04.goatcounter.com; form-action https://formspree.io https://buttondown.com; base-uri 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://oliverneal04.goatcounter.com; media-src 'self'; connect-src 'self' https://formspree.io https://buttondown.com https://oliverneal04.goatcounter.com; form-action https://formspree.io https://buttondown.com; base-uri 'none'; object-src 'none'">
   <title>Our Games | Shiverbug Studios</title>
   <meta name="description" content="Out of Water is a 2-player couch co-op collectathon platformer from Shiverbug Studios. One of you is a turtle, the other a seagull, in split-screen.">
   <link rel="canonical" href="https://shiverbugstudios.com/games.html">
@@ -21,12 +21,14 @@
   <meta name="theme-color" content="#050b13">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="apple-touch-icon" href="assets/img/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="preload" as="image" href="assets/img/out-of-water-screenshot-1100.webp" imagesrcset="assets/img/out-of-water-screenshot-480.webp 480w, assets/img/out-of-water-screenshot-760.webp 760w, assets/img/out-of-water-screenshot-1100.webp 1100w, assets/img/out-of-water-screenshot-1520.webp 1520w, assets/img/out-of-water-screenshot.webp 1916w" imagesizes="min(92vw, 1160px)" fetchpriority="high">
-  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.min.css">
+  <!-- The clip's poster is the largest thing above the fold, so it is what gets
+       preloaded. This used to preload a screenshot the page no longer shows,
+       which spent the page's first request on nothing and made the poster wait. -->
+  <link rel="preload" as="image" href="assets/img/out-of-water-gameplay-poster.webp" fetchpriority="high">
+  <script>document.documentElement.classList.add('js')</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -67,6 +69,10 @@
                        "url":  "https://shiverbugstudios.com/games.html",
                        "description":  "A 2-player split-screen collectathon platformer. One player is a turtle, the other a seagull, exploring a colourful world full of charm, clever challenges and an army of crabs.",
                        "image":  "https://shiverbugstudios.com/assets/img/out-of-water-screenshot.jpg",
+                       "screenshot":  [
+                                          "https://shiverbugstudios.com/assets/press/oow-screenshot-cove.jpg",
+                                          "https://shiverbugstudios.com/assets/press/oow-screenshot-characters.jpg"
+                                      ],
                        "genre":  [
                                      "Platform game",
                                      "Collectathon",
@@ -74,14 +80,13 @@
                                  ],
                        "gamePlatform":  [
                                             "PC",
-                                            "Steam",
                                             "Steam Deck",
                                             "Xbox",
                                             "PlayStation",
                                             "Nintendo Switch"
                                         ],
                        "gameEngine":  "Unity",
-                       "playMode":  "CoOp",
+                       "playMode":  "https://schema.org/CoOp",
                        "numberOfPlayers":  {
                                                "@type":  "QuantitativeValue",
                                                "minValue":  2,
@@ -97,7 +102,7 @@
                    },
                    {
                        "@id":  "https://shiverbugstudios.com/games.html",
-                       "dateModified":  "2026-08-19"
+                       "dateModified":  "2026-09-27"
                    }
                ]
 }
@@ -111,12 +116,12 @@
   <!-- ======= NAV ======= -->
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <a class="nav__brand" href="index.html" aria-label="Shiverbug Studios, home"><img src="assets/img/nav-wordmark.webp" alt="" class="nav__wordmark" width="316" height="138"></a>
+      <a class="nav__brand" href="./" aria-label="Shiverbug Studios, home"><img src="assets/img/nav-wordmark.webp" alt="" class="nav__wordmark" width="316" height="138"></a>
       <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="index.html#services">Co-Dev</a>
+        <a href="./#services">Co-Dev</a>
         <a href="games.html" aria-current="page">Our Games</a>
-        <a href="index.html#studio">Studio</a>
-        <a href="index.html#team">Team</a>
+        <a href="./#studio">Studio</a>
+        <a href="./#team">Team</a>
         <a href="join.html">Join Us</a>
         <a href="press.html">Press</a>
         <a class="nav__cta" href="#contact" data-cta="Games page enquiry">Get in touch</a>
@@ -132,6 +137,10 @@
     <!-- ======= GAME ======= -->
     <section class="section game" id="out-of-water">
       <div class="container">
+        <a class="backlink" href="./">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to home
+        </a>
         <header class="section__head reveal">
           <p class="kicker kicker--sea">Our debut title</p>
           <h1>Out of <span class="underline-sea">Water</span></h1>
@@ -156,7 +165,7 @@
           </video>
         </div>
         <p class="game__trailer-note reveal">
-          Koopa and Kiko are waiting for the trailer, just like you.
+          Koopa and Kiko are waiting for the new trailer, just like you.
         </p>
 
         <!-- These already lived in the press kit and nowhere a player would ever
@@ -180,14 +189,16 @@
             <p class="game__note">A Steam page is on the way. Leave your email below and you'll hear the day it goes live.</p>
           </div>
           <div class="game__cta-buttons">
-            <a class="btn btn--ink" href="https://linktr.ee/shiverbugstudios" target="_blank" rel="noopener">Follow development</a>
+            <!-- Straight to the Discord, not via a Linktree: one hop fewer, and the
+                 footer already made the same call for the same reason. -->
+            <a class="btn btn--ink" href="https://discord.gg/gZDWdZEAxm" target="_blank" rel="noopener">Follow development</a>
             <a class="btn btn--sand" href="#publishers">For publishers</a>
           </div>
         </div>
 
         <div class="newsletter reveal">
           <div class="newsletter__copy">
-            <h3>Hear It From Us First</h3>
+            <h2>Hear It From Us First</h2>
             <p>Leave your email and we'll write when there's real Out of Water news. No spam, no weekly waffle.</p>
           </div>
           <form class="newsletter__form" id="newsletterForm" action="https://buttondown.com/api/emails/embed-subscribe/oliverjn04" method="POST">
@@ -246,7 +257,7 @@
           <p class="kicker kicker--sand">For publishers</p>
           <h2 id="publishers" tabindex="-1">The Short <span class="underline-sand">Version</span></h2>
           <p class="section__lede">
-            Eleven people in North East England, building our debut title alongside
+            Ten people in North East England, building our debut title alongside
             co-development work. We're open to publishing conversations, and we'd
             rather show you where the game actually is than where we'd like it to be.
           </p>
@@ -261,9 +272,9 @@
             <dt>Engine</dt><dd>Unity</dd>
             <dt>Status</dt><dd>In development</dd>
             <dt>Studio</dt><dd>Shiverbug Studios Ltd, founded 2025</dd>
-            <dt>Team</dt><dd>Eleven, plus a talent pool of regular collaborators</dd>
+            <dt>Team</dt><dd>Ten, plus a talent pool of regular collaborators</dd>
             <dt>Based</dt><dd>North East England, UK</dd>
-            <dt>Part of</dt><dd>UK Games Fund, Games Republic and the Entrepreneurs Forum, and Tranzfuser, where we won the public vote</dd>
+            <dt>Part of</dt><dd>UK Games Fund, Game Republic and the Entrepreneurs&rsquo; Forum, and Tranzfuser, where we won the public vote</dd>
           </dl>
 
           <div class="pub__ask">
@@ -305,16 +316,27 @@
           <p>Developer, publisher, platform holder, or you just fancy chatting about games. We'd love to hear from you.</p>
           <a class="footer__email" href="mailto:contact@shiverbugstudios.com">contact@shiverbugstudios.com</a>
 
-          <form class="footer__form" id="contactForm" action="https://formspree.io/f/xgogzlpv" method="POST">
+          <!-- Visible labels, in the same form layout as the home page. This used
+               to be placeholder-only with hidden labels: accessible on paper, but
+               the question disappears the moment you start typing the answer,
+               and the two contact forms on the site looked like two different
+               studios had built them. -->
+          <form class="codev-form" id="contactForm" action="https://formspree.io/f/xgogzlpv" method="POST">
             <input type="hidden" name="_subject" value="Website contact form">
             <!-- honeypot: hidden from people, catnip to bots. Formspree drops anything that fills it. -->
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="visually-hidden">
-            <label class="visually-hidden" for="cfName">Your name</label>
-            <input id="cfName" type="text" name="name" placeholder="Your name" autocomplete="name" required>
-            <label class="visually-hidden" for="cfEmail">Your email</label>
-            <input id="cfEmail" type="email" name="email" placeholder="Your email" autocomplete="email" required>
-            <label class="visually-hidden" for="cfMsg">Message</label>
-            <textarea id="cfMsg" name="message" rows="4" placeholder="Tell us what you're thinking about…" required></textarea>
+            <div class="field">
+              <label for="cfName">Your name</label>
+              <input id="cfName" type="text" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="cfEmail">Your email</label>
+              <input id="cfEmail" type="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="field field--wide">
+              <label for="cfMsg">Your message</label>
+              <textarea id="cfMsg" name="message" rows="4" placeholder="Tell us what you're thinking about." required></textarea>
+            </div>
             <button class="btn btn--sand" type="submit">Send it our way</button>
             <p class="form-privacy">We'll only use this to reply to you. Messages reach us via Formspree. See our <a href="privacy.html">privacy policy</a>.</p>
           </form>

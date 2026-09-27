@@ -16,9 +16,11 @@ const RSQUO = String.fromCharCode(8217);
   const navLinks = document.getElementById('navLinks');
   if (!nav) return;
 
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('is-scrolled', window.scrollY > 10);
-  }, { passive: true });
+  // Run once up front as well: a page restored mid-scroll (back button, reload)
+  // fires no scroll event, and would otherwise show the bare hero bar over content.
+  const syncScrolled = () => nav.classList.toggle('is-scrolled', window.scrollY > 10);
+  window.addEventListener('scroll', syncScrolled, { passive: true });
+  syncScrolled();
 
   if (!burger || !navLinks) return;
 
@@ -58,11 +60,15 @@ const RSQUO = String.fromCharCode(8217);
       setMenu(false);
       burger.focus();
     } else if (e.key === 'Tab' && isOverlay()) {
-      // keep focus looping through the burger and the links it opened
-      const els = [burger, ...navLinks.querySelectorAll('a[href]')];
+      // Keep focus looping through everything in the bar, in DOM order: the
+      // brand, the links, then the burger (which sits after the links in the
+      // markup). Building the list in any other order lets Tab walk straight out.
+      const els = [...nav.querySelectorAll('a[href], button')].filter((el) => el.offsetParent !== null);
+      if (!els.length) return;
       const first = els[0], last = els[els.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      else if (!nav.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
     }
   });
 
@@ -89,18 +95,21 @@ document.querySelectorAll('.tool__logo').forEach((img) => {
 });
 
 // ----- games page: the gameplay clip starts itself once it's on screen -----
-// Same bargain the co-development carousels make, and for the same reasons: it
-// never runs under reduced motion, and it doesn't fetch a single byte until the
-// clip is actually in view. That second part matters more here than it does
-// there - this file is far and away the heaviest thing the site serves, and
-// most visitors to this page never scroll as far as it.
+// Same bargain the co-development carousels make: it never runs under reduced
+// motion, and it doesn't fetch a byte until the clip is actually in view. The
+// clip sits right under the page heading, so "in view" is usually "on load",
+// which is why the files are encoded lean (a few MB, not the 12-14 MB they
+// were) and why a visitor who has asked their browser to save data, or is on a
+// slow connection, gets the poster and the play button instead of a download.
 // The clip keeps its native controls, so 2.2.2 Pause, Stop, Hide is covered
 // without the custom button the carousel clips need.
 (() => {
   const clip = document.getElementById('trailer');
   if (!clip) return;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion || !('IntersectionObserver' in window)) return;
+  const conn = navigator.connection;
+  const frugal = !!conn && (conn.saveData || /(^|-)2g$|^3g$/.test(conn.effectiveType || ''));
+  if (reduceMotion || frugal || !('IntersectionObserver' in window)) return;
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach(({ isIntersecting }) => {
@@ -128,6 +137,12 @@ document.querySelectorAll('.tool__logo').forEach((img) => {
 })();
 
 // ----- reveal on scroll -----
+// The stylesheet only hides .reveal elements under html.js, which a one-line
+// script in each page's head sets, and it carries a failsafe that fades them
+// in anyway after a few seconds. This class switches that failsafe off: it is
+// only set once this file has got far enough to take over, so if main.js is
+// blocked, 404s or dies on a SyntaxError, nothing stays invisible.
+document.documentElement.classList.add('reveal-ready');
 const revealEls = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
@@ -308,24 +323,35 @@ document.querySelectorAll('.carousel').forEach((carousel) => {
   window.addEventListener('resize', updateBtns);
 
   // drag to flick through with a mouse (touch already scrolls natively)
+  // The artwork tiles are links, and a mouse drag on a link starts the browser's
+  // own link drag: that fires pointercancel and swallows the pointerup, which
+  // used to leave the strip "held" and scrolling with every mouse move until the
+  // next click. So the native drag is cancelled outright, a cancel ends the drag
+  // the same way a release does, and a plain button check catches anything that
+  // still slips through.
   let dragging = false, dragged = false, startX = 0, startScroll = 0;
+  const endDrag = () => {
+    if (!dragging) return;
+    dragging = false;
+    track.classList.remove('is-dragging');
+  };
+  track.addEventListener('dragstart', (e) => e.preventDefault());
   track.addEventListener('pointerdown', (e) => {
-    if (e.pointerType !== 'mouse') return;
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
     dragging = true; dragged = false;
     startX = e.clientX; startScroll = track.scrollLeft;
     track.classList.add('is-dragging');
   });
   window.addEventListener('pointermove', (e) => {
     if (!dragging) return;
+    if (!(e.buttons & 1)) { endDrag(); return; }
     const dx = e.clientX - startX;
     if (Math.abs(dx) > 5) dragged = true;
     track.scrollLeft = startScroll - dx;
   });
-  window.addEventListener('pointerup', () => {
-    if (!dragging) return;
-    dragging = false;
-    track.classList.remove('is-dragging');
-  });
+  window.addEventListener('pointerup', endDrag);
+  window.addEventListener('pointercancel', endDrag);
+  window.addEventListener('blur', endDrag);
   // a drag shouldn't count as a click on the artwork link
   track.addEventListener('click', (e) => {
     if (dragged) { e.preventDefault(); e.stopPropagation(); dragged = false; }
@@ -409,8 +435,24 @@ document.querySelectorAll('.carousel').forEach((carousel) => {
     }
   };
 
+  // The carousel clips behind the viewer are still "on screen" as far as their
+  // observer knows, so they would keep decoding under the overlay. Park them
+  // while it is up and hand them back on close.
+  let parked = [];
+  const parkClips = () => {
+    parked = [...document.querySelectorAll('.carousel__slot > video')].filter((v) => !v.paused);
+    parked.forEach((v) => v.pause());
+  };
+  const unparkClips = () => {
+    parked.forEach((v) => {
+      if (v.dataset.userPaused !== 'true' && v.dataset.onScreen === 'true') v.play().catch(() => {});
+    });
+    parked = [];
+  };
+
   const open = (list, i, fromEl) => {
     items = list; lastFocus = fromEl;
+    parkClips();
     show(i);
     overlay.classList.add('is-open');
     document.body.style.overflow = 'hidden';
@@ -428,6 +470,7 @@ document.querySelectorAll('.carousel').forEach((carousel) => {
     setBackgroundInert(false);
     imgEl.removeAttribute('src');
     vidEl.pause();
+    unparkClips();
     if (lastFocus) lastFocus.focus();
   };
 
@@ -630,13 +673,31 @@ document.addEventListener('click', (e) => {
 // Without JS the forms still submit natively, which is why the action stays on them.
 const enhanceForm = (form, sentMsg, errorMsg, eventName) => {
   if (!form) return;
+  // Success is polite, failure is assertive: a send that didn't go through is
+  // the one thing the visitor has to act on. Both regions exist, empty, from
+  // the moment the page loads. A live region inserted with its text already in
+  // it is one most screen readers never announce, because there was no change
+  // for them to notice - the region has to be there first and then be filled.
+  const politeBox = document.createElement('div');
+  politeBox.setAttribute('role', 'status');
+  const alertBox = document.createElement('div');
+  alertBox.setAttribute('role', 'alert');
+  form.parentNode.insertBefore(politeBox, form);
+  form.parentNode.insertBefore(alertBox, form);
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
-    form.parentNode.querySelector('.form-note')?.remove();
+    politeBox.replaceChildren();
+    alertBox.replaceChildren();
     btn.disabled = true;
-    // Success is polite, failure is assertive: a send that didn't go through is
-    // the one thing the visitor has to act on.
+    // A portfolio link typed as "artstation.com/me" is what people actually
+    // write. The field takes plain text so the browser doesn't refuse it; the
+    // scheme goes on here, so the inbox still gets something clickable.
+    const link = form.querySelector('input[name="link"]');
+    if (link && link.value.trim() && !/^[a-z][a-z0-9+.-]*:/i.test(link.value.trim())) {
+      link.value = 'https://' + link.value.trim();
+    }
     const note = document.createElement('p');
     try {
       const res = await fetch(form.action, {
@@ -651,6 +712,9 @@ const enhanceForm = (form, sentMsg, errorMsg, eventName) => {
         note.className = 'form-note form-sent';
         note.textContent = sent;
         form.reset();
+        // reset() puts the topic back to "Pick one", so the co-development
+        // fields have to be hidden (and un-required) again to match it.
+        if (form.id === 'codevForm') syncCodevFields();
         if (label) countEvent(label);
       } else {
         note.className = 'form-note form-error';
@@ -660,8 +724,7 @@ const enhanceForm = (form, sentMsg, errorMsg, eventName) => {
       note.className = 'form-note form-error';
       note.textContent = errorMsg;
     }
-    note.setAttribute('role', note.classList.contains('form-error') ? 'alert' : 'status');
-    form.parentNode.insertBefore(note, form);
+    (note.classList.contains('form-error') ? alertBox : politeBox).appendChild(note);
     btn.disabled = false;
   });
 };

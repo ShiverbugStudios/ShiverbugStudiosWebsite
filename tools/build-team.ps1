@@ -20,10 +20,18 @@ $baseUrl = 'https://shiverbugstudios.com'
 # Keep this in step with the identical tag in index.html, games.html, press.html,
 # privacy.html, accessibility.html, 404.html and team-member.html.
 # Note: frame-ancestors is ignored in a meta tag, it only works as a real header.
+#
+# The one hash in script-src is for the single inline script every page carries
+# in its <head>: document.documentElement.classList.add('js'). It has to run
+# before first paint, which is the one thing an external file cannot promise,
+# and it is what lets the stylesheet hide .reveal content only when script is
+# actually running. Change a byte of that script and the hash must change with
+# it - tools/validate-site.ps1 recomputes it and fails the build if they differ.
+# Fonts are self-hosted from assets/fonts, so nothing here names Google.
 $csp = "default-src 'self'; " +
-       "script-src 'self' https://gc.zgo.at; " +
-       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-       "font-src 'self' https://fonts.gstatic.com; " +
+       "script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' https://gc.zgo.at; " +
+       "style-src 'self' 'unsafe-inline'; " +
+       "font-src 'self'; " +
        "img-src 'self' data: https://oliverneal04.goatcounter.com; " +
        "media-src 'self'; " +
        "connect-src 'self' https://formspree.io https://buttondown.com https://oliverneal04.goatcounter.com; " +
@@ -288,22 +296,22 @@ $template = @'
   <meta property="og:title" content="{{NAME}}, {{ROLE}} | Shiverbug Studios">
   <meta property="og:description" content="{{DESC}}">
   <meta property="og:image" content="{{OGIMAGE}}">
+  <meta property="og:image:alt" content="{{OGALT}}">
   <meta property="og:url" content="{{CANONICAL}}">
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Shiverbug Studios">
   <meta property="og:locale" content="en_GB">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{{NAME}}, {{ROLE}} | Shiverbug Studios">
   <meta name="twitter:description" content="{{DESC}}">
   <meta name="twitter:image" content="{{OGIMAGE}}">
   <meta name="theme-color" content="#050b13">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <link rel="apple-touch-icon" href="../assets/img/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
-  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <link rel="preload" href="../assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/style.min.css">
+  <script>document.documentElement.classList.add('js')</script>
   <script type="application/ld+json">
 {{JSONLD}}
   </script>
@@ -315,15 +323,15 @@ $template = @'
   <!-- ======= NAV ======= -->
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <a class="nav__brand" href="../index.html" aria-label="Shiverbug Studios, home"><img src="../assets/img/nav-wordmark.webp" alt="" class="nav__wordmark" width="316" height="138"></a>
+      <a class="nav__brand" href="../" aria-label="Shiverbug Studios, home"><img src="../assets/img/nav-wordmark.webp" alt="" class="nav__wordmark" width="316" height="138"></a>
       <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="../index.html#services">Co-Dev</a>
+        <a href="../#services">Co-Dev</a>
         <a href="../games.html">Our Games</a>
-        <a href="../index.html#studio">Studio</a>
-        <a href="../index.html#team">Team</a>
+        <a href="../#studio">Studio</a>
+        <a href="../#team">Team</a>
         <a href="../join.html">Join Us</a>
         <a href="../press.html">Press</a>
-        <a class="nav__cta" href="../index.html#contact">Get in touch</a>
+        <a class="nav__cta" href="../#contact">Get in touch</a>
       </nav>
       <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span>
@@ -333,9 +341,9 @@ $template = @'
 
   <main class="profile" id="top">
     <div class="container">
-      <a class="backlink" href="../index.html#team">
+      <a class="backlink" href="{{BACKHREF}}">
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Back to the team
+        {{BACKTEXT}}
       </a>
       <div class="profile__inner">
         <figure class="profile__photo">{{PHOTO}}</figure>
@@ -357,7 +365,7 @@ $template = @'
       </div>
       <nav class="profile__nav" aria-label="Team">
         <a href="{{PREVHREF}}">&larr; {{PREVNAME}}</a>
-        <a class="is-back" href="../index.html#team">All shiverbugs</a>
+        <a class="is-back" href="./">All shiverbugs</a>
         <a href="{{NEXTHREF}}">{{NEXTNAME}} &rarr;</a>
       </nav>
     </div>
@@ -401,7 +409,11 @@ foreach ($list in @($team, $talent)) {
     $canonical = "$baseUrl/team/$($p.slug).html"
 
     # --- description: role first, then as much of the bio as ends cleanly ---
+    # The lead has to say where someone stands, because it is the sentence a
+    # search result shows: a former shiverbug is not "X at Shiverbug Studios".
     $lead = "$($p.name) - $roleDisp at Shiverbug Studios."
+    if ($p.status -eq 'former') { $lead = "$($p.name) - former $roleDisp at Shiverbug Studios." }
+    elseif ($p.status -eq 'active') { $lead = "$($p.name) - $roleDisp in the Shiverbug Studios talent pool." }
     if ($p.metaDescription) {
       $desc = $p.metaDescription
     } elseif ($p.about -and @($p.about).Count -gt 0) {
@@ -414,7 +426,9 @@ foreach ($list in @($team, $talent)) {
 
     # --- photo ---
     if ($p.photo) {
-      $photo = '<img src="../' + $p.photo + '" alt="' + (HtmlEnc $p.name) + '" width="600" height="800">'
+      # The photo is the largest thing on the page, so it is the one fetch that
+      # jumps the queue.
+      $photo = '<img src="../' + $p.photo + '" alt="' + (HtmlEnc $p.name) + '" width="600" height="800" fetchpriority="high" decoding="async">'
       $ogImage = "$baseUrl/$($p.photo)"
     } else {
       $photo = '<div class="profile__photo--empty"><span>' + (HtmlEnc $p.initials) + '</span></div>'
@@ -494,6 +508,12 @@ foreach ($list in @($team, $talent)) {
 
     # --- JSON-LD: ProfilePage wrapping a Person, plus a breadcrumb trail.
     #     The @id refs let a crawler stitch person -> studio -> other people. ---
+    $studioRef = [ordered]@{
+      '@type' = 'Organization'
+      '@id'   = "$baseUrl/#studio"
+      'name'  = 'Shiverbug Studios'
+      'url'   = "$baseUrl/"
+    }
     $person = [ordered]@{
       '@type'       = 'Person'
       '@id'         = "$canonical#person"
@@ -503,13 +523,14 @@ foreach ($list in @($team, $talent)) {
       'image'       = $ogImage
       'description' = (StripTags $desc)
       'knowsAbout'  = @(KnowsAbout $p)
-      'worksFor'    = [ordered]@{
-        '@type' = 'Organization'
-        '@id'   = "$baseUrl/#studio"
-        'name'  = 'Shiverbug Studios'
-        'url'   = "$baseUrl/"
-      }
     }
+    # Only the studio roster works for the studio. A talent pool regular is an
+    # affiliate, and a former shiverbug is an alumnus: telling a search engine
+    # that someone who has left still works here is the kind of claim that ends
+    # up quoted back at them in a search result for years.
+    if (-not $p.status) { $person['worksFor'] = $studioRef }
+    elseif ($p.status -eq 'former') { $person['alumniOf'] = $studioRef }
+    else { $person['affiliation'] = $studioRef }
     if ($p.socials -and @($p.socials).Count -gt 0) {
       $person['sameAs'] = @(@($p.socials) | ForEach-Object { $_.url })
     }
@@ -563,6 +584,9 @@ foreach ($list in @($team, $talent)) {
       Replace('{{DESC}}',      (HtmlEnc (StripTags $desc))).
       Replace('{{CANONICAL}}', $canonical).
       Replace('{{OGIMAGE}}',   $ogImage).
+      Replace('{{OGALT}}',     (HtmlEnc ("Portrait of " + $p.name))).
+      Replace('{{BACKHREF}}',  $(if ($p.status) { './#talent-pool' } else { '../#team' })).
+      Replace('{{BACKTEXT}}',  $(if ($p.status) { 'Back to the talent pool' } else { 'Back to the team' })).
       Replace('{{JSONLD}}',    $jsonld).
       Replace('{{PHOTO}}',     $photo).
       Replace('{{TAGLINE}}',   $tagline).
@@ -636,7 +660,11 @@ $founderSizesZoomed = '(max-width: 980px) 60vw, (max-width: 1260px) 44vw, 548px'
 # Turning them into inert tiles there would strand anyone arriving on an old
 # link with JavaScript off: the redirect can't run, and the note explaining the
 # dead tile needs JS to appear.
-function MemberTile($p, [bool]$withStatus, [string]$grid = 'main', [bool]$forceLink = $false) {
+# $hTag is the heading level of the name, which depends on where the grid sits:
+# under an h3 group label on the home page, under an h2 on the team hub.
+# $eager is for tiles that are on screen at load (the founders row at the top of
+# the hub), where loading="lazy" only delays the picture everyone is looking at.
+function MemberTile($p, [bool]$withStatus, [string]$grid = 'main', [bool]$forceLink = $false, [string]$hTag = 'h3', [bool]$eager = $false) {
   $finished = (IsFinished $p) -or $forceLink
   $firstName = ($p.name -split ' ')[0]
   $cls = 'member reveal'
@@ -678,11 +706,12 @@ function MemberTile($p, [bool]$withStatus, [string]$grid = 'main', [bool]$forceL
       }
       $responsive = ' srcset="' + $set.srcset + '" sizes="' + $sizes + '"'
     }
-    $out += '            <div class="member__photo"><img src="' + $src + '"' + $responsive + ' alt="" loading="lazy"' + $imgCls + $imgStyle + '>' + $flag + '</div>' + "`n"
+    $loading = if ($eager) { ' decoding="async"' } else { ' loading="lazy"' }
+    $out += '            <div class="member__photo"><img src="' + $src + '"' + $responsive + ' alt=""' + $loading + $imgCls + $imgStyle + '>' + $flag + '</div>' + "`n"
   } else {
     $out += '            <div class="member__photo member__photo--empty"><span aria-hidden="true">' + (HtmlEnc $p.initials) + '</span>' + $flag + '</div>' + "`n"
   }
-  $out += '            <h3>' + (HtmlEnc $p.name) + '</h3><p>' + (HtmlEnc (RoleDisplay $p)) + '</p>' + "`n"
+  $out += '            <' + $hTag + '>' + (HtmlEnc $p.name) + '</' + $hTag + '><p>' + (HtmlEnc (RoleDisplay $p)) + '</p>' + "`n"
   if ($finished) {
     $out += '          </a>'
   } else {
@@ -697,26 +726,52 @@ function MemberTile($p, [bool]$withStatus, [string]$grid = 'main', [bool]$forceL
 $founders = @($team | Where-Object { $_.role -match '(?i)co-founder' })
 $rest     = @($team | Where-Object { $_.role -notmatch '(?i)co-founder' })
 
+# On the home page these grids sit inside the "Meet the Team" section, whose
+# heading is an h2. The group labels are h3 under it and the names h4 under
+# those; as h2s they claimed to be siblings of the section they belong to.
 $teamBlock = @()
-$teamBlock += '        <h2 class="team__label reveal">Founders</h2>'
+$teamBlock += '        <h3 class="team__label reveal">Founders</h3>'
 $teamBlock += '        <div class="team__grid team__grid--founders">'
-$teamBlock += (@($founders | ForEach-Object { MemberTile $_ $false 'founders' }) -join "`n")
+$teamBlock += (@($founders | ForEach-Object { MemberTile $_ $false 'founders' $false 'h4' }) -join "`n")
 $teamBlock += '        </div>'
 $teamBlock += ''
-# Without this second label the nine studio tiles below sit under "Founders" in
-# the heading outline, which is what a screen reader announces them as.
-$teamBlock += '        <h2 class="team__label reveal">The studio</h2>'
+# Without this second label the studio tiles below sit under "Founders" in the
+# heading outline, which is what a screen reader announces them as.
+$teamBlock += '        <h3 class="team__label reveal">The studio</h3>'
 $teamBlock += '        <div class="team__grid">'
-$teamBlock += (@($rest | ForEach-Object { MemberTile $_ $false }) -join "`n")
+$teamBlock += (@($rest | ForEach-Object { MemberTile $_ $false 'main' $false 'h4' }) -join "`n")
 $teamBlock += '        </div>'
 $teamHtml = $teamBlock -join "`n"
 
-# The talent pool is guest contributors and former shiverbugs, not the studio
-# roster, and it was rendering at the same tile size as the people who work here.
-# --pool packs them tighter so the hierarchy reads at a glance.
+# The talent pool used to be a full grid on the home page, the same size as the
+# studio's own. It is guests and former shiverbugs, and the home page is a pitch
+# to a studio deciding whether to hire us - so there it is now one line naming
+# the people a client could actually get, with a way through to the full pool on
+# the team hub. Former shiverbugs are not named here: offering someone's time
+# after they have left is not ours to do.
+$activeTalent = @($talent | Where-Object { $_.status -eq 'active' })
+function SmallestVariant($photo) {
+  foreach ($w in @(160, 240, 320)) {
+    $rel = VariantPath $photo $w
+    if (Test-Path (Join-Path $root ($rel -replace '/', '\'))) { return $rel }
+  }
+  return $photo
+}
+$faces = @($activeTalent | ForEach-Object {
+  '            <li><img src="' + (SmallestVariant $_.photo) + '" alt="" width="44" height="44" loading="lazy"></li>'
+}) -join "`n"
+$names = @($activeTalent | ForEach-Object {
+  '<a href="team/' + $_.slug + '.html">' + (HtmlEnc $_.name) + '</a> (' + (HtmlEnc (RoleDisplay $_)) + ')'
+})
+$nameList = if ($names.Count -le 1) { $names -join '' }
+            else { (($names[0..($names.Count - 2)]) -join ', ') + ' and ' + $names[-1] }
+$verb = if ($names.Count -eq 1) { 'works' } else { 'work' }
 $talentHtml = @(
-  '        <div class="team__grid team__grid--pool">',
-  (@($talent | ForEach-Object { MemberTile $_ $true }) -join "`n"),
+  '        <div class="pool-strip reveal">',
+  '          <ul class="pool-strip__faces" aria-hidden="true">',
+  $faces,
+  '          </ul>',
+  ('          <p>Alongside the studio, ' + $nameList + ' ' + $verb + ' with us from our talent pool of regular collaborators. <a class="pool-strip__more" href="team/#talent-pool">Meet the whole pool</a></p>'),
   '        </div>'
 ) -join "`n"
 
@@ -752,23 +807,24 @@ Write-Host "Updated the team grids in index.html"
 # whether to apply, not by how good anyone is, which is not a thing this file
 # could know. A shipped commercial title outranks a named award, a named award
 # outranks a degree classification, and a classification on its own comes last.
-# Four of the eight people who came in this way are here because the other four
+# Three of the seven people who came in this way are here because the other four
 # have no course, class or credit written down anywhere for a stranger to weigh.
+# Only people still on the studio roster belong here: the page says these are
+# people on the intake right now, so someone who has moved on to the talent pool
+# comes off this list even though they arrived the same way.
 $joinFaces = @(
   @{ slug = 'kyle-kerr'
      note = "Shipped Fallout 76: Burning Springs as a placement level designer in 2025, then graduated from Teesside in 2026. He had been building levels for a decade before that, starting in Halo: Reach's Forge." },
   @{ slug = 'oliver-neal'
      note = "First Class Honours in Games Development, and a final-year project that won Teesside's Best Games Programming award. Writes the gameplay in Unity and C#." },
   @{ slug = 'charlie-ashall'
-     note = 'First Class Honours in Game Design, working in Unreal and Unity, and taking a masters in Game Design alongside the job.' },
-  @{ slug = 'evan-atherton-elphick'
-     note = 'First Class Honours and straight off the course, making characters in 3D that are expressive rather than merely accurate.' }
+     note = 'First Class Honours in Game Design, working in Unreal and Unity, and taking a masters in Game Design alongside the job.' }
 )
 
 $joinRows = @()
 foreach ($face in $joinFaces) {
-  $person = $all | Where-Object { $_.slug -eq $face.slug } | Select-Object -First 1
-  if (-not $person) { throw "join.html face '$($face.slug)' is not in data/team.json" }
+  $person = $team | Where-Object { $_.slug -eq $face.slug } | Select-Object -First 1
+  if (-not $person) { throw "join.html face '$($face.slug)' is not on the studio roster in data/team.json" }
 
   # .member__photo carries the square, the crop and the .is-zoomed transform that
   # every other thumbnail on the site already uses. Reusing it means these faces
@@ -831,7 +887,9 @@ $redirectJs = @"
   var MAP = {
 $mapLines
   };
-  var slug = MAP[new URLSearchParams(location.search).get('p')];
+  var p = new URLSearchParams(location.search).get('p');
+  // own keys only: ?p=constructor would otherwise find Object.prototype's
+  var slug = p && Object.prototype.hasOwnProperty.call(MAP, p) ? MAP[p] : null;
   if (slug) location.replace('team/' + slug + '.html' + location.hash);
 })();
 "@
@@ -883,11 +941,10 @@ $teamIndexTemplate = @'
   <meta name="theme-color" content="#050b13">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <link rel="apple-touch-icon" href="../assets/img/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
-  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <link rel="preload" href="../assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/style.min.css">
+  <script>document.documentElement.classList.add('js')</script>
   <script type="application/ld+json">
 {{JSONLD}}
   </script>
@@ -899,15 +956,15 @@ $teamIndexTemplate = @'
   <!-- ======= NAV ======= -->
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <a class="nav__brand" href="../index.html" aria-label="Shiverbug Studios, home"><img src="../assets/img/nav-wordmark.webp" alt="" class="nav__wordmark" width="316" height="138"></a>
+      <a class="nav__brand" href="../" aria-label="Shiverbug Studios, home"><img src="../assets/img/nav-wordmark.webp" alt="" class="nav__wordmark" width="316" height="138"></a>
       <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="../index.html#services">Co-Dev</a>
+        <a href="../#services">Co-Dev</a>
         <a href="../games.html">Our Games</a>
-        <a href="../index.html#studio">Studio</a>
-        <a href="index.html" aria-current="page">Team</a>
+        <a href="../#studio">Studio</a>
+        <a href="./" aria-current="page">Team</a>
         <a href="../join.html">Join Us</a>
         <a href="../press.html">Press</a>
-        <a class="nav__cta" href="../index.html#contact">Get in touch</a>
+        <a class="nav__cta" href="../#contact">Get in touch</a>
       </nav>
       <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span>
@@ -917,7 +974,7 @@ $teamIndexTemplate = @'
 
   <main class="profile team" id="top">
     <div class="container">
-      <a class="backlink" href="../index.html">
+      <a class="backlink" href="../">
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Back to home
       </a>
@@ -939,7 +996,7 @@ $teamIndexTemplate = @'
 {{CORE}}
       </div>
 
-      <header class="section__head team__pool-head">
+      <header class="section__head team__pool-head" id="talent-pool">
         <p class="kicker kicker--sand">The talent pool</p>
         <h2>Friends of the <span class="underline-sand">Studio</span></h2>
         <p class="section__lede">Brilliant people who've helped shape our games, from guest contributors to former shiverbugs.</p>
@@ -1026,7 +1083,7 @@ $hubHtml = $teamIndexTemplate.
   Replace('{{DESC}}',   (HtmlEnc $hubDesc)).
   Replace('{{LEDE}}',   (HtmlEnc $hubLede)).
   Replace('{{JSONLD}}', (($hubLd | ConvertTo-Json -Depth 12).Replace('<', '\u003c'))).
-  Replace('{{FOUNDERS}}', (@($founders | ForEach-Object { MemberTile $_ $false 'founders' }) -join "`n")).
+  Replace('{{FOUNDERS}}', (@($founders | ForEach-Object { MemberTile $_ $false 'founders' $false 'h3' $true }) -join "`n")).
   Replace('{{CORE}}',     (@($rest     | ForEach-Object { MemberTile $_ $false }) -join "`n")).
   Replace('{{TALENT}}',   (@($talent   | ForEach-Object { MemberTile $_ $true  }) -join "`n"))
 
@@ -1133,13 +1190,18 @@ $gameLd = [ordered]@{
   'url'         = "$baseUrl/games.html"
   'description' = 'A 2-player split-screen collectathon platformer. One player is a turtle, the other a seagull, exploring a colourful world full of charm, clever challenges and an army of crabs.'
   'image'       = "$baseUrl/assets/img/out-of-water-screenshot.jpg"
+  'screenshot'  = @(
+    "$baseUrl/assets/press/oow-screenshot-cove.jpg",
+    "$baseUrl/assets/press/oow-screenshot-characters.jpg"
+  )
   'genre'       = @('Platform game', 'Collectathon', 'Cooperative video game')
   # Target platforms, not shipped ones - the game is unreleased and carries no
   # datePublished, so nothing here reads as "buy it now". This is what answers
   # "what can I play it on?" for a search engine or an AI agent.
-  'gamePlatform' = @('PC', 'Steam', 'Steam Deck', 'Xbox', 'PlayStation', 'Nintendo Switch')
+  # Steam is a store, not a platform, so it is not listed; Steam Deck is hardware.
+  'gamePlatform' = @('PC', 'Steam Deck', 'Xbox', 'PlayStation', 'Nintendo Switch')
   'gameEngine'  = 'Unity'
-  'playMode'    = 'CoOp'
+  'playMode'    = 'https://schema.org/CoOp'
   'numberOfPlayers' = [ordered]@{ '@type' = 'QuantitativeValue'; 'minValue' = 2; 'maxValue' = 2 }
   'author'      = @{ '@id' = "$baseUrl/#studio" }
   'publisher'   = @{ '@id' = "$baseUrl/#studio" }
@@ -1160,7 +1222,16 @@ $siteLd = [ordered]@{
       'email'       = 'contact@shiverbugstudios.com'
       'foundingDate' = '2025'
       'description' = 'Indie game development studio in North East England making couch co-op games, including debut title Out of Water, and offering co-development services: concept art, 3D art, level design and gameplay programming.'
-      'address'     = [ordered]@{ '@type' = 'PostalAddress'; 'addressRegion' = 'North East England'; 'addressCountry' = 'GB' }
+      # The registered office, the same address the footer discloses on every page.
+      'address'     = [ordered]@{
+        '@type'           = 'PostalAddress'
+        'streetAddress'   = 'Victoria Building, Victoria Road'
+        'addressLocality' = 'Middlesbrough'
+        'postalCode'      = 'TS1 3AP'
+        'addressRegion'   = 'North East England'
+        'addressCountry'  = 'GB'
+      }
+      'award'       = 'Tranzfuser 2025 Public Vote Winner, ProtoPlay 2025'
       'numberOfEmployees' = [ordered]@{ '@type' = 'QuantitativeValue'; 'value' = $teamCount }
       'knowsAbout'  = @('Video Game Development', 'Concept Art', '3D Art', 'Level Design', 'Gameplay Programming', 'Unity', 'Unreal Engine', 'Co-development')
       'founder'     = $foundersLd
@@ -1256,7 +1327,7 @@ $flatPages = @(
     path  = 'join.html'
     name  = 'Join Us | Shiverbug Studios'
     crumb = 'Join Us'
-    desc  = "Nearly everyone at Shiverbug who isn't a founder joined as an intern. How the Teesside intake works, and how to approach us if you're not on it."
+    desc  = "Everyone at Shiverbug who isn't a founder joined as an intern. How the Teesside intake works, and how to approach us if you're not on it."
   },
   @{
     file  = 'policy-privacy'

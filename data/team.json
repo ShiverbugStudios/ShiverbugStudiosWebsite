@@ -4,29 +4,29 @@
   "_readmeDates": "dateModified is the sitemap lastmod and the JSON-LD dateModified for every page, keyed by file path. These used to be read from git, one 'git log -1' per file, which could never be self-consistent: the date baked into a file was always computed before the commit that wrote it, and that commit moved the date again. It agreed only when a commit landed on the same day as the previous commit to touch that file, so the build went red the first time a change crossed midnight. Declared here instead, so the build is deterministic and the CI check can compare its output strictly. The cost is that these are now yours to keep honest: when you change a page's content, bump its date in the same commit. Nothing detects a forgotten bump, because anything that could would have to read git and would bring the old problem back with it. Every page in the sitemap needs an entry; the build stops with the missing path if one is absent.",
 
   "dateModified": {
-    "index.html": "2026-08-22",
-    "games.html": "2026-08-19",
-    "press.html": "2026-08-22",
-    "join.html": "2026-08-19",
-    "privacy.html": "2026-08-19",
-    "accessibility.html": "2026-08-18",
-    "team/index.html": "2026-08-19",
+    "index.html": "2026-09-27",
+    "games.html": "2026-09-27",
+    "press.html": "2026-09-27",
+    "join.html": "2026-09-27",
+    "privacy.html": "2026-09-27",
+    "accessibility.html": "2026-09-27",
+    "team/index.html": "2026-09-27",
     "team/lewis-mennim.html": "2026-08-18",
     "team/ryan-hughes.html": "2026-08-18",
     "team/garrett-windus.html": "2026-08-18",
     "team/oliver-neal.html": "2026-08-18",
     "team/sarah-childs.html": "2026-08-18",
     "team/connor-milburn.html": "2026-08-18",
-    "team/nathan-hopwood.html": "2026-08-19",
+    "team/nathan-hopwood.html": "2026-09-27",
     "team/charlie-ashall.html": "2026-08-18",
     "team/charlie-pelling.html": "2026-08-18",
     "team/martin-wilkinson.html": "2026-08-18",
-    "team/evan-atherton-elphick.html": "2026-08-18",
+    "team/evan-atherton-elphick.html": "2026-09-27",
     "team/kyle-kerr.html": "2026-08-18",
     "team/josh-cairns.html": "2026-08-18",
-    "team/madi-freck.html": "2026-08-18",
-    "team/max-breeze.html": "2026-08-18",
-    "team/aidan-hendry.html": "2026-08-18"
+    "team/madi-freck.html": "2026-09-27",
+    "team/max-breeze.html": "2026-09-27",
+    "team/aidan-hendry.html": "2026-09-27"
   },
 
   "team": [
@@ -242,29 +242,6 @@
       "thumbStyle": null
     },
     {
-      "id": "evan",
-      "slug": "evan-atherton-elphick",
-      "name": "Evan Atherton-Elphick",
-      "role": "Character Artist",
-      "metaDescription": "Evan Atherton-Elphick - Character Artist at Shiverbug Studios. Teesside University graduate making fun, expressive characters in 3D.",
-      "photo": "assets/img/team-evan.jpg",
-      "initials": "EA",
-      "pronouns": "he/him",
-      "tagline": "I always stay curious!",
-      "about": [
-        "Recent graduate from Teesside University with First Class Honours, I have a passion for 3D art and creating fun, interesting, and expressive stuff! I'm always trying to improve my skills and display my ideas in the most comprehensive ways possible.",
-        "Also a big fan of cinema and games as an artform, I always stay curious!"
-      ],
-      "favourite": "seagull",
-      "askMeAbout": null,
-      "socials": [
-        { "label": "ArtStation", "url": "https://www.artstation.com/atherton-elphick" },
-        { "label": "LinkedIn", "url": "https://www.linkedin.com/in/evan-atherton-elphick-74759a2a2/" }
-      ],
-      "thumbClass": null,
-      "thumbStyle": null
-    },
-    {
       "id": "kyle",
       "slug": "kyle-kerr",
       "name": "Kyle Kerr",
@@ -293,14 +270,87 @@
 
   "talent": [
     {
+      "id": "josh",
+      "slug": "josh-cairns",
+      "name": "Josh Cairns",
+      "role": "3D Artist",
+      "metaDescription": "Josh Cairns - 3D Artist in the Shiverbug Studios talent pool. A stylised environment artist working in Blender, ZBrush, Substance Painter and Unreal.",
+      "photo": "assets/img/team-josh.webp",
+      "initials": "JC",
+      "pronouns": "he/him",
+      "status": "active",
+      "tagline": "Maybe a little autistic about Dinosaurs",
+      "about": [
+        "I'm Josh, a stylised 3D Environment Artist specialising in Blender, ZBrush, Substance Painter, Unreal Engine, and with a limited knowledge of Unity. I've been passionate about games for as long as I can remember; games like Crash Bandicoot, Ratchet and Clank and Shadow of the Colossus were some of my favourite games growing up, all of them with absolutely breath-taking environments that I always look to for inspiration.",
+        "One of my favourite things about being a 3D Artist is the entire development process. I find it incredibly satisfying going from a simple blockout to a complete 3D model within a game engine. It provides a sense of pride and accomplishment (I am not quoting EA, don't dig into it) seeing how far a model can come along, and for me that goes for everything I model. I go into each development with the same passion and drive: no matter how big or small the asset is, I'll make sure it's PERFECT.",
+        "Outside of games I'm a massive nerd for practically everything, particularly Dinosaurs, DC and Star Wars, and I happen to be an avid football enjoyer (I use avid lightly, RAWA)."
+      ],
+      "favourite": "turtle",
+      "askMeAbout": null,
+      "socials": [
+        { "label": "ArtStation", "url": "https://www.artstation.com/joshuacairnsenvironmentartist" }
+      ],
+      "thumbClass": "is-zoomed",
+      "thumbStyle": "--zy:-16%; --zs:2.1"
+    },
+    {
+      "id": "evan",
+      "slug": "evan-atherton-elphick",
+      "name": "Evan Atherton-Elphick",
+      "role": "Character Artist",
+      "metaDescription": "Evan Atherton-Elphick - Character Artist in the Shiverbug Studios talent pool. A Teesside graduate making fun, expressive characters in 3D.",
+      "photo": "assets/img/team-evan.jpg",
+      "initials": "EA",
+      "pronouns": "he/him",
+      "status": "active",
+      "tagline": "I always stay curious!",
+      "about": [
+        "Recent graduate from Teesside University with First Class Honours, I have a passion for 3D art and creating fun, interesting, and expressive stuff! I'm always trying to improve my skills and display my ideas in the most comprehensive ways possible.",
+        "Also a big fan of cinema and games as an artform, I always stay curious!"
+      ],
+      "favourite": "seagull",
+      "askMeAbout": null,
+      "socials": [
+        { "label": "ArtStation", "url": "https://www.artstation.com/atherton-elphick" },
+        { "label": "LinkedIn", "url": "https://www.linkedin.com/in/evan-atherton-elphick-74759a2a2/" }
+      ],
+      "thumbClass": null,
+      "thumbStyle": null
+    },
+    {
+      "id": "madi",
+      "slug": "madi-freck",
+      "name": "Madi Freck",
+      "role": "Social Media",
+      "photo": "assets/img/team-madi.webp",
+      "initials": "MF",
+      "pronouns": "they/them",
+      "status": "active",
+      "tagline": "Sweet treat provider",
+      "about": [
+        "Hello, I'm Madi Freck, a 2D Animation and Stop-motion artist from Teesside University.",
+        "I specialise in stop-motion puppet making, frame-by-frame animation and creating 2D character rigs. I'm currently using my background in graphics design to co-run Shiverbug's social media and branding with <a href='oliver-neal.html'>Oliver Neal</a>."
+      ],
+      "favourite": "seagull",
+      "askMeAbout": null,
+      "socials": [
+        { "label": "Website", "url": "https://madifreck.com" },
+        { "label": "LinkedIn", "url": "https://www.linkedin.com/in/madi-freck-b45116370" },
+        { "label": "Instagram", "url": "https://www.instagram.com/madi.freck" }
+      ],
+      "thumbClass": null,
+      "thumbStyle": null
+    },
+    {
       "id": "nathan",
       "slug": "nathan-hopwood",
       "name": "Nathan Hopwood",
       "role": "3D Artist",
+      "metaDescription": "Nathan Hopwood - former 3D Artist at Shiverbug Studios. A hard surface artist specialising in vehicles, weapons and props.",
       "photo": "assets/img/team-nathan.webp",
       "initials": "NH",
       "pronouns": "he/him",
-      "status": "active",
+      "status": "former",
       "tagline": "Had I not been a 3D artist, I would have been an archaeologist",
       "about": [
         "I'm a dedicated Hard Surface 3D Artist who specialises in Vehicles, Weapons and Props. I primarily use Maya, Blender, Substance Painter, Unreal Engine and Unity. One of my favourite things about being a 3D Artist is that I get to create detailed and intricate models, allowing me to prove my skills in various different ways. As a huge fan of anything automotive, I love to make tons of different vehicle projects: sometimes I choose to be as detailed as possible, and other times I allow my creativity to flow free. I like to experiment with weapons and props on the side, sometimes for a breath of fresh air or just when I want to try something else.",
@@ -322,39 +372,15 @@
       "thumbStyle": null
     },
     {
-      "id": "josh",
-      "slug": "josh-cairns",
-      "name": "Josh Cairns",
-      "role": "3D Artist",
-      "metaDescription": "Josh Cairns - 3D Artist at Shiverbug Studios. Stylised 3D environment artist specialising in Blender, ZBrush, Substance Painter and Unreal Engine.",
-      "photo": "assets/img/team-josh.webp",
-      "initials": "JC",
-      "pronouns": "he/him",
-      "status": "active",
-      "tagline": "Maybe a little autistic about Dinosaurs",
-      "about": [
-        "I'm Josh, a stylised 3D Environment Artist specialising in Blender, ZBrush, Substance Painter, Unreal Engine, and with a limited knowledge of Unity. I've been passionate about games for as long as I can remember; games like Crash Bandicoot, Ratchet and Clank and Shadow of the Colossus were some of my favourite games growing up, all of them with absolutely breath-taking environments that I always look to for inspiration.",
-        "One of my favourite things about being a 3D Artist is the entire development process. I find it incredibly satisfying going from a simple blockout to a complete 3D model within a game engine. It provides a sense of pride and accomplishment (I am not quoting EA, don't dig into it) seeing how far a model can come along, and for me that goes for everything I model. I go into each development with the same passion and drive: no matter how big or small the asset is, I'll make sure it's PERFECT.",
-        "Outside of games I'm a massive nerd for practically everything, particularly Dinosaurs, DC and Star Wars, and I happen to be an avid football enjoyer (I use avid lightly, RAWA)."
-      ],
-      "favourite": "turtle",
-      "askMeAbout": null,
-      "socials": [
-        { "label": "ArtStation", "url": "https://www.artstation.com/joshuacairnsenvironmentartist" }
-      ],
-      "thumbClass": "is-zoomed",
-      "thumbStyle": "--zy:-16%; --zs:2.1"
-    },
-    {
       "id": "max",
       "slug": "max-breeze",
       "name": "Max Breeze",
       "role": "Character Artist",
-      "metaDescription": "Max Breeze - Character Artist at Shiverbug Studios. Character artist who has been playing and building game worlds since Oddworld at age five.",
+      "metaDescription": "Max Breeze - former Character Artist at Shiverbug Studios. A character artist who has been building game worlds since Oddworld at age five.",
       "photo": "assets/img/team-max.webp",
       "initials": "MB",
       "pronouns": "he/him",
-      "status": "active",
+      "status": "former",
       "tagline": "I've always loved living in other worlds",
       "about": [
         "I care a lot about games. I've been playing since I was 5, starting with Oddworld: Stranger's Wrath, and I've always loved living in other worlds and being able to create worlds of my own.",
@@ -370,35 +396,11 @@
       "thumbStyle": null
     },
     {
-      "id": "madi",
-      "slug": "madi-freck",
-      "name": "Madi Freck",
-      "role": "Social Media",
-      "photo": "assets/img/team-madi.webp",
-      "initials": "MF",
-      "pronouns": "they/them",
-      "status": "active",
-      "tagline": "Sweet treat provider",
-      "about": [
-        "Hello, I'm Madi Freck, a 3rd Year 2D Animation and Stop-motion student at Teesside University.",
-        "I specialise in stop-motion puppet making, frame-by-frame animation and creating 2D character rigs. I'm currently using my background in graphics design to co-run Shiverbug's social media and branding with <a href='oliver-neal.html'>Oliver Neal</a>."
-      ],
-      "favourite": "seagull",
-      "askMeAbout": null,
-      "socials": [
-        { "label": "Website", "url": "https://madifreck.com" },
-        { "label": "LinkedIn", "url": "https://www.linkedin.com/in/madi-freck-b45116370" },
-        { "label": "Instagram", "url": "https://www.instagram.com/madi.freck" }
-      ],
-      "thumbClass": null,
-      "thumbStyle": null
-    },
-    {
       "id": "aidan",
       "slug": "aidan-hendry",
       "name": "Aidan Hendry",
       "role": "Sound Designer",
-      "metaDescription": "Aidan Hendry - Sound Designer at Shiverbug Studios. British sound designer with a First Class BA in Digital Music and an MA in Sound Design.",
+      "metaDescription": "Aidan Hendry - former Sound Designer at Shiverbug Studios. A sound designer with a First Class BA in Digital Music and an MA in Sound Design.",
       "photo": "assets/img/team-aidan.webp",
       "initials": "AH",
       "pronouns": "he/him",

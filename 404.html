@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://oliverneal04.goatcounter.com; media-src 'self'; connect-src 'self' https://formspree.io https://buttondown.com https://oliverneal04.goatcounter.com; form-action https://formspree.io https://buttondown.com; base-uri 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://oliverneal04.goatcounter.com; media-src 'self'; connect-src 'self' https://formspree.io https://buttondown.com https://oliverneal04.goatcounter.com; form-action https://formspree.io https://buttondown.com; base-uri 'none'; object-src 'none'">
   <title>Page not found | Shiverbug Studios</title>
   <meta name="description" content="That page isn't here. Head back to Shiverbug Studios: our debut game Out of Water, the team, and co-development services.">
   <meta name="robots" content="noindex">
   <!-- GitHub Pages serves this file for a missing path at ANY depth, keeping the
        requested URL in the address bar. Relative paths would then resolve against
        that path (/team/css/style.css), so every reference here must be absolute.
-       On a custom-domain move these become plain "/..." - see $baseUrl in
-       tools/build-team.ps1 for the other place the repo prefix is hardcoded. -->
+       The site is served from the custom domain's root, so these are plain
+       "/..." paths. If it ever moves under a sub-path again, these and $baseUrl
+       in tools/build-team.ps1 are the two places that have to follow it. -->
   <meta name="theme-color" content="#050b13">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <link rel="apple-touch-icon" href="/assets/img/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.min.css">
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
@@ -47,9 +47,18 @@
   <main class="profile" id="top">
     <div class="container">
       <div class="profile__missing">
+        <img class="missing__art" src="/assets/press/oow-screenshot-characters-640.jpg" alt="The turtle in a sombrero and the seagull in a top hat, looking slightly lost on a beach" width="640" height="360" fetchpriority="high">
         <h1>This Page Swam Off Somewhere.</h1>
-        <p>Whatever you were after isn't here. Maybe the crabs took it.</p>
-        <a class="btn btn--ink" href="/">Back to shore</a>
+        <p>Whatever you were after isn't here. Maybe the crabs took it. One of these is probably what you wanted:</p>
+        <!-- A dead end with one button is still a dead end. These are the four
+             places people actually arrive looking for. -->
+        <ul class="missing__links">
+          <li><a href="/#services">Co-development</a></li>
+          <li><a href="/games.html">Out of Water</a></li>
+          <li><a href="/team/">The team</a></li>
+          <li><a href="/press.html">Press kit</a></li>
+        </ul>
+        <a class="btn btn--sand" href="/">Back to shore</a>
       </div>
     </div>
   </main>

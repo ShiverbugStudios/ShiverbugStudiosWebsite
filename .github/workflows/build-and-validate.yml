@@ -36,6 +36,13 @@ jobs:
         shell: powershell
         run: .\tools\build-press-kit.ps1
 
+      # style.min.css is what every page links, built from the commented
+      # style.css. Same deal as the team pages: edit the source, and this
+      # catches a commit that forgot to rebuild.
+      - name: Regenerate the minified stylesheet
+        shell: powershell
+        run: .\tools\build-css.ps1
+
       - name: Fail if generated files are out of date
         shell: bash
         run: |
@@ -55,7 +62,7 @@ jobs:
           # carve-out was the only thing standing between a genuine drift and a
           # green tick, so it is better gone than widened.
           if ! git diff --quiet; then
-            echo "::error::Generated files are out of date. Run tools/build-team.ps1 and commit the result."
+            echo "::error::Generated files are out of date. Run tools/build-team.ps1 and tools/build-css.ps1 and commit the result."
             git --no-pager diff --stat
             git --no-pager diff
             exit 1

@@ -17,12 +17,14 @@ script produces:
 | --- | --- |
 | `team/*.html` (one page per person) | `data/team.json` |
 | `team/index.html` (the roster hub) | `data/team.json` |
-| The team grids in `index.html`, between the `BUILD:TEAM` / `BUILD:TALENT` markers | `data/team.json` |
+| The team grid and the talent-pool line in `index.html`, between the `BUILD:TEAM` / `BUILD:TALENT` markers | `data/team.json` |
+| The intake faces in `join.html`, between the `BUILD:JOIN` markers | `data/team.json` |
 | The structured-data block in `index.html`, between the `BUILD:SCHEMA` markers | `data/team.json` |
 | The roster in `team-member.html`, between the `BUILD:REDIRECT-LIST` markers | `data/team.json` |
 | `js/legacy-redirect.js` | `data/team.json` |
 | `llms.txt` | `data/team.json` |
-| `sitemap.xml` | the page list in the script, plus git history for `lastmod` |
+| `sitemap.xml` | the page list in the script, plus `dateModified` in `data/team.json` |
+| `css/style.min.css` | `css/style.css`, by `tools/build-css.ps1` |
 
 The three press archives in `assets/press/` are generated too, by
 `tools/build-press-kit.ps1`, from files already in the repo:
@@ -41,8 +43,20 @@ input produces a byte-identical zip, so `git status` stays quiet.
 `_readme` key documents every field.
 
 Everything else (`index.html` outside the markers, `co-dev.html`, `press.html`,
-`privacy.html`, `accessibility.html`, `404.html`, the CSS and the JS) is written
-by hand.
+`privacy.html`, `accessibility.html`, `404.html`, `css/style.css` and the JS) is
+written by hand.
+
+**Edit `css/style.css`, never `css/style.min.css`.** Every page links the
+minified file, so after touching the stylesheet run:
+
+```bash
+powershell -ExecutionPolicy Bypass -File tools/build-css.ps1
+```
+
+It only strips comments and blank space, so the two files always describe the
+same rules. The source is heavily commented on purpose - those comments are why
+the site looks the way it does - and shipping them used to cost every first
+visit ~23 KB of render-blocking prose.
 
 ## Working on it
 
@@ -105,10 +119,29 @@ with their photos and their work, with nothing in `robots.txt` to stop a crawler
 reading it, and that file explicitly invites every AI and search crawler in.
 `docs/` is ignored now. Notes about the site do not live on the site.
 
-**The repo path is hardcoded in two places.** `$baseUrl` in
+**The site address lives in two places.** `$baseUrl` in
 `tools/build-team.ps1`, and every absolute reference in `404.html` (which Pages
 serves for a missing path at *any* depth, so relative URLs there would resolve
-against the wrong directory). Moving to a custom domain means updating both.
+against the wrong directory). The site is on the custom domain's root now, so
+those are plain `/...` paths; moving under a sub-path again means updating both.
+
+**One inline script, allowed by hash.** Every page's `<head>` runs
+`document.documentElement.classList.add('js')`, which is what lets the
+stylesheet hide scroll-reveal content only when script is running. The CSP
+allows that exact script by its SHA-256 and nothing else inline. Change a byte of
+it and the hash in `$csp` (and the hand-written pages) must change too;
+`tools/validate-site.ps1` recomputes it and fails if they disagree.
+
+**Fonts are self-hosted** in `assets/fonts` (both SIL Open Font License), so no
+page contacts Google. Don't add a Google Fonts link back: the CSP no longer
+allows it, and the privacy policy no longer mentions it.
+
+**Former shiverbugs.** Setting `"status": "former"` on someone in the talent
+pool changes more than their badge: their structured data says `alumniOf`
+rather than `worksFor`, their search snippet says "former", and they drop out of
+the talent-pool line on the home page. Take their work out of the co-dev
+galleries by hand at the same time - the page promises those are people you can
+hire through us.
 
 **`js/main.js` is one script scope.** It is a classic script, not a module, so a
 top-level `const` collides with any other top-level `const` of the same name and

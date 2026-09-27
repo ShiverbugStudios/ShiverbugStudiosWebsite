@@ -260,16 +260,32 @@ def social_cards():
 
 
 def favicons():
-    """The moth, cut from the brand artwork, on the brand cyan."""
-    src = Image.open(ROOT / "assets" / "brand" / "shiverbug-logo-on-blue.png").convert("RGBA")
-    s = src.width / 854.56  # the brand SVG's viewBox width
-    mark = src.crop((round(228 * s), round(118 * s), round(628 * s), round(500 * s)))
-    side = max(mark.size)
+    """The moth, cut from the brand artwork. The browser-tab icon keeps the
+    artwork's transparent background, so it sits on whatever the tab bar is;
+    the home-screen icons go on the brand cyan, because iOS and Android fill
+    transparency with black."""
+
+    def moth(logo):
+        src = Image.open(ROOT / "assets" / "brand" / logo).convert("RGBA")
+        s = src.width / 854.56  # the brand SVG's viewBox width
+        mark = src.crop((round(228 * s), round(118 * s), round(628 * s), round(500 * s)))
+        side = max(mark.size)
+        return mark, side
+
+    (ROOT / "assets" / "icons").mkdir(exist_ok=True)
+
+    mark, side = moth("shiverbug-logo-on-blue.png")
     sq = Image.new("RGBA", (side, side), SEA + (255,))
     sq.alpha_composite(mark, ((side - mark.width) // 2, (side - mark.height) // 2))
-    (ROOT / "assets" / "icons").mkdir(exist_ok=True)
-    for size, name in ((180, "apple-touch-icon.png"), (192, "icon-192.png"), (512, "icon-512.png"), (48, "favicon-48.png")):
+    for size, name in ((180, "apple-touch-icon.png"), (192, "icon-192.png"), (512, "icon-512.png")):
         sq.resize((size, size), Image.LANCZOS).convert("RGB").save(ROOT / "assets" / "icons" / name, optimize=True)
+
+    mark, side = moth("shiverbug-logo-black.png")
+    mark = mark.crop(mark.getbbox())
+    side = max(mark.size)
+    sq = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    sq.alpha_composite(mark, ((side - mark.width) // 2, (side - mark.height) // 2))
+    sq.resize((48, 48), Image.LANCZOS).save(ROOT / "assets" / "icons" / "favicon-48.png", optimize=True)
 
 
 def main():

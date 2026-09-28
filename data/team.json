@@ -376,33 +376,6 @@
       "crop": [0.298, 0.198, 0.444]
     },
     {
-      "id": "evan",
-      "slug": "evan-atherton-elphick",
-      "name": "Evan Atherton-Elphick",
-      "role": "Character Artist",
-      "pronouns": "he/him",
-      "tagline": "I always stay curious!",
-      "about": [
-        "Recent graduate from Teesside University with First Class Honours, I have a passion for 3D art and creating fun, interesting, and expressive stuff! I'm always trying to improve my skills and display my ideas in the most comprehensive ways possible.",
-        "Also a big fan of cinema and games as an artform, I always stay curious!"
-      ],
-      "favourite": "seagull",
-      "socials": [
-        {
-          "label": "ArtStation",
-          "url": "https://www.artstation.com/atherton-elphick"
-        },
-        {
-          "label": "LinkedIn",
-          "url": "https://www.linkedin.com/in/evan-atherton-elphick-74759a2a2/"
-        }
-      ],
-      "status": "former",
-      "metaDescription": "Evan Atherton-Elphick - Character Artist in the Shiverbug Studios talent pool. A Teesside graduate making fun, expressive characters in 3D.",
-      "photo": "evan-atherton-elphick.jpg",
-      "crop": [0, 0.026, 1]
-    },
-    {
       "id": "madi",
       "slug": "madi-freck",
       "name": "Madi Freck",
@@ -463,33 +436,6 @@
       "crop": [0.067, 0.132, 0.738]
     },
     {
-      "id": "max",
-      "slug": "max-breeze",
-      "name": "Max Breeze",
-      "role": "Character Artist",
-      "pronouns": "he/him",
-      "tagline": "I've always loved living in other worlds",
-      "about": [
-        "I care a lot about games. I've been playing since I was 5, starting with Oddworld: Stranger's Wrath, and I've always loved living in other worlds and being able to create worlds of my own.",
-        "I do a lot of GDD work and always chip in when it comes to games. Big fan of knights, vikings and fantasy stuff."
-      ],
-      "favourite": "turtle",
-      "socials": [
-        {
-          "label": "ArtStation",
-          "url": "https://www.artstation.com/maxbreeze"
-        },
-        {
-          "label": "LinkedIn",
-          "url": "https://www.linkedin.com/in/max-breeze-b2b593281/"
-        }
-      ],
-      "status": "former",
-      "metaDescription": "Max Breeze - former Character Artist at Shiverbug Studios. A character artist who has been building game worlds since Oddworld at age five.",
-      "photo": "max-breeze.webp",
-      "crop": [0.054, 0.121, 0.478]
-    },
-    {
       "id": "aidan",
       "slug": "aidan-hendry",
       "name": "Aidan Hendry",
@@ -519,6 +465,60 @@
       "metaDescription": "Aidan Hendry - former Sound Designer at Shiverbug Studios. A sound designer with a First Class BA in Digital Music and an MA in Sound Design.",
       "photo": "aidan-hendry.webp",
       "crop": [0.086, 0.039, 0.725]
+    },
+    {
+      "id": "max",
+      "slug": "max-breeze",
+      "name": "Max Breeze",
+      "role": "Character Artist",
+      "pronouns": "he/him",
+      "tagline": "I've always loved living in other worlds",
+      "about": [
+        "I care a lot about games. I've been playing since I was 5, starting with Oddworld: Stranger's Wrath, and I've always loved living in other worlds and being able to create worlds of my own.",
+        "I do a lot of GDD work and always chip in when it comes to games. Big fan of knights, vikings and fantasy stuff."
+      ],
+      "favourite": "turtle",
+      "socials": [
+        {
+          "label": "ArtStation",
+          "url": "https://www.artstation.com/maxbreeze"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/max-breeze-b2b593281/"
+        }
+      ],
+      "status": "former",
+      "metaDescription": "Max Breeze - former Character Artist at Shiverbug Studios. A character artist who has been building game worlds since Oddworld at age five.",
+      "photo": "max-breeze.webp",
+      "crop": [0.054, 0.121, 0.478]
+    },
+    {
+      "id": "evan",
+      "slug": "evan-atherton-elphick",
+      "name": "Evan Atherton-Elphick",
+      "role": "Character Artist",
+      "pronouns": "he/him",
+      "tagline": "I always stay curious!",
+      "about": [
+        "Recent graduate from Teesside University with First Class Honours, I have a passion for 3D art and creating fun, interesting, and expressive stuff! I'm always trying to improve my skills and display my ideas in the most comprehensive ways possible.",
+        "Also a big fan of cinema and games as an artform, I always stay curious!"
+      ],
+      "favourite": "seagull",
+      "socials": [
+        {
+          "label": "ArtStation",
+          "url": "https://www.artstation.com/atherton-elphick"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/evan-atherton-elphick-74759a2a2/"
+        }
+      ],
+      "status": "former",
+      "metaDescription": "Evan Atherton-Elphick - Character Artist in the Shiverbug Studios talent pool. A Teesside graduate making fun, expressive characters in 3D.",
+      "photo": "evan-atherton-elphick.jpg",
+      "crop": [0, 0.026, 1]
     }
   ]
 }

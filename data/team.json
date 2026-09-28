@@ -87,6 +87,24 @@
       "founder": true
     },
     {
+      "id": "charlie-p",
+      "slug": "charlie-pelling",
+      "name": "Charlie Pelling",
+      "role": "Narrative Designer",
+      "pronouns": "he/him",
+      "tagline": "It's bread",
+      "about": [
+        "I'm an aspiring Narrative Designer with a passion for creating immersive storytelling and loveable characters for people to enjoy. I've always loved playing through games and being left with a bittersweet feeling. That's how you know a game is great.",
+        "My love for narrative began when I first played The Walking Dead Telltale series and realised how much one decision could spin a story and impact the future of your journey.",
+        "At Shiverbug I write the voice lines for our characters, move the narrative forward and make the journey worth experiencing.",
+        "Some of my all time favourite games are Silent Hill 2/3, Red Dead Redemption 1/2 and Cyberpunk 2077."
+      ],
+      "favourite": "turtle",
+      "metaDescription": "Charlie Pelling - Narrative Designer at Shiverbug Studios. Narrative designer focused on immersive storytelling and characters players remember.",
+      "photo": "charlie-pelling.jpg",
+      "joinedVia": "Trailblazer"
+    },
+    {
       "id": "sarah",
       "slug": "sarah-childs",
       "name": "Sarah Childs",
@@ -123,24 +141,6 @@
       "metaDescription": "Sarah Childs - Character Concept Artist at Shiverbug Studios. Fantasy, historical and RPG character design driven by research and world-building.",
       "photo": "sarah-childs.webp",
       "crop": [0, 0.004, 1]
-    },
-    {
-      "id": "charlie-p",
-      "slug": "charlie-pelling",
-      "name": "Charlie Pelling",
-      "role": "Narrative Designer",
-      "pronouns": "he/him",
-      "tagline": "It's bread",
-      "about": [
-        "I'm an aspiring Narrative Designer with a passion for creating immersive storytelling and loveable characters for people to enjoy. I've always loved playing through games and being left with a bittersweet feeling. That's how you know a game is great.",
-        "My love for narrative began when I first played The Walking Dead Telltale series and realised how much one decision could spin a story and impact the future of your journey.",
-        "At Shiverbug I write the voice lines for our characters, move the narrative forward and make the journey worth experiencing.",
-        "Some of my all time favourite games are Silent Hill 2/3, Red Dead Redemption 1/2 and Cyberpunk 2077."
-      ],
-      "favourite": "turtle",
-      "metaDescription": "Charlie Pelling - Narrative Designer at Shiverbug Studios. Narrative designer focused on immersive storytelling and characters players remember.",
-      "photo": "charlie-pelling.jpg",
-      "joinedVia": "Trailblazer"
     },
     {
       "id": "connor",

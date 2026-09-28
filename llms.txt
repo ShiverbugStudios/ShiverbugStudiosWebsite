@@ -25,8 +25,8 @@ Contact: contact@shiverbugstudios.com
 - [Lewis Mennim](https://shiverbugstudios.com/team/lewis-mennim): CEO · Co-Founder
 - [Ryan Hughes](https://shiverbugstudios.com/team/ryan-hughes): CFO · Co-Founder
 - [Garrett Windus](https://shiverbugstudios.com/team/garrett-windus): 3D Artist · Co-Founder
-- [Sarah Childs](https://shiverbugstudios.com/team/sarah-childs): Character Concept Artist
 - [Charlie Pelling](https://shiverbugstudios.com/team/charlie-pelling): Narrative Designer
+- [Sarah Childs](https://shiverbugstudios.com/team/sarah-childs): Character Concept Artist
 - [Connor Milburn](https://shiverbugstudios.com/team/connor-milburn): 3D Artist
 - [Charlie Ashall](https://shiverbugstudios.com/team/charlie-ashall): Level Designer
 - [Oliver Neal](https://shiverbugstudios.com/team/oliver-neal): Gameplay Programmer

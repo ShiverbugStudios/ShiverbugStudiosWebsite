@@ -125,41 +125,6 @@
       "crop": [0, 0.004, 1]
     },
     {
-      "id": "megan",
-      "slug": "megan-nicol",
-      "name": "Megan Nicol",
-      "role": "Character & Creature Artist",
-      "tagline": "The art of not being ready and doing it anyway will take you very far",
-      "about": [
-        "I'm a creative 2D artist who specialises in Character and Creature design. I mostly use Photoshop and Procreate when doing initial sketch ideas.",
-        "I am heavily inspired by animals and folklore from different cultures and love to travel to get more inspiration, especially when I can put a fantasy twist into the design thanks to my love of movies, books, and games. Some of my favourites for example are Princess Mononoke, The Chronicles of Narnia, Elden Ring, soulframe and The Shepherd King duology!"
-      ],
-      "favourite": "turtle",
-      "socials": [
-        {
-          "label": "Portfolio",
-          "url": "https://megannicol.my.canva.site/"
-        },
-        {
-          "label": "Instagram",
-          "url": "https://www.instagram.com/megnaeconcepts"
-        },
-        {
-          "label": "LinkedIn",
-          "url": "https://www.linkedin.com/in/megan-nicol22"
-        }
-      ],
-      "knowsAbout": [
-        "Video Game Development",
-        "Concept Art",
-        "Character Design",
-        "Creature Design",
-        "2D Art"
-      ],
-      "photo": "megan-nicol.webp",
-      "crop": [0, 0.062, 1]
-    },
-    {
       "id": "charlie-p",
       "slug": "charlie-pelling",
       "name": "Charlie Pelling",
@@ -314,6 +279,75 @@
       ],
       "metaDescription": "Kyle Kerr - Level Designer at Shiverbug Studios. Shipped Fallout 76: Burning Springs on placement, and a Teesside University graduate.",
       "photo": "kyle-kerr.webp"
+    },
+    {
+      "id": "megan",
+      "slug": "megan-nicol",
+      "name": "Megan Nicol",
+      "role": "Character Concept Artist",
+      "tagline": "The art of not being ready and doing it anyway will take you very far",
+      "about": [
+        "I'm a creative 2D artist who specialises in Character and Creature design. I mostly use Photoshop and Procreate when doing initial sketch ideas.",
+        "I am heavily inspired by animals and folklore from different cultures and love to travel to get more inspiration, especially when I can put a fantasy twist into the design thanks to my love of movies, books, and games. Some of my favourites for example are Princess Mononoke, The Chronicles of Narnia, Elden Ring, soulframe and The Shepherd King duology!"
+      ],
+      "favourite": "turtle",
+      "socials": [
+        {
+          "label": "Portfolio",
+          "url": "https://megannicol.my.canva.site/"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/megnaeconcepts"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/megan-nicol22"
+        }
+      ],
+      "knowsAbout": [
+        "Video Game Development",
+        "Concept Art",
+        "Character Design",
+        "Creature Design",
+        "2D Art"
+      ],
+      "photo": "megan-nicol.webp",
+      "crop": [0, 0.062, 1]
+    },
+    {
+      "id": "patrick",
+      "slug": "patrick-agwuh",
+      "name": "Patrick Agwuh",
+      "role": "3D Animator",
+      "tagline": "i draw things",
+      "about": [
+        "I’m a First-Class 3D Animation graduate from Teesside University with a passion for animation, film, and indie animation. I grew up inspired by Nickelodeon cartoons, Disney and DreamWorks films, and Cartoon Network, which continue to influence the way I approach character, storytelling, and visual style.",
+        "I’m always excited to try new things, experiment with different techniques, and learn new software. I particularly enjoy working with Maya, Procreate, and Premiere Pro, and I’m currently learning Blender to expand my 3D skills and workflow.",
+        "I’m always creating, whether that’s developing animation projects, experimenting with new ideas, or exploring different styles. I’m also a big fan of games such as Overwatch, Brawl Stars, Rivals of Aether 2, and Disney Infinity, and I enjoy taking inspiration from the character design, animation, worlds, and visual styles found in games.",
+        "I’m passionate about storytelling through animation and would love to continue developing my skills while working on creative projects within the animation, film, and games industries."
+      ],
+      "favourite": "turtle",
+      "socials": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/patrickagwuh/"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@patstoons"
+        },
+        {
+          "label": "ArtStation",
+          "url": "https://www.artstation.com/patstoons"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/pats_toons/"
+        }
+      ],
+      "photo": "patrick-agwuh.webp",
+      "crop": [0.105, 0, 0.8]
     }
   ],
   "talent": [

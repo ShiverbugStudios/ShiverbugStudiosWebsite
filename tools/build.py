@@ -221,8 +221,6 @@ def crew(slugs):
     out = []
     for s in slugs:
         p = BY_SLUG[s]
-        if p.get("status") == "former":
-            continue
         pic = img(f"team/{s}", "", sizes="36px", near=240)
         out.append(f'<li><a href="{url(p)}">{pic}<span>{e(p["name"])} <small>{e(p["role"].split(" · ")[0])}</small></span></a></li>')
     return '<ul class="crew">' + "".join(out) + "</ul>"
@@ -258,7 +256,6 @@ def pieces_for(discipline=None, by=None):
         pc for pc in WORK["pieces"]
         if (discipline is None or pc["discipline"] == discipline)
         and (by is None or pc["by"] == by)
-        and BY_SLUG[pc["by"]].get("status") != "former"
     ]
 
 
@@ -615,7 +612,7 @@ def profile(p, prev, nxt):
             f'<li><a href="{e(x["url"])}" rel="me noopener">{e(x["label"])}</a></li>' for x in p["socials"]
         ) + "</ul>"
     work = ""
-    if not former and pieces_for(by=p["slug"]):
+    if pieces_for(by=p["slug"]):
         work = f'<section class="mt-l" aria-labelledby="work-title"><h2 id="work-title" class="small-heading">Work by {e(first(p))}</h2><div class="mt-m">{gallery(by=p["slug"])}</div></section>'
     tags = side_tag(p) + alumni_tag(p)
     pager = '<nav class="pager" aria-label="More people">'

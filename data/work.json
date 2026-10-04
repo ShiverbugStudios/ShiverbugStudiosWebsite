@@ -1,5 +1,5 @@
 {
-  "_readme": "The work shown on the co-development page and on each person's profile. Every piece is credited to one person (by, their slug in team.json) and filed under one discipline. image is a file in source/work without its extension; video is an optional clip in assets/video that plays in its place when opened. Client work never goes here: only Out of Water and the team's own portfolio pieces. When someone moves to former in team.json, take their pieces out, because this page says these are people you can hire through us.",
+  "_readme": "The work shown on the co-development page and on each person's profile. Every piece is credited to one person (by, their slug in team.json) and filed under one discipline. image is a file in source/work without its extension; video is an optional clip in assets/video that plays in its place when opened. Client work never goes here: only Out of Water and the team's own portfolio pieces.",
 
   "disciplines": [
     {

@@ -63,9 +63,8 @@ and about a third of the frame wide, or as close as the photo allows.
 **Someone leaves.** Move them to `talent` with `"status": "former"`. They stay
 in the talent pool on the team page with a Shiverbug alumni badge (Shana the
 moth, `assets/brand/moth-ink.svg`, which `tools/logo.py` writes), their
-structured data says `alumniOf`, and their pieces drop out of the
-co-development galleries on their own, because that page promises the work is
-by people you can hire through us.
+structured data says `alumniOf`, and their pieces stay in the co-development
+galleries and on their profile.
 
 **Add a portfolio piece.** Put the image in `source/work/`, add an entry to
 `data/work.json` (credited to one person, filed under one discipline, with alt

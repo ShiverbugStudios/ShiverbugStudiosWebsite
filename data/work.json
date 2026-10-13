@@ -1,5 +1,5 @@
 {
-  "_readme": "The work shown on the co-development page and on each person's profile. Every piece is credited to one person (by, their slug in team.json) and filed under one discipline. image is a file in source/work without its extension; video is an optional clip in assets/video that plays in its place when opened; set (optional) groups related pieces by one person in one discipline, such as every board for one character, into a single card whose first piece is the cover, stepped through in the viewer. The sets list names each one. Client work never goes here: only Out of Water and the team's own portfolio pieces.",
+  "_readme": "The work shown on the co-development page and on each person's profile. Every piece is credited to one person (by, their slug in team.json) and filed under one discipline. image is a file in source/work without its extension; video is an optional clip in assets/video that plays in its place when opened; set (optional) groups related pieces by one person in one discipline, such as every board for one character, into a single card whose first piece is the cover, stepped through in the viewer. The sets list names each one; autoplay makes its cover step through the set on its own, slowly, with a pause button. Client work never goes here: only Out of Water and the team's own portfolio pieces.",
 
   "disciplines": [
     {
@@ -61,8 +61,8 @@
     {"id": "elder-turtle", "title": "The Elder Turtle"},
     {"id": "blob-king", "title": "The Blob King"},
     {"id": "coral-quarters", "title": "Coral Quarters"},
-    {"id": "crab-army", "title": "The crab army"},
-    {"id": "friendly-faces", "title": "Friendly faces"}
+    {"id": "crab-army", "title": "The crab army", "autoplay": true},
+    {"id": "parrots", "title": "Pirate parrots", "autoplay": true}
   ],
 
   "pieces": [
@@ -158,38 +158,22 @@
       "note": "Bounce platforms in three kinds: an airflip blob that leaps up when you hit it, a wall blob that clings to walls and ceilings, and a heavy floor blob that needs both players' weight."
     },
     {
-      "image": "3d-coral-quarters",
+      "image": "3d-hootsworth",
       "discipline": "stylised",
-      "set": "coral-quarters",
-      "by": "josh-cairns",
-      "title": "Coral Quarters",
-      "alt": "A stylised wooden beach shack on stilts with a purple shingle roof and a painted dolphin sign, with palm trees and rocks behind it.",
-      "note": "A beach shack built as a hero location, with hand-painted timber and shingles."
+      "by": "evan-atherton-elphick",
+      "title": "Hootsworth",
+      "project": "Out of Water",
+      "alt": "Front and back views of an owl with outstretched brown wings, in a pink top hat, a pink waistcoat with gold buttons and a pink bow tie.",
+      "note": "The owl who runs the hat stall and takes payment in sand dollars."
     },
     {
-      "image": "3d-coral-props",
+      "image": "3d-mortimer",
       "discipline": "stylised",
-      "set": "coral-quarters",
-      "by": "josh-cairns",
-      "title": "Coral Quarters props",
-      "alt": "The Coral Quarters prop set laid out on sand: a wooden frame, solar panel, life ring, rope, noticeboards, crates, a kayak and paddles and the dolphin sign.",
-      "note": "The modular set that dresses the shack, every piece reusable across the scene."
-    },
-    {
-      "image": "3d-night-house",
-      "discipline": "stylised",
-      "by": "martin-wilkinson",
-      "title": "Witch's hut",
-      "alt": "A witch's hut shaped like a cauldron under a slumping hat roof, wrapped in pale roots, on a lantern-lit jetty in blue forest mist.",
-      "note": "A team environment made to a strict budget: 35,000 triangles, 2K and 1K textures, modular throughout. Martin built everything but the lighting."
-    },
-    {
-      "image": "3d-robot",
-      "discipline": "stylised",
-      "by": "martin-wilkinson",
-      "title": "Relic",
-      "alt": "A friendly orange robot shown from three angles, with a cartoon face on a boxy screen head and thin jointed legs.",
-      "note": "A personal character piece: worn materials, a deliberately lopsided build and a face that does most of the work."
+      "by": "evan-atherton-elphick",
+      "title": "Mortimer",
+      "project": "Out of Water",
+      "alt": "Front and back views of a grey mole in a straw hat with a red band, round glasses, a red neckerchief and a cream explorer's waistcoat, with a sack slung on the back.",
+      "note": "A turnaround, so the explorer's kit reads from both sides."
     },
     {
       "image": "3d-grunt-crab",
@@ -242,29 +226,9 @@
       "note": "Long in the leg, for the crab that gives chase."
     },
     {
-      "image": "3d-hootsworth",
-      "discipline": "stylised",
-      "set": "friendly-faces",
-      "by": "evan-atherton-elphick",
-      "title": "Hootsworth",
-      "project": "Out of Water",
-      "alt": "Front and back views of an owl with outstretched brown wings, in a pink top hat, a pink waistcoat with gold buttons and a pink bow tie.",
-      "note": "The owl who runs the hat stall and takes payment in sand dollars."
-    },
-    {
-      "image": "3d-mortimer",
-      "discipline": "stylised",
-      "set": "friendly-faces",
-      "by": "evan-atherton-elphick",
-      "title": "Mortimer",
-      "project": "Out of Water",
-      "alt": "Front and back views of a grey mole in a straw hat with a red band, round glasses, a red neckerchief and a cream explorer's waistcoat, with a sack slung on the back.",
-      "note": "A turnaround, so the explorer's kit reads from both sides."
-    },
-    {
       "image": "3d-parrot-yellow",
       "discipline": "stylised",
-      "set": "friendly-faces",
+      "set": "parrots",
       "by": "evan-atherton-elphick",
       "title": "Parrot NPC, yellow",
       "project": "Out of Water",
@@ -274,7 +238,7 @@
     {
       "image": "3d-parrot-blue",
       "discipline": "stylised",
-      "set": "friendly-faces",
+      "set": "parrots",
       "by": "evan-atherton-elphick",
       "title": "Parrot NPC, blue",
       "project": "Out of Water",
@@ -284,12 +248,46 @@
     {
       "image": "3d-parrot-green",
       "discipline": "stylised",
-      "set": "friendly-faces",
+      "set": "parrots",
       "by": "evan-atherton-elphick",
       "title": "Parrot NPC, green",
       "project": "Out of Water",
       "alt": "Front and back views of the pirate parrot in green and yellow.",
       "note": "One of three colourways."
+    },
+    {
+      "image": "3d-coral-quarters",
+      "discipline": "stylised",
+      "set": "coral-quarters",
+      "by": "josh-cairns",
+      "title": "Coral Quarters",
+      "alt": "A stylised wooden beach shack on stilts with a purple shingle roof and a painted dolphin sign, with palm trees and rocks behind it.",
+      "note": "A beach shack built as a hero location, with hand-painted timber and shingles."
+    },
+    {
+      "image": "3d-coral-props",
+      "discipline": "stylised",
+      "set": "coral-quarters",
+      "by": "josh-cairns",
+      "title": "Coral Quarters props",
+      "alt": "The Coral Quarters prop set laid out on sand: a wooden frame, solar panel, life ring, rope, noticeboards, crates, a kayak and paddles and the dolphin sign.",
+      "note": "The modular set that dresses the shack, every piece reusable across the scene."
+    },
+    {
+      "image": "3d-night-house",
+      "discipline": "stylised",
+      "by": "martin-wilkinson",
+      "title": "Witch's hut",
+      "alt": "A witch's hut shaped like a cauldron under a slumping hat roof, wrapped in pale roots, on a lantern-lit jetty in blue forest mist.",
+      "note": "A team environment made to a strict budget: 35,000 triangles, 2K and 1K textures, modular throughout. Martin built everything but the lighting."
+    },
+    {
+      "image": "3d-robot",
+      "discipline": "stylised",
+      "by": "martin-wilkinson",
+      "title": "Relic",
+      "alt": "A friendly orange robot shown from three angles, with a cartoon face on a boxy screen head and thin jointed legs.",
+      "note": "A personal character piece: worn materials, a deliberately lopsided build and a face that does most of the work."
     },
     {
       "image": "3d-hunter",

@@ -64,6 +64,80 @@
     }
   });
 
+  // ---- Reels ----------------------------------------------------------------
+  // A set marked autoplay slides its cover along to the next piece every six
+  // seconds, long enough to take each one in. Like the footage, it pauses off
+  // screen, has a pause button (WCAG 2.2.2) and never starts for someone who
+  // has asked for reduced motion; it also holds still while it is hovered or
+  // has focus. The cover opens whichever piece is showing.
+  document.querySelectorAll("[data-reel]").forEach(function (reel) {
+    var track = reel.querySelector(".reel");
+    var cover = reel.querySelector(".reel__cover");
+    var toggle = reel.querySelector(".reel__toggle");
+    var thumbs = reel.querySelectorAll(".piece__more [data-piece]");
+    var wanted = !still.matches;
+    var visible = false;
+    var held = false;
+    var timer = null;
+    var at = 0;
+
+    function go(i) {
+      at = (i + thumbs.length) % thumbs.length;
+      track.style.transform = "translateX(" + -100 * at + "%)";
+      thumbs.forEach(function (t, k) {
+        t.classList.toggle("is-showing", k === at);
+      });
+    }
+
+    function sync() {
+      clearInterval(timer);
+      timer = wanted && visible && !held ? setInterval(function () { go(at + 1); }, 6000) : null;
+      toggle.setAttribute("aria-pressed", wanted ? "false" : "true");
+      toggle.textContent = wanted ? "Pause" : "Play";
+    }
+
+    toggle.hidden = false;
+    toggle.addEventListener("click", function () {
+      wanted = !wanted;
+      sync();
+    });
+    // Held by the pictures, not by the button: pressing Play should play.
+    function hold(e, on) {
+      held = on && e.target !== toggle;
+      sync();
+    }
+    [cover, reel.querySelector(".piece__more")].forEach(function (el) {
+      el.addEventListener("mouseenter", function (e) { hold(e, true); });
+      el.addEventListener("mouseleave", function (e) { hold(e, false); });
+    });
+    reel.addEventListener("focusin", function (e) { hold(e, true); });
+    reel.addEventListener("focusout", function (e) {
+      hold(e, reel.contains(e.relatedTarget) && e.relatedTarget !== toggle);
+    });
+    cover.addEventListener("click", function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      thumbs[at].click();
+    });
+
+    function seen(now) {
+      if (now && !visible) {
+        // Fetch the frames it is about to slide to before it gets there.
+        track.querySelectorAll("img").forEach(function (img) { img.loading = "eager"; });
+      }
+      visible = now;
+      sync();
+    }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        seen(entries[0].isIntersecting);
+      }, { threshold: 0.3 }).observe(reel);
+    } else {
+      seen(true);
+    }
+    go(0);
+  });
+
   // ---- Work viewer ----------------------------------------------------------
   // A piece in a set (data-set) can step through the rest of its set, with
   // the buttons or the arrow keys.

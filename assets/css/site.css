@@ -20,8 +20,9 @@
      and has one weight, so it is never set bold, and anything a sentence
      long (a pull quote, a tagline) goes in heavy Nunito instead.
    - No scroll animations, no gradients, no blur. The page does not move
-     unless you move it, apart from the game footage, which has a pause
-     button and stays still for anyone who has asked for reduced motion.
+     unless you move it, apart from the game footage and the two reels on
+     the co-development page (the crabs and the parrots). Both have a pause
+     button and stay still for anyone who has asked for reduced motion.
    ---------------------------------------------------------------------------- */
 
 @font-face {
@@ -635,6 +636,26 @@ figcaption, .caption {
 .person__line::before { content: "\201C"; }
 .person__line::after { content: "\201D"; }
 
+/* The team page steps down in size: the people running the studio at full
+   size, the studio at three quarters of that, the talent pool at half. On a
+   tablet or wider the columns are fixed widths (292px, the size a leadership
+   card has always had on a full-width screen, then 219px and 146px), so the
+   proportions hold whatever the row length. On a phone they share the row. */
+.people--studio { gap: 32px 18px; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); }
+.people--studio .person h3 { font-size: 1.125rem; }
+.people--studio :is(.person__role, .person__line, .person__soon) { font-size: 0.875rem; }
+.people--talent { gap: 28px 12px; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); }
+@media (min-width: 48em) {
+  .people--leadership { grid-template-columns: repeat(auto-fill, 18.25rem); }
+  .people--studio { grid-template-columns: repeat(auto-fill, 13.6875rem); }
+  .people--talent { grid-template-columns: repeat(auto-fill, 9.125rem); }
+}
+.people--talent .person h3 { margin-top: 10px; font-size: 1rem; }
+.people--talent :is(.person__role, .person__line) { font-size: 0.8125rem; }
+.people--talent .tag { display: flex; width: fit-content; min-height: 28px; margin-top: 8px; font-size: 0.75rem; }
+.people--talent .tag img { width: 20px; }
+.people--talent .tag + .tag { margin-left: 0; margin-top: 6px; }
+
 /* A slot for a new starter, held by Shana the moth until their photo and
    words arrive. The dashed edge says it is waiting to be filled. */
 .person--slot .person__photo { display: grid; place-items: center; border-style: dashed; }
@@ -827,6 +848,16 @@ figcaption, .caption {
 .piece__more img { width: 100%; height: 100%; object-fit: cover; transition: scale 300ms ease; }
 .piece__more a:hover img { scale: 1.08; }
 
+/* A reel: a set whose cover slides along to the next piece on its own
+   (site.js). Every piece is a thumbnail, all in one row, and the one showing
+   is ringed in the game's "you are here" gold. */
+.piece--reel { position: relative; }
+.reel { display: flex; height: 100%; transition: transform 700ms ease; }
+.piece__img .reel img { flex: 0 0 100%; }
+.piece--reel .piece__more { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 1fr; }
+.piece__more a.is-showing { outline: 3px solid var(--sun-deep); outline-offset: 2px; }
+.reel__toggle { top: 10px; right: 10px; bottom: auto; }
+
 .viewer {
   width: min(100% - 24px, 1180px);
   max-height: calc(100% - 24px);
@@ -855,13 +886,13 @@ figcaption, .caption {
 .page-hero .actions { margin-top: 32px; }
 .page-hero--sea { background: var(--sea); }
 
-/* The team page's hero, with Shana big beside the heading: the brand's
-   artwork on cyan, black moon and all. */
-.team-hero { display: grid; gap: 24px 48px; align-items: center; }
-.team-hero__mark { order: -1; width: clamp(120px, 30vw, 160px); }
+/* A hero with Shana big beside the heading (the team and careers pages):
+   the brand's artwork for light grounds, black moon and all. */
+.mark-hero { display: grid; gap: 24px 48px; align-items: center; }
+.mark-hero__mark { order: -1; width: clamp(120px, 30vw, 160px); }
 @media (min-width: 48em) {
-  .team-hero { grid-template-columns: minmax(0, 1fr) auto; }
-  .team-hero__mark { order: 0; width: clamp(200px, 24vw, 320px); }
+  .mark-hero { grid-template-columns: minmax(0, 1fr) auto; }
+  .mark-hero__mark { order: 0; width: clamp(200px, 24vw, 320px); }
 }
 .page-hero--sand { background: var(--sand); }
 
@@ -933,15 +964,14 @@ figcaption, .caption {
 .faq details[open] summary::after { content: "\2212"; }
 .faq details > div { padding: 0 0 24px; max-width: var(--measure); }
 
-/* Each tool's logo in ink above its name. Procreate's guidelines only allow
-   its logo with permission, so its tile is the name alone, set larger. */
+/* Each tool's logo, in its own colours, above its name. */
 .tools {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 7.5rem), 1fr));
+  grid-template-columns: repeat(3, 1fr);  /* nine tools, three by three */
 }
 .tools li {
   display: grid;
@@ -958,7 +988,6 @@ figcaption, .caption {
   text-align: center;
 }
 .tools img { width: 44px; height: 44px; }
-.tools .tools__name { font-family: var(--display); font-size: var(--step-1); font-weight: 400; }
 
 /* ---- The game page ------------------------------------------------------- */
 
@@ -995,7 +1024,7 @@ figcaption, .caption {
 .title-hero .actions { margin-top: 28px; }
 .title-hero .play-toggle { right: var(--gutter); bottom: 24px; }
 
-.pitch { font-weight: 800; font-size: var(--step-3); line-height: 1.15; max-width: 24ch; }
+.pitch { font-family: var(--display); font-size: var(--step-4); line-height: 1.04; letter-spacing: 0.01em; max-width: 14ch; }
 .pitch-source { margin-top: 20px; font-size: var(--step--1); color: var(--ink-soft); }
 
 .duo {

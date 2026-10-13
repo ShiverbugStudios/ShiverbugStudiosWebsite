@@ -235,7 +235,7 @@ def person_card(p):
 
 
 def people_grid(group):
-    return '<ul class="people">' + "".join(person_card(p) for p in group_members(group)) + "</ul>"
+    return f'<ul class="people people--{group}">' + "".join(person_card(p) for p in group_members(group)) + "</ul>"
 
 
 def crew(slugs):
@@ -292,23 +292,44 @@ def piece(pc):
     return f'<li class="piece">{piece_link(pc, inner)}</li>'
 
 
+def thumb(pc):
+    return f'<li>{piece_link(pc, img("work/" + pc["image"], pc["title"], sizes="(min-width: 72em) 6rem, (min-width: 40em) 11vw, 22vw", near=320))}</li>'
+
+
+def reel_card(ps, s):
+    """A set marked autoplay: the cover is a strip of every piece that site.js
+    slides along on its own, slowly, with a pause button. Every piece is a
+    thumbnail, so the one showing can be marked, and the cover opens whichever
+    is showing. Without script it is the first piece, linked to its image."""
+    frames = "".join(
+        img("work/" + pc["image"], pc["alt"] if i == 0 else "", sizes=CARD_SIZES, near=640)
+        for i, pc in enumerate(ps)
+    )
+    return (
+        f'<li class="piece piece--set piece--reel" data-reel>'
+        f'<a class="reel__cover" href="{full("work/" + ps[0]["image"])}">'
+        f'<div class="piece__img"><div class="reel">{frames}</div>{badges(f"{len(ps)} pieces")}</div>'
+        f'<h4>{e(s["title"])}</h4><p>{e(credit(ps[0]))}</p></a>'
+        '<button class="play-toggle reel__toggle" type="button" aria-pressed="false" hidden>Pause</button>'
+        f'<ul class="piece__more" aria-label="{e(s["title"])}">{"".join(thumb(pc) for pc in ps)}</ul></li>'
+    )
+
+
 def set_card(ps):
     """Related pieces as one card: the first is the cover, the rest sit under
     it as thumbnails, and the viewer steps through them all."""
     s = SETS[ps[0]["set"]]
+    if s.get("autoplay"):
+        return reel_card(ps, s)
     cover = img("work/" + ps[0]["image"], ps[0]["alt"], sizes=CARD_SIZES, near=640)
     video = "Has video" if any(pc.get("video") for pc in ps) else ""
     inner = (
         f'<div class="piece__img">{cover}{badges(f"{len(ps)} pieces", video)}</div>'
         f'<h4>{e(s["title"])}</h4><p>{e(credit(ps[0]))}</p>'
     )
-    thumbs = "".join(
-        f'<li>{piece_link(pc, img("work/" + pc["image"], pc["title"], sizes="(min-width: 72em) 6rem, (min-width: 40em) 11vw, 22vw", near=320))}</li>'
-        for pc in ps[1:]
-    )
     return (
         f'<li class="piece piece--set">{piece_link(ps[0], inner)}'
-        f'<ul class="piece__more" aria-label="More from {e(s["title"])}">{thumbs}</ul></li>'
+        f'<ul class="piece__more" aria-label="More from {e(s["title"])}">{"".join(thumb(pc) for pc in ps[1:])}</ul></li>'
     )
 
 

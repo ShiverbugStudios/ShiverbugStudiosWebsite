@@ -126,8 +126,10 @@ before changing the look. In short:
   pitch decks. Luckiest Guy has one weight and is capitals only, so it is never
   set bold and never used for anything a sentence long. Both are self-hosted,
   cut down by `tools/fonts.py`, so no page contacts Google.
-- **Nothing moves on its own** apart from the game footage, which has a pause
-  button and does not play for anyone who has asked for reduced motion.
+- **Nothing moves on its own** apart from the game footage and the sets marked
+  `autoplay` in `data/work.json` (the crabs and the parrots), which step on
+  every six seconds. Both have a pause button, hold still off screen, and do
+  not move for anyone who has asked for reduced motion.
 - **Copy has no em dashes**, the same house rule as the wiki. `tools/check.py`
   enforces it in `src/` and in `data/site.json` and `data/work.json`.
 

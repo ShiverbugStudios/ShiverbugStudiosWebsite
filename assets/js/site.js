@@ -65,6 +65,8 @@
   });
 
   // ---- Work viewer ----------------------------------------------------------
+  // A piece in a set (data-set) can step through the rest of its set, with
+  // the buttons or the arrow keys.
   var pieces = document.querySelectorAll("[data-piece]");
   if (pieces.length && typeof HTMLDialogElement === "function") {
     var dialog = document.createElement("dialog");
@@ -72,13 +74,60 @@
     dialog.setAttribute("aria-labelledby", "viewer-title");
     dialog.innerHTML =
       '<div class="viewer__media"></div>' +
-      '<div class="viewer__text"><h2 id="viewer-title"></h2><p class="muted viewer__by"></p><p class="viewer__note"></p></div>' +
+      '<div class="viewer__text"><h2 id="viewer-title"></h2><p class="muted viewer__by"></p><p class="viewer__note"></p>' +
+      '<div class="viewer__nav" hidden><button class="btn btn--small btn--cream" type="button" data-step="-1">Previous</button>' +
+      '<span class="viewer__count" aria-live="polite"></span>' +
+      '<button class="btn btn--small btn--cream" type="button" data-step="1">Next</button></div></div>' +
       '<button class="btn btn--small btn--cream viewer__close" type="button">Close</button>';
     document.body.appendChild(dialog);
     var media = dialog.querySelector(".viewer__media");
+    var nav = dialog.querySelector(".viewer__nav");
+    var set = [];
+    var at = 0;
+
+    function show(link) {
+      var d = link.dataset;
+      media.innerHTML = "";
+      if (d.video) {
+        var v = document.createElement("video");
+        v.src = d.video;
+        v.poster = link.href;
+        v.controls = true;
+        v.muted = true;
+        v.loop = true;
+        v.playsInline = true;
+        if (!still.matches) v.autoplay = true;
+        media.appendChild(v);
+      } else {
+        var img = document.createElement("img");
+        img.src = link.href;
+        img.alt = d.alt || "";
+        media.appendChild(img);
+      }
+      dialog.querySelector("#viewer-title").textContent = d.title || "";
+      dialog.querySelector(".viewer__by").textContent = d.by || "";
+      dialog.querySelector(".viewer__note").textContent = d.note || "";
+      nav.hidden = set.length < 2;
+      dialog.querySelector(".viewer__count").textContent = set.length > 1 ? at + 1 + " of " + set.length : "";
+    }
+
+    function step(by) {
+      if (set.length < 2) return;
+      at = (at + by + set.length) % set.length;
+      show(set[at]);
+    }
 
     dialog.querySelector(".viewer__close").addEventListener("click", function () {
       dialog.close();
+    });
+    nav.addEventListener("click", function (e) {
+      var button = e.target.closest("[data-step]");
+      if (button) step(Number(button.getAttribute("data-step")));
+    });
+    dialog.addEventListener("keydown", function (e) {
+      if (e.target.tagName === "VIDEO") return; // the arrows seek the clip there
+      if (e.key === "ArrowRight") step(1);
+      if (e.key === "ArrowLeft") step(-1);
     });
     dialog.addEventListener("click", function (e) {
       if (e.target === dialog) dialog.close();
@@ -91,27 +140,14 @@
       link.addEventListener("click", function (e) {
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
         e.preventDefault();
-        var d = link.dataset;
-        media.innerHTML = "";
-        if (d.video) {
-          var v = document.createElement("video");
-          v.src = d.video;
-          v.poster = link.href;
-          v.controls = true;
-          v.muted = true;
-          v.loop = true;
-          v.playsInline = true;
-          if (!still.matches) v.autoplay = true;
-          media.appendChild(v);
-        } else {
-          var img = document.createElement("img");
-          img.src = link.href;
-          img.alt = d.alt || "";
-          media.appendChild(img);
-        }
-        dialog.querySelector("#viewer-title").textContent = d.title || "";
-        dialog.querySelector(".viewer__by").textContent = d.by || "";
-        dialog.querySelector(".viewer__note").textContent = d.note || "";
+        var id = link.dataset.set;
+        set = id
+          ? Array.prototype.filter.call(pieces, function (p) {
+              return p.dataset.set === id;
+            })
+          : [link];
+        at = set.indexOf(link);
+        show(link);
         dialog.showModal();
       });
     });

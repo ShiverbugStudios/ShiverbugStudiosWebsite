@@ -27,7 +27,7 @@ that caused it.
 | `src/layout.html` | The page shell: head, header, footer | No |
 | `src/pages/*.html` | One file per page: front matter, then the page | No |
 | `data/team.json` | Everyone on the site, and their words | No |
-| `data/work.json` | Disciplines and portfolio pieces for co-development | No |
+| `data/work.json` | Disciplines, sets and portfolio pieces for co-development | No |
 | `data/site.json` | Studio facts, socials, form endpoints, the dated log on the home page | No |
 | `data/news.json` | The News page: the studio's LinkedIn posts, linked back to LinkedIn | No |
 | `data/images.json` | Written by `tools/images.py`: every image and its sizes | No |
@@ -35,7 +35,8 @@ that caused it.
 | `assets/css/site.css` | The stylesheet. Edit this one; the build writes `site.min.css` | Yes |
 | `assets/js/site.js` | Video pause controls, the work viewer, the contact form | Yes |
 | `assets/img/` | Generated WebP images. Never edit by hand | Yes |
-| `assets/brand/` | The logo in every colourway, plus the header lockups | Yes |
+| `assets/brand/` | The logo in every colourway, plus the lockups `tools/logo.py` lays out for the header and footer | Yes |
+| `assets/tools/` | Logos of the software we work in, with where each came from | Yes |
 | `assets/press/*.zip` | Press archives, written by the build | Yes |
 | `*.html`, `team/*.html`, `sitemap.xml`, `llms.txt`, `robots.txt` | Written by the build | Yes |
 
@@ -79,7 +80,10 @@ so they are still named as a founder in the press kit and the structured data.
 **Add a portfolio piece.** Put the image in `source/work/`, add an entry to
 `data/work.json` (credited to one person, filed under one discipline, with alt
 text), run `python tools/images.py`, then build. Client work never goes on the
-site.
+site. Pieces that belong together, such as every board for one character, go
+in a set: name it in `sets` and give each piece that `set`. A set shows as one
+card, its first piece the cover and the rest as thumbnails under it, and the
+viewer steps through them all. A set is one person's work in one discipline.
 
 **Add an entry to the log on the home page.** Add it to `log` in
 `data/site.json`. A photo is optional and needs an image in `data/images.json`.

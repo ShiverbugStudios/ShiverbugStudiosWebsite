@@ -518,9 +518,8 @@ figcaption, .caption {
 .hero .actions { margin-top: 32px; }
 .hero__screen { position: relative; margin: 20px 10px 0 0; }
 .hero__screen .frame { aspect-ratio: 16 / 9; box-shadow: 10px 10px 0 var(--ink); }
-.hero__screen figcaption { margin-top: 22px; color: var(--ink); opacity: 0.85; }
 .hero__screen .sticker--kiko { --w: clamp(84px, 11vw, 150px); --tilt: 7deg; top: -58px; right: -8px; }
-.hero__screen .sticker--koopa { --w: clamp(120px, 15vw, 210px); --tilt: -6deg; bottom: 40px; left: -40px; }
+.hero__screen .sticker--koopa { --w: clamp(120px, 15vw, 210px); --tilt: -6deg; bottom: -36px; left: -40px; }
 
 /* ---- Home: the game ------------------------------------------------------ */
 
@@ -789,9 +788,14 @@ figcaption, .caption {
 }
 .piece__img img { width: 100%; height: 100%; object-fit: cover; transition: scale 300ms ease; }
 .piece a:hover .piece__img img { scale: 1.04; }
-.piece__img .badge {
+.piece__img .badges {
   position: absolute;
   left: 10px; bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.piece__img .badge {
   padding: 4px 10px;
   border-radius: var(--r-s);
   background: var(--cream);
@@ -801,6 +805,27 @@ figcaption, .caption {
 .piece h4 { margin-top: 12px; font-size: var(--step-1); }
 .piece a:hover h4 { text-decoration: underline; text-decoration-color: var(--sun-deep); }
 .piece p { font-size: 0.9375rem; color: var(--ink-soft); margin-top: 2px; }
+
+/* A set: the cover above, the rest of the set in a row of thumbnails, so
+   related work reads as one thing instead of a wall of tiles. */
+.piece__more {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.piece__more a {
+  display: block;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--r-s);
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  background: var(--sea-deep);
+}
+.piece__more img { width: 100%; height: 100%; object-fit: cover; transition: scale 300ms ease; }
+.piece__more a:hover img { scale: 1.08; }
 
 .viewer {
   width: min(100% - 24px, 1180px);
@@ -818,6 +843,9 @@ figcaption, .caption {
 .viewer__text { display: grid; gap: 6px; padding: 20px 24px 24px; }
 .viewer__text h2 { font-size: var(--step-2); }
 .viewer__close { position: absolute; top: 12px; right: 12px; }
+.viewer__nav { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 10px; }
+.viewer__nav[hidden] { display: none; }
+.viewer__count { font-weight: 650; color: var(--ink-soft); }
 
 /* ---- Co-development ------------------------------------------------------ */
 
@@ -826,6 +854,15 @@ figcaption, .caption {
 .page-hero .lede { margin-top: 24px; }
 .page-hero .actions { margin-top: 32px; }
 .page-hero--sea { background: var(--sea); }
+
+/* The team page's hero, with Shana big beside the heading: the brand's
+   artwork on cyan, black moon and all. */
+.team-hero { display: grid; gap: 24px 48px; align-items: center; }
+.team-hero__mark { order: -1; width: clamp(120px, 30vw, 160px); }
+@media (min-width: 48em) {
+  .team-hero { grid-template-columns: minmax(0, 1fr) auto; }
+  .team-hero__mark { order: 0; width: clamp(200px, 24vw, 320px); }
+}
 .page-hero--sand { background: var(--sand); }
 
 .jump { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
@@ -896,8 +933,32 @@ figcaption, .caption {
 .faq details[open] summary::after { content: "\2212"; }
 .faq details > div { padding: 0 0 24px; max-width: var(--measure); }
 
-.tools { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.tools li { padding: 6px 12px; border-radius: var(--r-s); background: var(--sand); font-weight: 600; font-size: 0.9375rem; }
+/* Each tool's logo in ink above its name. Procreate's guidelines only allow
+   its logo with permission, so its tile is the name alone, set larger. */
+.tools {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 7.5rem), 1fr));
+}
+.tools li {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 10px;
+  min-height: 7.5rem;
+  padding: 16px 10px;
+  border-radius: var(--r-m);
+  background: var(--sand);
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  text-align: center;
+}
+.tools img { width: 44px; height: 44px; }
+.tools .tools__name { font-family: var(--display); font-size: var(--step-1); font-weight: 400; }
 
 /* ---- The game page ------------------------------------------------------- */
 
@@ -1194,7 +1255,7 @@ figcaption, .caption {
 .nowrap { white-space: nowrap; }
 
 @media (max-width: 39.99em) {
-  .hero__screen .sticker--koopa { left: -14px; bottom: 44px; }
+  .hero__screen .sticker--koopa { left: -14px; bottom: -28px; }
   .hero__screen .sticker--kiko { right: 4px; top: -52px; }
   .title-hero .play-toggle { top: 96px; bottom: auto; }
   .game-teaser__art .sticker { right: -6px; }

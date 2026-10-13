@@ -300,8 +300,9 @@ def main():
         if m.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"):
             jobs.append((f"news/{m.stem}", m, lambda m=m: Image.open(m).convert("RGB"), [480, 800, 1200], 80, False))
 
+    # 320 is for the thumbnails under a set's cover on the co-development page.
     for name, master in work_masters():
-        jobs.append((name, SRC / master, lambda m=SRC / master: Image.open(m), [640, 960, 1600], 82, False))
+        jobs.append((name, SRC / master, lambda m=SRC / master: Image.open(m), [320, 640, 960, 1600], 82, False))
 
     team = json.loads((ROOT / "data" / "team.json").read_text(encoding="utf-8"))
     # Someone without a photo yet is a placeholder on the team page.

@@ -1,5 +1,5 @@
 {
-  "_readme": "The work shown on the co-development page and on each person's profile. Every piece is credited to one person (by, their slug in team.json) and filed under one discipline. image is a file in source/work without its extension; video is an optional clip in assets/video that plays in its place when opened. Client work never goes here: only Out of Water and the team's own portfolio pieces.",
+  "_readme": "The work shown on the co-development page and on each person's profile. Every piece is credited to one person (by, their slug in team.json) and filed under one discipline. image is a file in source/work without its extension; video is an optional clip in assets/video that plays in its place when opened; set (optional) groups related pieces by one person in one discipline, such as every board for one character, into a single card whose first piece is the cover, stepped through in the viewer. The sets list names each one. Client work never goes here: only Out of Water and the team's own portfolio pieces.",
 
   "disciplines": [
     {
@@ -57,10 +57,19 @@
     }
   ],
 
+  "sets": [
+    {"id": "elder-turtle", "title": "The Elder Turtle"},
+    {"id": "blob-king", "title": "The Blob King"},
+    {"id": "coral-quarters", "title": "Coral Quarters"},
+    {"id": "crab-army", "title": "The crab army"},
+    {"id": "friendly-faces", "title": "Friendly faces"}
+  ],
+
   "pieces": [
     {
       "image": "concept-elder-turtle",
       "discipline": "concept",
+      "set": "elder-turtle",
       "by": "sarah-childs",
       "title": "The Elder Turtle",
       "project": "Out of Water",
@@ -70,6 +79,7 @@
     {
       "image": "concept-statue-process",
       "discipline": "concept",
+      "set": "elder-turtle",
       "by": "sarah-childs",
       "title": "Statue design process",
       "project": "Out of Water",
@@ -79,6 +89,7 @@
     {
       "image": "concept-statue-sheet",
       "discipline": "concept",
+      "set": "elder-turtle",
       "by": "sarah-childs",
       "title": "Statue construction sheet",
       "project": "Out of Water",
@@ -89,6 +100,7 @@
     {
       "image": "concept-accessories",
       "discipline": "concept",
+      "set": "elder-turtle",
       "by": "sarah-childs",
       "title": "Accessories and collectables",
       "project": "Out of Water",
@@ -98,6 +110,7 @@
     {
       "image": "concept-iconography",
       "discipline": "concept",
+      "set": "elder-turtle",
       "by": "sarah-childs",
       "title": "Shell iconography and boss crystals",
       "project": "Out of Water",
@@ -107,6 +120,7 @@
     {
       "image": "concept-blob-king",
       "discipline": "concept",
+      "set": "blob-king",
       "by": "sarah-childs",
       "title": "The Blob King",
       "project": "Out of Water",
@@ -116,6 +130,7 @@
     {
       "image": "concept-blob-king-turnaround",
       "discipline": "concept",
+      "set": "blob-king",
       "by": "sarah-childs",
       "title": "Blob King turnaround",
       "project": "Out of Water",
@@ -125,6 +140,7 @@
     {
       "image": "concept-blob-king-expressions",
       "discipline": "concept",
+      "set": "blob-king",
       "by": "sarah-childs",
       "title": "Blob King expressions",
       "project": "Out of Water",
@@ -134,6 +150,7 @@
     {
       "image": "concept-mini-blobfish",
       "discipline": "concept",
+      "set": "blob-king",
       "by": "sarah-childs",
       "title": "Mini blobfish",
       "project": "Out of Water",
@@ -143,6 +160,7 @@
     {
       "image": "3d-coral-quarters",
       "discipline": "stylised",
+      "set": "coral-quarters",
       "by": "josh-cairns",
       "title": "Coral Quarters",
       "alt": "A stylised wooden beach shack on stilts with a purple shingle roof and a painted dolphin sign, with palm trees and rocks behind it.",
@@ -151,6 +169,7 @@
     {
       "image": "3d-coral-props",
       "discipline": "stylised",
+      "set": "coral-quarters",
       "by": "josh-cairns",
       "title": "Coral Quarters props",
       "alt": "The Coral Quarters prop set laid out on sand: a wooden frame, solar panel, life ring, rope, noticeboards, crates, a kayak and paddles and the dolphin sign.",
@@ -175,6 +194,7 @@
     {
       "image": "3d-grunt-crab",
       "discipline": "stylised",
+      "set": "crab-army",
       "by": "evan-atherton-elphick",
       "title": "Grunt Crab",
       "project": "Out of Water",
@@ -184,6 +204,7 @@
     {
       "image": "3d-cannon-crab",
       "discipline": "stylised",
+      "set": "crab-army",
       "by": "evan-atherton-elphick",
       "title": "Cannon Crab",
       "project": "Out of Water",
@@ -193,6 +214,7 @@
     {
       "image": "3d-shield-crab",
       "discipline": "stylised",
+      "set": "crab-army",
       "by": "evan-atherton-elphick",
       "title": "Shield Crab",
       "project": "Out of Water",
@@ -202,6 +224,7 @@
     {
       "image": "3d-patrol-crab",
       "discipline": "stylised",
+      "set": "crab-army",
       "by": "evan-atherton-elphick",
       "title": "Patrol Crab",
       "project": "Out of Water",
@@ -211,6 +234,7 @@
     {
       "image": "3d-chase-crab",
       "discipline": "stylised",
+      "set": "crab-army",
       "by": "evan-atherton-elphick",
       "title": "Chase Crab",
       "project": "Out of Water",
@@ -218,35 +242,9 @@
       "note": "Long in the leg, for the crab that gives chase."
     },
     {
-      "image": "3d-parrot-yellow",
-      "discipline": "stylised",
-      "by": "evan-atherton-elphick",
-      "title": "Parrot NPC, yellow",
-      "project": "Out of Water",
-      "alt": "Front and back views of a round yellow and white parrot in a navy pirate tricorn with gold trim and a leather bandolier, its wings spread.",
-      "note": "One of three colourways."
-    },
-    {
-      "image": "3d-parrot-blue",
-      "discipline": "stylised",
-      "by": "evan-atherton-elphick",
-      "title": "Parrot NPC, blue",
-      "project": "Out of Water",
-      "alt": "Front and back views of the pirate parrot in blue and yellow, with purple tail feathers.",
-      "note": "One of three colourways."
-    },
-    {
-      "image": "3d-parrot-green",
-      "discipline": "stylised",
-      "by": "evan-atherton-elphick",
-      "title": "Parrot NPC, green",
-      "project": "Out of Water",
-      "alt": "Front and back views of the pirate parrot in green and yellow.",
-      "note": "One of three colourways."
-    },
-    {
       "image": "3d-hootsworth",
       "discipline": "stylised",
+      "set": "friendly-faces",
       "by": "evan-atherton-elphick",
       "title": "Hootsworth",
       "project": "Out of Water",
@@ -256,11 +254,42 @@
     {
       "image": "3d-mortimer",
       "discipline": "stylised",
+      "set": "friendly-faces",
       "by": "evan-atherton-elphick",
       "title": "Mortimer",
       "project": "Out of Water",
       "alt": "Front and back views of a grey mole in a straw hat with a red band, round glasses, a red neckerchief and a cream explorer's waistcoat, with a sack slung on the back.",
       "note": "A turnaround, so the explorer's kit reads from both sides."
+    },
+    {
+      "image": "3d-parrot-yellow",
+      "discipline": "stylised",
+      "set": "friendly-faces",
+      "by": "evan-atherton-elphick",
+      "title": "Parrot NPC, yellow",
+      "project": "Out of Water",
+      "alt": "Front and back views of a round yellow and white parrot in a navy pirate tricorn with gold trim and a leather bandolier, its wings spread.",
+      "note": "One of three colourways."
+    },
+    {
+      "image": "3d-parrot-blue",
+      "discipline": "stylised",
+      "set": "friendly-faces",
+      "by": "evan-atherton-elphick",
+      "title": "Parrot NPC, blue",
+      "project": "Out of Water",
+      "alt": "Front and back views of the pirate parrot in blue and yellow, with purple tail feathers.",
+      "note": "One of three colourways."
+    },
+    {
+      "image": "3d-parrot-green",
+      "discipline": "stylised",
+      "set": "friendly-faces",
+      "by": "evan-atherton-elphick",
+      "title": "Parrot NPC, green",
+      "project": "Out of Water",
+      "alt": "Front and back views of the pirate parrot in green and yellow.",
+      "note": "One of three colourways."
     },
     {
       "image": "3d-hunter",

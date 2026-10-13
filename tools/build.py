@@ -250,25 +250,65 @@ def crew(slugs):
 # ---- Work --------------------------------------------------------------------
 
 
-def piece(pc):
-    p = BY_SLUG[pc["by"]]
-    name = f"work/{pc['image']}"
-    credit = f"By {p['name']}" + (f", for {pc['project']}" if pc.get("project") else "")
+SETS = {s["id"]: s for s in WORK["sets"]}
+for _sid in SETS:
+    _members = [pc for pc in WORK["pieces"] if pc.get("set") == _sid]
+    assert len(_members) > 1, f"set {_sid} needs at least two pieces"
+    assert len({(pc["by"], pc["discipline"]) for pc in _members}) == 1, f"set {_sid} mixes people or disciplines"
+assert all(pc["set"] in SETS for pc in WORK["pieces"] if pc.get("set")), "a piece names a set that is not in sets"
+
+CARD_SIZES = "(min-width: 72em) 24rem, (min-width: 40em) 45vw, 92vw"
+
+
+def credit(pc):
+    return f"By {BY_SLUG[pc['by']]['name']}" + (f", for {pc['project']}" if pc.get("project") else "")
+
+
+def piece_link(pc, inner):
+    """A link to a piece's full image, carrying what the viewer shows. Without
+    script it simply opens the image."""
     data = {
         "data-piece": "",
+        "data-set": pc.get("set", ""),
         "data-title": pc["title"],
-        "data-by": credit,
+        "data-by": credit(pc),
         "data-note": typo(pc.get("note", "")),
         "data-alt": pc["alt"],
     }
     if pc.get("video"):
         data["data-video"] = f"/assets/video/{pc['video']}"
-    attrs = " ".join(f'{k}="{e(v)}"' if v else k for k, v in data.items())
-    badge = '<span class="badge">Has video</span>' if pc.get("video") else ""
+    attrs = " ".join(f'{k}="{e(v)}"' if v else k for k, v in data.items() if v or k == "data-piece")
+    return f'<a href="{full("work/" + pc["image"])}" {attrs}>{inner}</a>'
+
+
+def badges(*labels):
+    labels = [x for x in labels if x]
+    return '<span class="badges">' + "".join(f'<span class="badge">{e(x)}</span>' for x in labels) + "</span>" if labels else ""
+
+
+def piece(pc):
+    pic = img("work/" + pc["image"], pc["alt"], sizes=CARD_SIZES, near=640)
+    inner = f'<div class="piece__img">{pic}{badges("Has video" if pc.get("video") else "")}</div><h4>{e(pc["title"])}</h4><p>{e(credit(pc))}</p>'
+    return f'<li class="piece">{piece_link(pc, inner)}</li>'
+
+
+def set_card(ps):
+    """Related pieces as one card: the first is the cover, the rest sit under
+    it as thumbnails, and the viewer steps through them all."""
+    s = SETS[ps[0]["set"]]
+    cover = img("work/" + ps[0]["image"], ps[0]["alt"], sizes=CARD_SIZES, near=640)
+    video = "Has video" if any(pc.get("video") for pc in ps) else ""
+    inner = (
+        f'<div class="piece__img">{cover}{badges(f"{len(ps)} pieces", video)}</div>'
+        f'<h4>{e(s["title"])}</h4><p>{e(credit(ps[0]))}</p>'
+    )
+    thumbs = "".join(
+        f'<li>{piece_link(pc, img("work/" + pc["image"], pc["title"], sizes="(min-width: 72em) 6rem, (min-width: 40em) 11vw, 22vw", near=320))}</li>'
+        for pc in ps[1:]
+    )
     return (
-        f'<li class="piece"><a href="{full(name)}" {attrs}>'
-        f'<div class="piece__img">{img(name, pc["alt"], sizes="(min-width: 72em) 24rem, (min-width: 40em) 45vw, 92vw", near=640)}{badge}</div>'
-        f'<h4>{e(pc["title"])}</h4><p>{e(credit)}</p></a></li>'
+        f'<li class="piece piece--set">{piece_link(ps[0], inner)}'
+        f'<ul class="piece__more" aria-label="More from {e(s["title"])}">{thumbs}</ul></li>'
     )
 
 
@@ -282,7 +322,14 @@ def pieces_for(discipline=None, by=None):
 
 def gallery(discipline=None, by=None):
     ps = pieces_for(discipline, by)
-    return '<ul class="gallery">' + "".join(piece(pc) for pc in ps) + "</ul>" if ps else ""
+    cards, seen = [], set()
+    for pc in ps:
+        if not pc.get("set"):
+            cards.append(piece(pc))
+        elif pc["set"] not in seen:
+            seen.add(pc["set"])
+            cards.append(set_card([x for x in ps if x.get("set") == pc["set"]]))
+    return '<ul class="gallery">' + "".join(cards) + "</ul>" if ps else ""
 
 
 def service(did):
@@ -624,7 +671,6 @@ def profile(p, prev, nxt):
     former = p.get("status") == "former"
     s = side(p)
     stick = sticker(s[0], sizes="130px") if s else ""
-    kind = "Co-founder" if p.get("founder") else ("Talent pool" if p in TEAM["talent"] else "On the team")
     pron = f" <span>({e(p['pronouns'])})</span>" if p.get("pronouns") else ""
     about = "".join(f"<p>{bio(x)}</p>" for x in p["about"])
     links = ""
@@ -649,7 +695,6 @@ def profile(p, prev, nxt):
 <article class="profile mt-m">
 <div class="profile__photo"><div class="frame">{photo}</div>{stick}</div>
 <div class="profile__body">
-<p class="overline">{kind}</p>
 <h1>{e(p["name"])}</h1>
 <p class="profile__role">{e(p["role"])}{pron}</p>
 <blockquote class="said"><p>{e(p["tagline"])}</p></blockquote>

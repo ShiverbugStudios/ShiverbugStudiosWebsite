@@ -26,7 +26,7 @@
         "Stylised characters and creatures",
         "Game-ready assets for Unity or Unreal"
       ],
-      "people": ["garrett-windus", "martin-wilkinson", "connor-milburn", "josh-cairns", "evan-atherton-elphick"]
+      "people": ["martin-wilkinson", "connor-milburn", "josh-cairns", "evan-atherton-elphick", "garrett-windus"]
     },
     {
       "id": "hardsurface",
@@ -39,7 +39,7 @@
         "High to low bakes with predictable topology",
         "PBR materials authored in the Substance tools"
       ],
-      "people": ["connor-milburn", "garrett-windus", "martin-wilkinson"]
+      "people": ["connor-milburn", "martin-wilkinson", "garrett-windus"]
     },
     {
       "id": "design",
@@ -105,6 +105,42 @@
       "note": "One crystal per area, each tied to a segment of the Elder Turtle's shell."
     },
     {
+      "image": "concept-blob-king",
+      "discipline": "concept",
+      "by": "sarah-childs",
+      "title": "The Blob King",
+      "project": "Out of Water",
+      "alt": "Concept board for the Blob King, a huge, grumpy pink blobfish draped in folds like a cape, shown in normal and faded skin, with his jewelled livery collar, a blue and gold conch shell and a pink and gold crown.",
+      "note": "King of the Blobfish, who brings a new faction and new ways to get around. The board covers his crown, his livery collar and the ancient conch the Elder Turtle gave him to keep."
+    },
+    {
+      "image": "concept-blob-king-turnaround",
+      "discipline": "concept",
+      "by": "sarah-childs",
+      "title": "Blob King turnaround",
+      "project": "Out of Water",
+      "alt": "Front, side and back views of the Blob King in flat grey, above a blockout that picks out each layer of his folds in a different colour.",
+      "note": "Each fold is designed like a piece of clothing, so the model keeps simple topology and the animators still get layers to move."
+    },
+    {
+      "image": "concept-blob-king-expressions",
+      "discipline": "concept",
+      "by": "sarah-childs",
+      "title": "Blob King expressions",
+      "project": "Out of Water",
+      "alt": "Twelve grey sketches of the Blob King sulking, scowling, sighing and slumping, his whole body warping with each expression.",
+      "note": "Gesture and expression sketches, after sarcastic and grumpy live-action characters, showing how far his body and face can bend to sell a line."
+    },
+    {
+      "image": "concept-mini-blobfish",
+      "discipline": "concept",
+      "by": "sarah-childs",
+      "title": "Mini blobfish",
+      "project": "Out of Water",
+      "alt": "A board of small pink blobfish used as bounce platforms: an airflip blob shown activated and at rest, a wall blob and a large, flat floor blob, each from several angles.",
+      "note": "Bounce platforms in three kinds: an airflip blob that leaps up when you hit it, a wall blob that clings to walls and ceilings, and a heavy floor blob that needs both players' weight."
+    },
+    {
       "image": "3d-coral-quarters",
       "discipline": "stylised",
       "by": "josh-cairns",
@@ -135,6 +171,96 @@
       "title": "Relic",
       "alt": "A friendly orange robot shown from three angles, with a cartoon face on a boxy screen head and thin jointed legs.",
       "note": "A personal character piece: worn materials, a deliberately lopsided build and a face that does most of the work."
+    },
+    {
+      "image": "3d-grunt-crab",
+      "discipline": "stylised",
+      "by": "evan-atherton-elphick",
+      "title": "Grunt Crab",
+      "project": "Out of Water",
+      "alt": "Front and back views of a round red crab with a pitted shell pulled low over wide, worried eyes, its claws raised.",
+      "note": "The bulk of the spider crab's army. The cannon and shield crabs are built on the same body."
+    },
+    {
+      "image": "3d-cannon-crab",
+      "discipline": "stylised",
+      "by": "evan-atherton-elphick",
+      "title": "Cannon Crab",
+      "project": "Out of Water",
+      "alt": "Front and back views of the round red grunt crab with a big yellow cannon strapped to its shell by a leather belt.",
+      "note": "A grunt with artillery. It fires coconuts."
+    },
+    {
+      "image": "3d-shield-crab",
+      "discipline": "stylised",
+      "by": "evan-atherton-elphick",
+      "title": "Shield Crab",
+      "project": "Out of Water",
+      "alt": "A red crab crouched behind a shield of broken wooden planks daubed with a yellow and teal face, seen from the front and from behind.",
+      "note": "Hides behind a face it painted itself."
+    },
+    {
+      "image": "3d-patrol-crab",
+      "discipline": "stylised",
+      "by": "evan-atherton-elphick",
+      "title": "Patrol Crab",
+      "project": "Out of Water",
+      "alt": "Front and back views of a flat red crab under a navy and gold pirate tricorn with a green feather, a curved white hook strapped to each claw.",
+      "note": "Dressed as a pirate in whatever it could scavenge, like the rest of the army."
+    },
+    {
+      "image": "3d-chase-crab",
+      "discipline": "stylised",
+      "by": "evan-atherton-elphick",
+      "title": "Chase Crab",
+      "project": "Out of Water",
+      "alt": "Two views of a long-legged red crab with a teal patterned bandana tied round its shell and one claw much bigger than the other.",
+      "note": "Long in the leg, for the crab that gives chase."
+    },
+    {
+      "image": "3d-parrot-yellow",
+      "discipline": "stylised",
+      "by": "evan-atherton-elphick",
+      "title": "Parrot NPC, yellow",
+      "project": "Out of Water",
+      "alt": "Front and back views of a round yellow and white parrot in a navy pirate tricorn with gold trim and a leather bandolier, its wings spread.",
+      "note": "One of three colourways."
+    },
+    {
+      "image": "3d-parrot-blue",
+      "discipline": "stylised",
+      "by": "evan-atherton-elphick",
+      "title": "Parrot NPC, blue",
+      "project": "Out of Water",
+      "alt": "Front and back views of the pirate parrot in blue and yellow, with purple tail feathers.",
+      "note": "One of three colourways."
+    },
+    {
+      "image": "3d-parrot-green",
+      "discipline": "stylised",
+      "by": "evan-atherton-elphick",
+      "title": "Parrot NPC, green",
+      "project": "Out of Water",
+      "alt": "Front and back views of the pirate parrot in green and yellow.",
+      "note": "One of three colourways."
+    },
+    {
+      "image": "3d-hootsworth",
+      "discipline": "stylised",
+      "by": "evan-atherton-elphick",
+      "title": "Hootsworth",
+      "project": "Out of Water",
+      "alt": "Front and back views of an owl with outstretched brown wings, in a pink top hat, a pink waistcoat with gold buttons and a pink bow tie.",
+      "note": "The owl who runs the hat stall and takes payment in sand dollars."
+    },
+    {
+      "image": "3d-mortimer",
+      "discipline": "stylised",
+      "by": "evan-atherton-elphick",
+      "title": "Mortimer",
+      "project": "Out of Water",
+      "alt": "Front and back views of a grey mole in a straw hat with a red band, round glasses, a red neckerchief and a cream explorer's waistcoat, with a sack slung on the back.",
+      "note": "A turnaround, so the explorer's kit reads from both sides."
     },
     {
       "image": "3d-hunter",

@@ -60,11 +60,21 @@ the photo and run `tools/images.py` again; it notices a changed crop. Aim for
 what the others have: the face centred, its middle about 42% of the way down,
 and about a third of the frame wide, or as close as the photo allows.
 
+**Hold a place for a new starter.** Add them to `team` with only an `id`, a
+`slug` and their `name`. They show in the studio section as a dashed "profile
+coming soon" card with Shana the moth in it, and get no page and no link until
+their `about` arrives. Add the rest as above when it does.
+
+**Leadership.** The founders still on the team, plus anyone given
+`"lead": true` (the Technical Director), sit together at the top of the team
+page and beside the People section of the press page.
+
 **Someone leaves.** Move them to `talent` with `"status": "former"`. They stay
 in the talent pool on the team page with a Shiverbug alumni badge (Shana the
 moth, `assets/brand/moth-ink.svg`, which `tools/logo.py` writes), their
 structured data says `alumniOf`, and their pieces stay in the co-development
-galleries and on their profile.
+galleries and on their profile. A founder who leaves keeps `"founder": true`,
+so they are still named as a founder in the press kit and the structured data.
 
 **Add a portfolio piece.** Put the image in `source/work/`, add an entry to
 `data/work.json` (credited to one person, filed under one discipline, with alt
@@ -82,7 +92,7 @@ id. To show the post's picture, save it as `source/news/<id>.jpg` and run
 
 **Change a page.** Edit its file in `src/pages/`. Inside a page, `{{ ... }}` is
 a call to one of the helpers at the bottom of `tools/build.py`, for example
-`{{ img("game/cove", "alt text", sizes="50vw") }}`, `{{ people_grid("founders") }}`
+`{{ img("game/cove", "alt text", sizes="50vw") }}`, `{{ people_grid("leadership") }}`
 or `{{ email() }}`.
 
 ## Images
@@ -108,8 +118,10 @@ before changing the look. In short:
   logo's.
 - **Buttons are the game's menu tiles**, a flat fill with a darker bottom edge
   that disappears when pressed. Nothing else gets that edge.
-- **Headings are Fraunces, fully soft; text is Instrument Sans.** Both are
-  self-hosted, so no page contacts Google.
+- **Headings are Luckiest Guy; text is Nunito**, the faces of the studio's
+  pitch decks. Luckiest Guy has one weight and is capitals only, so it is never
+  set bold and never used for anything a sentence long. Both are self-hosted,
+  cut down by `tools/fonts.py`, so no page contacts Google.
 - **Nothing moves on its own** apart from the game footage, which has a pause
   button and does not play for anyone who has asked for reduced motion.
 - **Copy has no em dashes**, the same house rule as the wiki. `tools/check.py`

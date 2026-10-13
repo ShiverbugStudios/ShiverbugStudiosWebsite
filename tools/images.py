@@ -197,7 +197,7 @@ def die_cut(im):
 
 
 def font(path, size, **axes):
-    """Load a woff2 variable font at an instance Pillow can draw with."""
+    """Load a woff2 font, at an instance if it is variable, so Pillow can draw with it."""
     from fontTools.ttLib import TTFont
     from fontTools.varLib import instancer
 
@@ -220,8 +220,8 @@ def outlined_text(draw, xy, text, fnt, fill, outline, width, shadow=0):
 
 def social_cards():
     fonts = ROOT / "assets" / "fonts"
-    serif = lambda s: font(fonts / "fraunces-soft-latin.woff2", s, wght=720, opsz=144)
-    sans = lambda s: font(fonts / "instrument-sans-latin.woff2", s, wght=600)
+    display = lambda s: font(fonts / "luckiest-guy-latin.woff2", s)
+    sans = lambda s: font(fonts / "nunito-latin.woff2", s, wght=700)
     lockup = Image.open(ROOT / "assets" / "brand" / "shiverbug-logo-on-blue.png").convert("RGBA")
     koopa = Image.open(SRC / "stickers" / "koopa.png").convert("RGBA")
     kiko = Image.open(SRC / "stickers" / "kiko.png").convert("RGBA")
@@ -252,7 +252,7 @@ def social_cards():
         sd.line([(0, 630 - i), (1200, 630 - i)], fill=INK + (round(150 * (1 - i / 330) ** 1.6),))
     still.alpha_composite(shade)
     d = ImageDraw.Draw(still)
-    t = serif(150)
+    t = display(150)
     outlined_text(d, (56, 300), "Out of", t, CREAM, INK, 7, shadow=10)
     outlined_text(d, (56, 430), "Water", t, CREAM, INK, 7, shadow=10)
     still.alpha_composite(fit(koopa, 150).rotate(-4, expand=True, resample=Image.BICUBIC), (1000, 450))
@@ -304,7 +304,8 @@ def main():
         jobs.append((name, SRC / master, lambda m=SRC / master: Image.open(m), [640, 960, 1600], 82, False))
 
     team = json.loads((ROOT / "data" / "team.json").read_text(encoding="utf-8"))
-    for person in team["team"] + team["talent"]:
+    # Someone without a photo yet is a placeholder on the team page.
+    for person in (p for p in team["team"] + team["talent"] if p.get("photo")):
         m = SRC / "team" / person["photo"]
         jobs.append((f"team/{person['slug']}", m, lambda m=m, c=person.get("crop"): portrait(m, c), PORTRAIT_WIDTHS, 78, False, person.get("crop")))
 

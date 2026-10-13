@@ -1,18 +1,18 @@
-Self-hosted web fonts for shiverbugstudios.com.
+Self-hosted web fonts for shiverbugstudios.com. They are the faces of the
+studio's pitch decks.
 
-Fraunces (variable: opsz 9-144, wght 500-800)
-  Copyright 2020 The Fraunces Project Authors
-  https://github.com/undercasetype/Fraunces
-  Cut down by tools/fonts.py from the Google Fonts latin and latin-ext
-  subsets: the SOFT axis is pinned at 100, WONK at 0, and weight narrowed to
-  500-800, which is everything the site uses.
+Luckiest Guy (headings; one weight, 400)
+  Copyright (c) 2010 by Brian J. Bonislawsky DBA Astigmatic (AOETI)
+  https://fonts.google.com/specimen/Luckiest+Guy
+  Licensed under the Apache License, Version 2.0:
+  https://www.apache.org/licenses/LICENSE-2.0
 
-Instrument Sans (variable: wght 400-700, plus italic 400)
-  Copyright 2022 The Instrument Sans Project Authors
-  https://github.com/Instrument/instrument-sans
-  The Google Fonts latin and latin-ext subsets, unmodified.
+Nunito (text; variable wght 400-800, plus italic 400)
+  Copyright 2014 The Nunito Project Authors
+  https://github.com/googlefonts/nunito
+  Licensed under the SIL Open Font License, Version 1.1:
+  https://openfontlicense.org
 
-Both are licensed under the SIL Open Font License, Version 1.1:
-https://openfontlicense.org
-
-assets/css/site.css declares them with @font-face.
+Both are cut by tools/fonts.py from the Google Fonts releases into the latin
+and latin-ext subsets, with Nunito's weight axis narrowed to 400-800, which is
+everything the site uses. assets/css/site.css declares them with @font-face.

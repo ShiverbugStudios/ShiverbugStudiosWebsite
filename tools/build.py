@@ -172,14 +172,22 @@ def face(p, big=False):
 def faces(slugs=None, group=None, big=False):
     ps = [BY_SLUG[s] for s in slugs] if slugs else group_members(group)
     cls = "faces faces--big" if big else "faces"
-    return f'<ul class="{cls}">' + "".join(f"<li>{face(p, big)}</li>" for p in ps) + "</ul>"
+    # A new starter's slot has no photo yet, so no face either.
+    return f'<ul class="{cls}">' + "".join(f"<li>{face(p, big)}</li>" for p in ps if p.get("photo")) + "</ul>"
+
+
+def leads(p):
+    """The founders still on the team, and anyone who runs the studio with them."""
+    return p in TEAM["team"] and bool(p.get("founder") or p.get("lead"))
 
 
 def group_members(group):
-    if group == "founders":
-        return [p for p in TEAM["team"] if p.get("founder")]
+    if group == "founders":  # everyone who founded it, including any who have left
+        return [p for p in PEOPLE if p.get("founder")]
+    if group == "leadership":
+        return [p for p in TEAM["team"] if leads(p)]
     if group == "studio":
-        return [p for p in TEAM["team"] if not p.get("founder")]
+        return [p for p in TEAM["team"] if not leads(p)]
     if group == "team":
         return TEAM["team"]
     if group == "talent":  # people who work with us now, then the alumni
@@ -199,7 +207,20 @@ def count(group):
     return words[n] if n < len(words) else str(n)
 
 
+def slot_card(p):
+    """A new starter whose photo and words have not arrived yet. Shana the moth
+    holds the place."""
+    moth = '<img src="/assets/brand/moth-ink.svg" alt="" width="376" height="365">'
+    role = f'<p class="person__role">{e(p["role"])}</p>' if p.get("role") else ""
+    return (
+        f'<li class="person person--slot"><div class="person__photo">{moth}</div>'
+        f'<h3>{e(p["name"])}</h3>{role}<p class="person__soon">New starter. Profile coming soon.</p></li>'
+    )
+
+
 def person_card(p):
+    if not p.get("photo"):
+        return slot_card(p)
     photo = f'<div class="person__photo">{img("team/" + p["slug"], "", sizes="(min-width: 72em) 16rem, (min-width: 40em) 30vw, 90vw", near=480)}</div>'
     body = (
         f'<h3>{e(p["name"])}</h3>'

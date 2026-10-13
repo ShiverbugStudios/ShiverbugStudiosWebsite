@@ -487,6 +487,26 @@
    1
   ]
  },
+ "work/3d-cannon-crab": {
+  "w": 2400,
+  "h": 1350,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-chase-crab": {
+  "w": 2400,
+  "h": 1350,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
  "work/3d-coral-props": {
   "w": 1600,
   "h": 772,
@@ -547,9 +567,39 @@
   ],
   "alpha": false
  },
+ "work/3d-grunt-crab": {
+  "w": 2400,
+  "h": 1350,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-hootsworth": {
+  "w": 2400,
+  "h": 1350,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
  "work/3d-hunter": {
   "w": 1600,
   "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-mortimer": {
+  "w": 2400,
+  "h": 1350,
   "widths": [
    640,
    960,
@@ -567,6 +617,46 @@
   ],
   "alpha": false
  },
+ "work/3d-parrot-blue": {
+  "w": 2400,
+  "h": 1350,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-parrot-green": {
+  "w": 2400,
+  "h": 1350,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-parrot-yellow": {
+  "w": 2400,
+  "h": 1350,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/3d-patrol-crab": {
+  "w": 2400,
+  "h": 1350,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
  "work/3d-robot": {
   "w": 1600,
   "h": 900,
@@ -577,9 +667,49 @@
   ],
   "alpha": false
  },
+ "work/3d-shield-crab": {
+  "w": 2400,
+  "h": 1350,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
  "work/concept-accessories": {
   "w": 1600,
   "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/concept-blob-king": {
+  "w": 2400,
+  "h": 1350,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/concept-blob-king-expressions": {
+  "w": 2400,
+  "h": 1350,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/concept-blob-king-turnaround": {
+  "w": 2400,
+  "h": 1350,
   "widths": [
    640,
    960,
@@ -600,6 +730,16 @@
  "work/concept-iconography": {
   "w": 1600,
   "h": 900,
+  "widths": [
+   640,
+   960,
+   1600
+  ],
+  "alpha": false
+ },
+ "work/concept-mini-blobfish": {
+  "w": 2400,
+  "h": 1350,
   "widths": [
    640,
    960,

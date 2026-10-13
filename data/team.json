@@ -1,5 +1,5 @@
 {
-  "_readme": "Everyone on the site. Edit this, then run python tools/build.py. Fields: id (the old ?p= slug, kept so team-member.html?p=... links still land), slug (the page address, team/<slug>), name, role, pronouns (optional), tagline and about (the person's own words: never rewrite them; about is a list of paragraphs and may hold links, written as the other person's slug e.g. 'lewis-mennim.html', which the build turns into /team/lewis-mennim), favourite ('turtle' or 'seagull': which of the two heroes they back, shown as Team Turtle or Team Seagull), socials (list of {label, url}), status (talent pool only: 'active' or 'former'), founder (true for the three founders), photo (a file in source/team), crop (optional [left, top, width] as fractions of the photo, for the 4:5 portrait tools/images.py cuts; leave it out to take the full width from the top), joinedVia (optional: how someone on the team joined, when it was not Teesside University's internship scheme, e.g. 'Trailblazer'; everyone else on the team apart from the founders is listed as a Teesside intern on the careers page), knowsAbout (optional, for search engines), metaDescription (optional search snippet, when the first sentence of about will not do). A person with no about text is treated as unfinished: no profile link, no page.",
+  "_readme": "Everyone on the site. Edit this, then run python tools/build.py. Fields: id (the old ?p= slug, kept so team-member.html?p=... links still land), slug (the page address, team/<slug>), name, role, pronouns (optional), tagline and about (the person's own words: never rewrite them; about is a list of paragraphs and may hold links, written as the other person's slug e.g. 'lewis-mennim.html', which the build turns into /team/lewis-mennim), favourite ('turtle' or 'seagull': which of the two heroes they back, shown as Team Turtle or Team Seagull), socials (list of {label, url}), status (talent pool only: 'active' or 'former'), founder (true for the three people who founded the studio, including any who have since left), lead (true for someone on the team who runs the studio alongside the founders, e.g. the Technical Director; shown with them at the top of the team page), photo (a file in source/team; someone with only an id, slug and name is a slot for a new starter, shown as a 'profile coming soon' card until their photo, role and words arrive), crop (optional [left, top, width] as fractions of the photo, for the 4:5 portrait tools/images.py cuts; leave it out to take the full width from the top), joinedVia (optional: how someone on the team joined, when it was not Teesside University's internship scheme, e.g. 'Trailblazer'; everyone else on the team apart from the founders is listed as a Teesside intern on the careers page), knowsAbout (optional, for search engines), metaDescription (optional search snippet, when the first sentence of about will not do). A person with no about text is treated as unfinished: no profile link, no page.",
   "team": [
     {
       "id": "lewis",
@@ -52,57 +52,39 @@
       "founder": true
     },
     {
-      "id": "garrett",
-      "slug": "garrett-windus",
-      "name": "Garrett Windus",
-      "role": "3D Artist · Co-Founder",
+      "id": "oliver",
+      "slug": "oliver-neal",
+      "name": "Oliver Neal",
+      "role": "Technical Director",
       "pronouns": "he/him",
-      "tagline": "Shhhh, Don't tell Lewis!",
+      "tagline": "Programming Department",
       "about": [
-        "Before <a href='lewis-mennim.html'>Lewis</a> reached out about starting a studio, I was a Realistic Vehicle artist and had to quickly adapt to making stylised environments.",
-        "My favourite games are Minecraft and Terraria."
+        "I'm a games developer working in Unity and C#. I graduated from Teesside University in July 2026 with First Class Honours in BSc (Hons) Games Development, where my final-year project won the Best Games Programming award, and I joined Shiverbug Studios as a gameplay programmer straight after.",
+        "At Shiverbug I write the gameplay: player systems, AI, and the general plumbing that makes the game feel good to play. I also built this website, and I co-run our social media with <a href='madi-freck.html'>Madi Freck</a>.",
+        "I love automation games, tactical shooters like Valorant, and a good co-op session. Beyond playing them, I really enjoy game design itself and thinking about what makes games fun."
       ],
       "favourite": "seagull",
       "socials": [
         {
-          "label": "ArtStation",
-          "url": "https://www.artstation.com/gazz_3d"
+          "label": "Website",
+          "url": "https://oliverneal.dev"
         },
         {
-          "label": "LinkedIn",
-          "url": "https://www.linkedin.com/in/garrett-windus/"
-        },
-        {
-          "label": "Sketchfab",
-          "url": "https://sketchfab.com/garrett.windus1"
+          "label": "GitHub",
+          "url": "https://github.com/OliverNealDev"
         },
         {
           "label": "itch.io",
-          "url": "https://garrett-windus.itch.io/"
+          "url": "https://olivernealdev.itch.io"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/oliver-neal-197b74290"
         }
       ],
-      "metaDescription": "Garrett Windus - 3D Artist and co-founder at Shiverbug Studios. A realistic vehicle artist who switched to building stylised environments.",
-      "photo": "garrett-windus.webp",
-      "crop": [0.278, 0.289, 0.444],
-      "founder": true
-    },
-    {
-      "id": "charlie-p",
-      "slug": "charlie-pelling",
-      "name": "Charlie Pelling",
-      "role": "Narrative Designer",
-      "pronouns": "he/him",
-      "tagline": "It's bread",
-      "about": [
-        "I'm an aspiring Narrative Designer with a passion for creating immersive storytelling and loveable characters for people to enjoy. I've always loved playing through games and being left with a bittersweet feeling. That's how you know a game is great.",
-        "My love for narrative began when I first played The Walking Dead Telltale series and realised how much one decision could spin a story and impact the future of your journey.",
-        "At Shiverbug I write the voice lines for our characters, move the narrative forward and make the journey worth experiencing.",
-        "Some of my all time favourite games are Silent Hill 2/3, Red Dead Redemption 1/2 and Cyberpunk 2077."
-      ],
-      "favourite": "turtle",
-      "metaDescription": "Charlie Pelling - Narrative Designer at Shiverbug Studios. Narrative designer focused on immersive storytelling and characters players remember.",
-      "photo": "charlie-pelling.jpg",
-      "joinedVia": "Trailblazer"
+      "photo": "oliver-neal.webp",
+      "crop": [0.228, 0.271, 0.444],
+      "lead": true
     },
     {
       "id": "sarah",
@@ -193,40 +175,6 @@
       ],
       "photo": "charlie-ashall.webp",
       "crop": [0.254, 0.02, 0.656]
-    },
-    {
-      "id": "oliver",
-      "slug": "oliver-neal",
-      "name": "Oliver Neal",
-      "role": "Gameplay Programmer",
-      "pronouns": "he/him",
-      "tagline": "Programming Department",
-      "about": [
-        "I'm a games developer working in Unity and C#. I graduated from Teesside University in July 2026 with First Class Honours in BSc (Hons) Games Development, where my final-year project won the Best Games Programming award, and I joined Shiverbug Studios as a gameplay programmer straight after.",
-        "At Shiverbug I write the gameplay: player systems, AI, and the general plumbing that makes the game feel good to play. I also built this website, and I co-run our social media with <a href='madi-freck.html'>Madi Freck</a>.",
-        "I love automation games, tactical shooters like Valorant, and a good co-op session. Beyond playing them, I really enjoy game design itself and thinking about what makes games fun."
-      ],
-      "favourite": "seagull",
-      "socials": [
-        {
-          "label": "Website",
-          "url": "https://oliverneal.dev"
-        },
-        {
-          "label": "GitHub",
-          "url": "https://github.com/OliverNealDev"
-        },
-        {
-          "label": "itch.io",
-          "url": "https://olivernealdev.itch.io"
-        },
-        {
-          "label": "LinkedIn",
-          "url": "https://www.linkedin.com/in/oliver-neal-197b74290"
-        }
-      ],
-      "photo": "oliver-neal.webp",
-      "crop": [0.228, 0.271, 0.444]
     },
     {
       "id": "martin",
@@ -348,6 +296,52 @@
       ],
       "photo": "patrick-agwuh.webp",
       "crop": [0.105, 0, 0.8]
+    },
+    {
+      "id": "aidan",
+      "slug": "aidan-hendry",
+      "name": "Aidan Hendry",
+      "role": "Sound Designer",
+      "pronouns": "he/him",
+      "tagline": "Always pay attention to the small things, because they're the ones that bring the magic",
+      "about": [
+        "I'm a British sound designer with a First Class BA (with Hons) in Digital Music from Solent University and an MA with a distinction in Sound Design from Manchester Metropolitan University. After finishing some work on another game, I joined Shiverbug Studios as a sound designer.",
+        "I love adventure games, card games, and anything with a whimsical vibe. I am the first to point out when I recognise a sound popping up across different games or movies."
+      ],
+      "favourite": "turtle",
+      "socials": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/aidan-hendry-9805b0b6/"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/honeydewdsound"
+        },
+        {
+          "label": "X",
+          "url": "https://x.com/honeydewdsound"
+        }
+      ],
+      "metaDescription": "Aidan Hendry - Sound Designer at Shiverbug Studios. A sound designer with a First Class BA in Digital Music and an MA in Sound Design.",
+      "photo": "aidan-hendry.webp",
+      "crop": [0.086, 0.039, 0.725],
+      "joinedVia": "Outside the Teesside scheme"
+    },
+    {
+      "id": "harry",
+      "slug": "harry",
+      "name": "Harry"
+    },
+    {
+      "id": "elliot",
+      "slug": "elliot",
+      "name": "Elliot"
+    },
+    {
+      "id": "avery",
+      "slug": "avery",
+      "name": "Avery"
     }
   ],
   "talent": [
@@ -406,6 +400,61 @@
       "crop": [0.247, 0.058, 0.727]
     },
     {
+      "id": "charlie-p",
+      "slug": "charlie-pelling",
+      "name": "Charlie Pelling",
+      "role": "Narrative Designer",
+      "pronouns": "he/him",
+      "tagline": "It's bread",
+      "about": [
+        "I'm an aspiring Narrative Designer with a passion for creating immersive storytelling and loveable characters for people to enjoy. I've always loved playing through games and being left with a bittersweet feeling. That's how you know a game is great.",
+        "My love for narrative began when I first played The Walking Dead Telltale series and realised how much one decision could spin a story and impact the future of your journey.",
+        "At Shiverbug I write the voice lines for our characters, move the narrative forward and make the journey worth experiencing.",
+        "Some of my all time favourite games are Silent Hill 2/3, Red Dead Redemption 1/2 and Cyberpunk 2077."
+      ],
+      "favourite": "turtle",
+      "status": "active",
+      "metaDescription": "Charlie Pelling - Narrative Designer in the Shiverbug Studios talent pool. Narrative designer focused on immersive storytelling and characters players remember.",
+      "photo": "charlie-pelling.jpg",
+      "joinedVia": "Trailblazer"
+    },
+    {
+      "id": "garrett",
+      "slug": "garrett-windus",
+      "name": "Garrett Windus",
+      "role": "3D Artist · Co-Founder",
+      "pronouns": "he/him",
+      "tagline": "Shhhh, Don't tell Lewis!",
+      "about": [
+        "Before <a href='lewis-mennim.html'>Lewis</a> reached out about starting a studio, I was a Realistic Vehicle artist and had to quickly adapt to making stylised environments.",
+        "My favourite games are Minecraft and Terraria."
+      ],
+      "favourite": "seagull",
+      "socials": [
+        {
+          "label": "ArtStation",
+          "url": "https://www.artstation.com/gazz_3d"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/garrett-windus/"
+        },
+        {
+          "label": "Sketchfab",
+          "url": "https://sketchfab.com/garrett.windus1"
+        },
+        {
+          "label": "itch.io",
+          "url": "https://garrett-windus.itch.io/"
+        }
+      ],
+      "status": "former",
+      "metaDescription": "Garrett Windus - co-founder and former 3D Artist at Shiverbug Studios. A realistic vehicle artist who switched to building stylised environments.",
+      "photo": "garrett-windus.webp",
+      "crop": [0.278, 0.289, 0.444],
+      "founder": true
+    },
+    {
       "id": "nathan",
       "slug": "nathan-hopwood",
       "name": "Nathan Hopwood",
@@ -434,37 +483,6 @@
       "metaDescription": "Nathan Hopwood - former 3D Artist at Shiverbug Studios. A hard surface artist specialising in vehicles, weapons and props.",
       "photo": "nathan-hopwood.webp",
       "crop": [0.067, 0.132, 0.738]
-    },
-    {
-      "id": "aidan",
-      "slug": "aidan-hendry",
-      "name": "Aidan Hendry",
-      "role": "Sound Designer",
-      "pronouns": "he/him",
-      "tagline": "Always pay attention to the small things, because they're the ones that bring the magic",
-      "about": [
-        "I'm a British sound designer with a First Class BA (with Hons) in Digital Music from Solent University and an MA with a distinction in Sound Design from Manchester Metropolitan University. After finishing some work on another game, I joined Shiverbug Studios as a sound designer.",
-        "I love adventure games, card games, and anything with a whimsical vibe. I am the first to point out when I recognise a sound popping up across different games or movies."
-      ],
-      "favourite": "turtle",
-      "socials": [
-        {
-          "label": "LinkedIn",
-          "url": "https://www.linkedin.com/in/aidan-hendry-9805b0b6/"
-        },
-        {
-          "label": "Instagram",
-          "url": "https://www.instagram.com/honeydewdsound"
-        },
-        {
-          "label": "X",
-          "url": "https://x.com/honeydewdsound"
-        }
-      ],
-      "status": "former",
-      "metaDescription": "Aidan Hendry - former Sound Designer at Shiverbug Studios. A sound designer with a First Class BA in Digital Music and an MA in Sound Design.",
-      "photo": "aidan-hendry.webp",
-      "crop": [0.086, 0.039, 0.725]
     },
     {
       "id": "max",

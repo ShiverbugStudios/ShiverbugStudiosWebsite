@@ -140,15 +140,20 @@ def first(p):
 
 
 def side(p):
-    return {"turtle": ("koopa", "Team Turtle"), "seagull": ("kiko", "Team Seagull")}.get(p.get("favourite"))
+    """Sticker, label and tag colour for the side someone backs: one of the two
+    heroes, or the crab army for anyone rooting for the villains."""
+    return {
+        "turtle": ("koopa", "Team Turtle", "tag"),
+        "seagull": ("kiko", "Team Seagull", "tag tag--seagull"),
+        "crab": ("crab-grunt", "Team Crab", "tag tag--crab"),
+    }.get(p.get("favourite"))
 
 
 def side_tag(p):
     s = side(p)
     if not s:
         return ""
-    icon, label = s
-    cls = "tag" if icon == "koopa" else "tag tag--seagull"
+    icon, label, cls = s
     return f'<span class="{cls}">{img("stickers/" + icon, "", sizes="24px", near=160)}{label}</span>'
 
 
@@ -214,7 +219,7 @@ def slot_card(p):
     role = f'<p class="person__role">{e(p["role"])}</p>' if p.get("role") else ""
     return (
         f'<li class="person person--slot"><div class="person__photo">{moth}</div>'
-        f'<h3>{e(p["name"])}</h3>{role}<p class="person__soon">New starter. Profile coming soon.</p></li>'
+        f'<h3>{e(p["name"])}</h3>{role}<p class="person__soon">New starter. Profile coming soon.</p>{side_tag(p)}</li>'
     )
 
 

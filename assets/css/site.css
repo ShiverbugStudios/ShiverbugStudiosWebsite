@@ -88,6 +88,7 @@
   --leaf-pale: #e4f3c8;
   --sky-pale: #d3f2fb;
   --coral: #ff8060;
+  --coral-pale: #ffe0d6;
   --rule: rgb(7 34 48 / 0.16);
 
   --display: "Luckiest Guy", "Arial Black", "Segoe UI Black", system-ui, sans-serif;
@@ -679,6 +680,7 @@ figcaption, .caption {
 }
 .tag img { width: 24px; height: auto; }
 .tag--seagull { background: var(--sky-pale); }
+.tag--crab { background: var(--coral-pale); }
 /* The logo's cyan and Shana the moth: a former shiverbug is still one of ours. */
 .tag--alumni { background: var(--sea); }
 .tag--alumni img { width: 22px; margin-left: 2px; }

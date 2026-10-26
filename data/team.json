@@ -1,5 +1,5 @@
 {
-  "_readme": "Everyone on the site. Edit this, then run python tools/build.py. Fields: id (the old ?p= slug, kept so team-member.html?p=... links still land), slug (the page address, team/<slug>), name, role, pronouns (optional), tagline and about (the person's own words: never rewrite them; about is a list of paragraphs and may hold links, written as the other person's slug e.g. 'lewis-mennim.html', which the build turns into /team/lewis-mennim), favourite ('turtle' or 'seagull': which of the two heroes they back, shown as Team Turtle or Team Seagull), socials (list of {label, url}), status (talent pool only: 'active' or 'former'), founder (true for the three people who founded the studio, including any who have since left), lead (true for someone on the team who runs the studio alongside the founders, e.g. the Technical Director; shown with them at the top of the team page), photo (a file in source/team; someone with only an id, slug and name is a slot for a new starter, shown as a 'profile coming soon' card until their photo, role and words arrive; fill in whatever has arrived and the card shows it, still marked profile coming soon until their about arrives), crop (optional [left, top, width] as fractions of the photo, for the 4:5 portrait tools/images.py cuts; leave it out to take the full width from the top), joinedVia (optional: how someone on the team joined, when it was not Teesside University's internship scheme, e.g. 'Trailblazer'; everyone else on the team apart from the founders is listed as a Teesside intern on the careers page), knowsAbout (optional, for search engines), metaDescription (optional search snippet, when the first sentence of about will not do). A person with no about text is treated as unfinished: no profile link, no page.",
+  "_readme": "Everyone on the site. Edit this, then run python tools/build.py. Fields: id (the old ?p= slug, kept so team-member.html?p=... links still land), slug (the page address, team/<slug>), name, role, pronouns (optional), tagline and about (the person's own words: never rewrite them; about is a list of paragraphs and may hold links, written as the other person's slug e.g. 'lewis-mennim.html', which the build turns into /team/lewis-mennim), favourite ('turtle', 'seagull' or 'crab': which of the two heroes they back, or the villains' crab army, shown as Team Turtle, Team Seagull or Team Crab), socials (list of {label, url}), status (talent pool only: 'active' or 'former'), founder (true for the three people who founded the studio, including any who have since left), lead (true for someone on the team who runs the studio alongside the founders, e.g. the Technical Director; shown with them at the top of the team page), photo (a file in source/team; someone with only an id, slug and name is a slot for a new starter, shown as a 'profile coming soon' card until their photo, role and words arrive; fill in whatever has arrived and the card shows it, still marked profile coming soon until their about arrives), crop (optional [left, top, width] as fractions of the photo, for the 4:5 portrait tools/images.py cuts; leave it out to take the full width from the top), joinedVia (optional: how someone on the team joined, when it was not Teesside University's internship scheme, e.g. 'Trailblazer'; everyone else on the team apart from the founders is listed as a Teesside intern on the careers page), knowsAbout (optional, for search engines), metaDescription (optional search snippet, when the first sentence of about will not do). A person with no about text is treated as unfinished: no profile link, no page.",
   "team": [
     {
       "id": "lewis",
@@ -408,7 +408,21 @@
       "slug": "alana",
       "name": "Alana",
       "role": "3D Animator",
-      "pronouns": "she/her"
+      "pronouns": "she/her",
+      "tagline": "passionate about character animation and stylised worlds.",
+      "favourite": "crab",
+      "about": [
+        "I’m a 3D Animation student at Teesside University with a background in Environmental Design. I’m especially interested in character animation, stylised visuals and visual storytelling, and I enjoy bringing personality and emotion into characters through movement.",
+        "I mainly work with Maya and Blender, and I like exploring different workflows and styles to develop new ideas. My design background has also given me a strong interest in composition, atmosphere and world-building, which I enjoy combining with animation to create expressive characters and engaging worlds."
+      ],
+      "socials": [
+        {
+          "label": "Portfolio",
+          "url": "https://pan.baidu.com/s/18gItAUK3hh0yvl4KNal27A?pwd=25v2"
+        }
+      ],
+      "photo": "alana.jpg",
+      "crop": [0.14, 0.125, 0.7]
     },
     {
       "id": "ruby",
@@ -422,7 +436,8 @@
       "slug": "haku",
       "name": "Haku",
       "role": "3D Animator",
-      "pronouns": "she/her"
+      "pronouns": "she/her",
+      "favourite": "crab"
     }
   ],
   "talent": [

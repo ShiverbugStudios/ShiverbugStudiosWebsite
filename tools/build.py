@@ -222,11 +222,14 @@ def person_card(p):
     if not p.get("photo"):
         return slot_card(p)
     photo = f'<div class="person__photo">{img("team/" + p["slug"], "", sizes="(min-width: 72em) 16rem, (min-width: 40em) 30vw, 90vw", near=480)}</div>'
-    body = (
-        f'<h3>{e(p["name"])}</h3>'
-        f'<p class="person__role">{e(p["role"])}</p>'
-        f'<p class="person__line">{e(p["tagline"])}</p>'
-    )
+    body = f'<h3>{e(p["name"])}</h3>'
+    # A new starter can arrive a piece at a time: show what is there.
+    if p.get("role"):
+        body += f'<p class="person__role">{e(p["role"])}</p>'
+    if p.get("tagline"):
+        body += f'<p class="person__line">{e(p["tagline"])}</p>'
+    if not listed(p):
+        body += '<p class="person__soon">New starter. Profile coming soon.</p>'
     tags = side_tag(p) + alumni_tag(p)
     inner = photo + body
     if listed(p):

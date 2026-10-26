@@ -64,7 +64,9 @@ and about a third of the frame wide, or as close as the photo allows.
 **Hold a place for a new starter.** Add them to `team` with only an `id`, a
 `slug` and their `name`. They show in the studio section as a dashed "profile
 coming soon" card with Shana the moth in it, and get no page and no link until
-their `about` arrives. Add the rest as above when it does.
+their `about` arrives. Add the rest as above as it comes in: a photo, role or
+tagline shows on their card straight away, still marked profile coming soon,
+and their page appears once their `about` does.
 
 **Leadership.** The founders still on the team, plus anyone given
 `"lead": true` (the Technical Director), sit together at the top of the team

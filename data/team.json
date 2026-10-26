@@ -402,6 +402,27 @@
       ],
       "photo": "avery.jpg",
       "crop": [0.133, 0.04, 0.867]
+    },
+    {
+      "id": "alana",
+      "slug": "alana",
+      "name": "Alana",
+      "role": "3D Animator",
+      "pronouns": "she/her"
+    },
+    {
+      "id": "ruby",
+      "slug": "ruby",
+      "name": "Ruby",
+      "role": "Concept Artist",
+      "pronouns": "she/her"
+    },
+    {
+      "id": "haku",
+      "slug": "haku",
+      "name": "Haku",
+      "role": "3D Animator",
+      "pronouns": "she/her"
     }
   ],
   "talent": [

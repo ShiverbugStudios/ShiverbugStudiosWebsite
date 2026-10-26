@@ -661,7 +661,9 @@ def page(meta, body):
         title=e(title),
         description=e(typo(meta["description"])),
         canonical=f"{BASE}{path}",
-        og_image=f"{BASE}{og}",
+        # Versioned, because Discord and the rest cache a preview image by its
+        # address and would keep showing an old card.
+        og_image=f"{BASE}{versioned(og)}",
         og_type=meta.get("og_type", "website"),
         robots='<meta name="robots" content="noindex">' if meta.get("noindex") else "",
         csp=CSP,

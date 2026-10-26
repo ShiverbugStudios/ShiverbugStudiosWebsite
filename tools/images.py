@@ -221,24 +221,33 @@ def outlined_text(draw, xy, text, fnt, fill, outline, width, shadow=0):
 def social_cards():
     fonts = ROOT / "assets" / "fonts"
     display = lambda s: font(fonts / "luckiest-guy-latin.woff2", s)
-    sans = lambda s: font(fonts / "nunito-latin.woff2", s, wght=700)
     lockup = Image.open(ROOT / "assets" / "brand" / "shiverbug-logo-on-blue.png").convert("RGBA")
     koopa = Image.open(SRC / "stickers" / "koopa.png").convert("RGBA")
-    kiko = Image.open(SRC / "stickers" / "kiko.png").convert("RGBA")
 
     def fit(im, h):
         return im.resize((round(im.width * h / im.height), h), Image.LANCZOS)
 
-    # The studio card: the logo as it appears on its own cyan, with the two
-    # heroes stuck on beside it.
+    # The studio card: the logo on its own cyan, sized by its artwork rather
+    # than the padding round it, and beside it the strapline over Kiko and
+    # Koopa as they are in the game, Kiko looking across at Koopa. Nothing
+    # overlaps, so link previews that shrink the card still read.
     card = Image.new("RGBA", (1200, 630), SEA + (255,))
-    logo = fit(lockup, 560)
-    card.alpha_composite(logo, (40, 35))
-    card.alpha_composite(fit(kiko, 330).rotate(6, expand=True, resample=Image.BICUBIC), (800, 40))
-    card.alpha_composite(fit(koopa, 250).rotate(-5, expand=True, resample=Image.BICUBIC), (640, 330))
+    art = ImageChops.difference(lockup, Image.new("RGBA", lockup.size, SEA + (255,))).convert("L")
+    logo = fit(lockup.crop(art.point(lambda v: 255 if v > 24 else 0).getbbox()), 470)
+    card.alpha_composite(logo, (80, (630 - logo.height) // 2))
     d = ImageDraw.Draw(card)
-    d.text((660, 60), "Games you play", font=sans(34), fill=INK)
-    d.text((660, 100), "side by side.", font=sans(34), fill=INK)
+    t = display(70)
+    outlined_text(d, (575, 58), "Games you play", t, CREAM, INK, 5, shadow=7)
+    outlined_text(d, (575, 138), "side by side", t, CREAM, INK, 5, shadow=7)
+    # The bare renders, without the sticker border the site gives them.
+    render = lambda name: largest_blob_only(Image.open(SRC / "game" / name).convert("RGBA"))
+    gull = render("kiko-render.png")
+    gull = fit(gull.crop(gull.getbbox()), 340)
+    turtle = render("koopa-render.png")
+    turtle = fit(turtle.crop(turtle.getbbox()), round(turtle.height * 310 / turtle.width))
+    # Feet on one line.
+    card.alpha_composite(gull, (575, 580 - gull.height))
+    card.alpha_composite(turtle, (585 + gull.width, 580 - turtle.height))
     card.convert("RGB").save(OUT / "og" / "studio.jpg", quality=86)
 
     # The game card: a still from the title scene with the title set the way

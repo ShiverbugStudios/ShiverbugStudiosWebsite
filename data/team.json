@@ -333,6 +333,7 @@
       "slug": "harry",
       "name": "Harry",
       "role": "3D Character Artist",
+      "pronouns": "he/him",
       "tagline": "bang bang character art man",
       "favourite": "turtle",
       "photo": "harry.webp",
@@ -342,6 +343,7 @@
       "id": "elliot",
       "slug": "elliot",
       "name": "Elliot",
+      "pronouns": "he/him",
       "tagline": "Turning cubes into environments worth exploring",
       "favourite": "seagull",
       "socials": [
@@ -362,6 +364,7 @@
       "slug": "avery",
       "name": "Avery",
       "role": "3D Character Artist",
+      "pronouns": "he/they",
       "tagline": "too little time, too many hobbies",
       "about": [
         "Video games and art have always been a relaxing, comforting space for me, and I have always been interested in how things work behind the scenes and the ways people come together to create an experience. From my experience so far, being part of a team and seeing something you had a hand in come together is incredibly rewarding.",
